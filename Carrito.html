@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cotton Candy Clothing Store - Carrito</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    
+<header>
+    <div class="logo">
+      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
+      <span>Cotton Candy Clothing Store</span>
+    </div>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Shop</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+    <div class="icons">
+        <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
+        <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
+        <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
+        <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
+      </div>
+  </header>
+
+<section class="cart-page">
+  <nav class="breadcrumb">
+    <a href="#">Home</a> / 
+    <span>Carrito</span>
+  </nav>
+
+  <h2>Carrito (3 productos)</h2>
+
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Fotografía</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="Imagenes/playera con estampado antiguo.png" alt="Playera" /></td>
+        <td>Playera con estampado antiguo</td>
+        <td>$200</td>
+        <td>
+          <button class="qty-btn" data-action="decrease">-</button>
+          <input type="number" value="2" min="1" />
+          <button class="qty-btn" data-action="increase">+</button>
+        </td>
+        <td class="subtotal">$400</td>
+        <td><button class="remove-item">×</button></td>
+      </tr>
+      <tr>
+        <td><img src="Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" alt="Playera" /></td>
+        <td>Playera estampada Travis Scott</td>
+        <td>$399</td>
+        <td>
+          <button class="qty-btn" data-action="decrease">-</button>
+          <input type="number" value="1" min="1" />
+          <button class="qty-btn" data-action="increase">+</button>
+        </td>
+        <td class="subtotal">$399</td>
+        <td><button class="remove-item">×</button></td>
+      </tr>
+      <tr>
+        <td><img src="Imagenes/Playera con estampado de astronauta.png" alt="Playera" /></td>
+        <td>Playera con estampado de astronauta</td>
+        <td>$200</td>
+        <td>
+          <button class="qty-btn" data-action="decrease">-</button>
+          <input type="number" value="2" min="1" />
+          <button class="qty-btn" data-action="increase">+</button>
+        </td>
+        <td class="subtotal">$400</td>
+        <td><button class="remove-item">×</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cart-actions">
+    <input type="text" placeholder="Código" />
+    <button class="apply-coupon">Aplicar Cupón</button>
+    <button class="update-cart">Actualizar Carrito</button>
+  </div>
+
+  <div class="cart-totals">
+    <p>Subtotal: $1199.00</p>
+    <p>Total: $1319.00</p>
+    <button class="checkout-btn">Proceder a Paga</button>
+  </div>
+</section>
+
+<footer>
+    <div class="left">
+      <p><strong>Cotton Candy Clothing Store</strong></p>
+      <p>¿Te gustaría colaborar con nosotros?</p>
+      <button>ÚNETE →</button>
+    </div>
+    <div class="right">
+      <p><strong>REDES SOCIALES</strong></p>
+      <ul>
+        <li>Facebook</li>
+        <li>Twitter</li>
+        <li>Instagram</li>
+      </ul>
+    </div>
+    <div class="bottom-text">
+      Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
+    </div>
+  </footer>
+
+</body>
+</html>

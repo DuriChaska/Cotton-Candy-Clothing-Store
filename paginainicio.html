@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda de Ropa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            color: #fff;
+            background-image: url("Imagenes/fondo1.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content:flex-start; 
+            padding: 20px 40px; 
+            width: 100%;
+            position: absolute; 
+            top: 0;
+            z-index: 10;
+        }
+
+        nav button {
+            background-color: #b62694;
+            border: none;
+            color: white;
+            padding: 8px 18px;
+            font-size: 25px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 400px;
+            margin-top: 50px;
+        }
+
+       
+        header {
+            text-align: center;
+            padding-top: 100px;
+            width: 70%; 
+            background-color: transparent;
+        }
+        
+        header h1 {
+            display: inline-block;
+            color: #b62694;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 48px;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            padding: 15px 30px; 
+            border-radius: 8px;
+            
+        }
+
+        
+        .hero {
+            display: flex;
+            justify-content: center; 
+            text-align: center;
+            margin-top: 40px;
+            width: 70%; 
+        }
+
+        .hero-content {
+            max-width: 90%;
+        }
+
+        .hero-content h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ffffff; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        
+        .form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .form input {
+            padding: 12px;
+            width: 250px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .form button {
+            padding: 12px 25px;
+            background-color: #b62694;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        
+
+       
+        @media (max-width: 768px) {
+            header, .hero {
+                width: 100%; 
+            }
+            
+            header h1 {
+                font-size: 30px;
+            }
+
+            .hero-content h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav>
+        <button>Iniciar sesión</button>
+    </nav>
+
+    <header>
+        <h1>Cotton Candy Clothing Store</h1>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Ropa que amas, sin límites</h2>
+            <p>Outfits para cada mood. Moda que se adapta a tu estilo.</p>
+
+            <div class="form">
+                <input type="email" placeholder="Ingresa tu email">
+                <button>Comenzar</button>
+            </div>
+        </div>
+    </section>
+    
+    
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cotton Candy Clothing Store - Contacto</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    
+<header>
+  <div class="logo">
+    <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
+    <span>Cotton Candy Clothing Store</span>
+  </div>
+  <nav>
+   <ul>
+  <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
+  <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
+  <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
+  <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
+  <li><button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Iniciar sesión</button></li>
+</ul>
+
+  </nav>
+  <div class="icons">
+    <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
+    <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
+    <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
+    <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
+  </div>
+
+</header>
+<section class="contact-us">
+  <div class="contact-hero">
+    <div class="contact-info">
+      <div class="icon">
+        <img src="Imagenes/Iconos/Icon1.png" alt="Icono" style="width: 40px; height: 40px;" />
+      </div>
+      <h2>CONTACT US</h2>
+      <p>______________________________</p>
+      <p>Síguenos en nuestras redes sociales</p>
+      <div class="social-icons">
+        <img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
+        <img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
+        <img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" />
+      </div>
+    </div>
+    <div class="contact-image">
+      <img src="Imagenes/contact us.png" alt="Playeras sonriendo" />
+    </div>
+  </div>
+
+<form class="contact-form" id="contactForm">
+  <div class="input-group">
+    <input type="text" placeholder="Nombre" required />
+    <input type="email" placeholder="Email" required />
+  </div>
+  <textarea placeholder="Mensaje" rows="5" required></textarea>
+  <button type="submit" id="sendBtn">Enviar →</button>
+</form>
+</section>
+
+<footer>
+  <div class="left">
+    <p><strong>Cotton Candy Clothing Store</strong></p>
+    <p>¿Te gustaría colaborar con nosotros?</p>
+    <button>ÚNETE →</button>
+  </div>
+
+  <div class="center">
+    <p><strong>REDES SOCIALES</strong></p>
+    <ul>
+      <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
+        <a href="#">Facebook</a></li>
+      <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
+        <a href="#">Twitter</a></li>
+      <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <p><strong>Horario:</strong><br/>
+      Lunes a Viernes 7:00 am - 11:00 pm<br/>
+      Sábado y Domingo 9:00 am - 9:00 pm
+    </p>
+    <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
+  </div>
+
+  <div class="ai-note">
+    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
+  </div>
+
+  <div class="bottom-text">
+    Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
+  </div>
+</footer>
+
+
+<!-- Scrips-->
+ <script>
+  const form = document.getElementById("contactForm");
+  const button = document.getElementById("sendBtn");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // evita que se recargue la página
+    button.textContent = "Mensaje enviado ✔";
+    button.disabled = true; // opcional: desactiva el botón
+  });
+</script>
+</body>
+</html>
