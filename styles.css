@@ -718,7 +718,7 @@ footer .bottom-text {
     margin: 50px auto;
     padding: 0 20px;
     font-family: 'Arial', sans-serif;
-    color: #222; /* color general */
+    color: #222; 
   }
   
   .contact-hero {
@@ -726,7 +726,7 @@ footer .bottom-text {
     background: #b3488f;
     border-radius: 6px;
     overflow: hidden;
-    color: #f0e6dc;  /* color claro para todo el texto en esta sección */
+    color: #f0e6dc;  
     margin-bottom: 40px;
   }
   
