@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cotton Candy Clothing Store - Registro Usuario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotton Candy Clothing Store - Login</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    
 <header>
   <div class="logo">
     <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
@@ -16,22 +15,17 @@
   </div>
 </header>
 
-<section class="client-interface registration">
-  <h2>Registro Usuario</h2>
-  <form class="registration-form" id="registerForm">
-    <div class="input-group">
-      <input type="text" placeholder="Nombre" />
-      <input type="text" placeholder="Apellidos"/>
-    </div>
-    <input type="email" placeholder="Correo"/>
+<section class="client-interface login">
+  <h2>Iniciar Sesión</h2>
+
+  <form class="login-form" onsubmit="entrarPerfil(event)">
+    <input type="email" placeholder="Correo electrónico" />
     <input type="password" placeholder="Contraseña" />
-    <input type="password" placeholder="Confirmar Contraseña" />
-    <button type="submit">REGISTRARSE</button>
-<p id="registerMessage" style="display:none; color:#054704; margin-top:15px;">
-  Registro exitoso. Redirigiendo al inicio de sesión...
-</p>
+
+    <button type="submit">Entrar</button>
   </form>
 </section>
+
 <footer>
   <div class="left">
     <p><strong>Cotton Candy Clothing Store</strong></p>
@@ -64,7 +58,12 @@
   </div>
 </footer>
 
-<script src="registro.js"></script>
+<script>
+  function entrarPerfil(e) {
+    e.preventDefault();
+    window.location.href = "Interfaz Cliente - Perfil.html";
+  }
+</script>
 
 </body>
 </html>

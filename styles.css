@@ -116,7 +116,7 @@
     font-weight: bold;
     cursor: pointer;
     color: ;
-    transition: background 0.3s ease;
+    transition:0.3s ease;
   }
   
   .hero .left button:hover {
@@ -413,15 +413,7 @@ footer .bottom-text {
   padding-top: 15px;
 }
 
-footer .ai-note {
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
-  color: #f2d9ea;
-  margin-top: 25px;
-  line-height: 1.4;
-  margin-bottom: 1px;
-}
+
 
 
 
@@ -819,6 +811,14 @@ footer .ai-note {
     flex-direction: column;
     gap: 15px;
   }
+
+  .form-message {
+    margin-top: 12px;
+    color: #b3488f;
+    font-weight: 600;
+    font-size: 14px;
+}
+
   
   .contact-form .input-group {
     display: flex;
@@ -1039,6 +1039,7 @@ footer .ai-note {
   gap: 15px;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 20px;
 }
 
 .actions button {
@@ -1122,22 +1123,7 @@ details {
   cursor: pointer;
 }
 
-.related-products {
-  margin-top: 60px;
-}
 
-.related-products h2 {
-  font-weight: 700;
-  font-size: 22px;
-  margin-bottom: 20px;
-  color: #b3488f;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
-  gap: 20px;
-}
   /* ===========================
      Quantity Controls
   =========================== */
@@ -2419,3 +2405,165 @@ aside h3 {
 }
 
   }
+
+/* articulos similares en vista producto*/
+  .similares {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.similares h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.similares .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* tarjetas */
+.similares .product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.similares .product-card img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.similares .product-card h4 {
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.similares .product-card p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.similares .product-card button {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #b3488f;
+  background: transparent;
+  color: #b3488f;
+  cursor: pointer;
+}
+
+.similares .product-card button:hover {
+  background: #b3488f;
+  color: #fff;
+}
+
+
+/* login*/
+.client-interface {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff5fb;
+  border-radius: 30px;
+}
+
+.client-interface h2 {
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  background: white;
+  padding: 30px;
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.login-form button {
+  background-color: #e75480;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.login-form button:hover {
+  background-color: #d64573;
+}
+
+/* PERFIL */
+.profile {
+  background: #ffffff;
+  padding: 40px 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  margin: 0;
+  color: #e75480;
+}
+
+.profile-sections {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  max-width: 500px;
+}
+
+.profile-item {
+  margin-bottom: 20px;
+}
+
+.profile-item h3 {
+  color: #b3488f;
+  margin-bottom: 8px;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #e75480;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #d64573;
+}

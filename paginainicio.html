@@ -13,14 +13,23 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;  
+            margin: 0;
             color: #fff;
             background-image: url("Imagenes/fondo1.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
         }
+
+        main {
+            flex: 1;
+        }
+
+
 
         nav {
             display: flex;
@@ -71,6 +80,7 @@
             text-align: center;
             margin-top: 40px;
             width: 70%; 
+            flex: 1;
         }
 
         .hero-content {
@@ -117,7 +127,43 @@
             border-radius: 4px;
         }
 
-        
+        footer {
+            background-color: #b3488f;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            gap: 20px;
+        }
+
+        footer .left,
+        footer .center,
+        footer .right {
+            flex: 1;
+        }
+
+        footer .center {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        footer .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer .bottom-text {
+            width: 100%;
+            text-align: center;
+            font-size: 11px;
+            margin-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 6px;
+        }
+
 
        
         @media (max-width: 768px) {
@@ -139,7 +185,7 @@
 
 <body>
     <nav>
-        <button>Iniciar sesión</button>
+        <button type="button" onclick="window.location.href='index.html'">Iniciar sesión</button>
     </nav>
 
     <header>
@@ -153,10 +199,40 @@
 
             <div class="form">
                 <input type="email" placeholder="Ingresa tu email">
-                <button>Comenzar</button>
+                <button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Comenzar ahora</button>
             </div>
         </div>
     </section>
+
+<footer>
+  <div class="left">
+    <p><strong>Cotton Candy Clothing Store</strong></p>
+    <p>www.cottoncandy.com</p>
+  </div>
+
+  <div class="center">
+    <a href="#" aria-label="Facebook">
+      <img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon">
+    </a>
+    <a href="#" aria-label="Twitter">
+      <img src="Imagenes/Iconos/Twitter.png" alt="Twitter" class="icon">
+    </a>
+    <a href="#" aria-label="Instagram">
+      <img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon">
+    </a>
+  </div>
+
+  <div class="right">
+    <p>CottonCandyCS@gmail.com</p>
+    <p>📞 (449) 311 6529</p>
+  </div>
+
+  <div class="bottom-text">
+    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial. <br>
+    © 2026 Cotton Candy Clothing Store
+  </div>
+</footer>
+
     
     
 </body>

@@ -19,7 +19,7 @@
   <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
   <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
   <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-  <li><button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Iniciar sesión</button></li>
+  <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
 </ul>
 
   </nav>
@@ -32,108 +32,37 @@
 </header>
 
 <section class="product-page">
-  <nav class="breadcrumb">
-    <a href="#">Home</a> / <a href="#">Shop</a> / Sudadera Estampada
-  </nav>
 
-  <div class="product-main">
-    <div class="product-image">
-      <img src="Imagenes/Colecciones.png" alt="Sudadera Estampada" />
-      <div class="product-thumbnails">
-        <img src="Imagenes/Colecciones.png" alt="Thumb 1" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 2" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 3" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 4" />
-      </div>
+  <section class="producto-detalle">
+    <img id="imagen-producto" src="" alt="Producto">
+
+    <div class="info">
+      <h1 id="nombre-producto"></h1>
+      <p id="precio-producto"></p>
+      <p id="descripcion-producto"></p>
     </div>
+  </section>
 
-    <div class="product-details">
-      <h1>Sudadera Estampada</h1>
-      <div class="price">
-        $859 <span class="old-price">$1229</span>
-      </div>
 
-      <div class="color-options">
-        <span>Color:</span>
-        <button class="color-black selected"></button>
-        <button class="color-grey"></button>
-        <button class="color-white"></button>
-        <button class="color-red"></button>
-        <button class="color-green"></button>
-      </div>
-
-      <div class="quantity-control">
-        <button class="qty-btn">-</button>
-        <input type="number" value="1" min="1" />
-        <button class="qty-btn">+</button>
+      <div class="actions">
+        <button class="add-to-cart" type="button" onclick="window.location.href='login.html'">AGREGAR AL CARRITO</button>
+        <button class="buy-now" onclick="window.location.href='login.html'">COMPRAR AHORA</button>
       </div>
 
       <div class="actions">
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        <button class="buy-now">COMPRAR AHORA</button>
-      </div>
-
-      <details>
-        <summary>Detalles</summary>
-        <p>Detalles del producto...</p>
-      </details>
-
-      <details>
-        <summary>Dimensiones</summary>
-        <p>Dimensiones del producto...</p>
-      </details>
-      <div class="actions">
-        <button class="regresar" type="button" onclick="window.location.href='shop.html'">Regresar</button>
+        <button class="regresar" type="button" onclick="window.location.href='shop.html'">Regresar al catálogo</button>
       </div>
 
     </div>
   </div>
 
-  <section class="related-products">
-    <h2>ARTÍCULOS SIMILARES</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <img src="Imagenes/Playera Return of Misfits.png" alt="Kingmonster Playera Return of Misfits" />
-        <div class="product-info">
-          <h3>Kingmonster Playera Return of Misfits</h3>
-          <p>Estampado al frente de alta durabilidad y ligero al tacto.</p>
-        </div>
-        <div class="product-price">$298.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera de bruja feminista.png" alt="Girls Will Be Girls Shirts" />
-        <div class="product-info">
-          <h3>Girls Will Be Girls Shirts - Camisetas de bruja feminista</h3>
-          <p>Camisetas divertidas de Halloween con cuello en V, camisetas de moda con estampado de brujas de Halloween.</p>
-        </div>
-        <div class="product-price">$424.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera de manga corta para hombre.png" alt="Camisetas para hombre, playera de manga corta" />
-        <div class="product-info">
-          <h3>Camisetas para hombre, playera de manga corta, de poliéster, suave</h3>
-          <p>Estas camisetas casuales cuentan con un diseño clásico de cuello redondo y mangas cortas.</p>
-        </div>
-        <div class="product-price">$205.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera Estampada Gatos.png" alt="Aditivo Playera Estampada Gatos Bad Cattitude" />
-        <div class="product-info">
-          <h3>Aditivo Playera Estampada Gatos Bad Cattitude para Mujer</h3>
-          <p>Playera cómoda y casual para mujer con estampado cool y original, fácil de combinar con tus mejores atuendos.</p>
-        </div>
-        <div class="product-price">$195.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-    </div>
+ <section class="similares">
+    <h2>Artículos similares</h2>
+    <div id="articulos-similares" class="grid"></div>
   </section>
-  
+</section> 
+<script src="producto.js"></script>
+
 <footer>
   <div class="left">
     <p><strong>Cotton Candy Clothing Store</strong></p>
@@ -160,12 +89,9 @@
     <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
   </div>
 
-  <div class="ai-note">
-    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-  </div>
-
   <div class="bottom-text">
-    Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
+    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
+  <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
   </div>
 </footer>
 

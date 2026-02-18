@@ -9,7 +9,7 @@
 <body>
 
     
-<header>
+header>
   <div class="logo">
     <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
     <span>Cotton Candy Clothing Store</span>
@@ -20,7 +20,7 @@
   <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
   <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
   <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-  <li><button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Iniciar sesión</button></li>
+  <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
 </ul>
 
   </nav>
@@ -32,6 +32,7 @@
   </div>
 
 </header>
+
 <section class="contact-us">
   <div class="contact-hero">
     <div class="contact-info">
@@ -54,11 +55,13 @@
 
 <form class="contact-form" id="contactForm">
   <div class="input-group">
-    <input type="text" placeholder="Nombre" required />
-    <input type="email" placeholder="Email" required />
+    <input type="text" placeholder="Nombre" />
+    <input type="email" placeholder="Email" />
   </div>
-  <textarea placeholder="Mensaje" rows="5" required></textarea>
+  <textarea placeholder="Mensaje" rows="5"></textarea>
   <button type="submit" id="sendBtn">Enviar →</button>
+  <p id="formMessage" class="form-message"></p>
+
 </form>
 </section>
 
@@ -88,12 +91,9 @@
     <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
   </div>
 
-  <div class="ai-note">
-    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-  </div>
-
   <div class="bottom-text">
-    Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
+    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
+  <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
   </div>
 </footer>
 
@@ -102,12 +102,14 @@
  <script>
   const form = document.getElementById("contactForm");
   const button = document.getElementById("sendBtn");
+  const message = document.getElementById("formMessage");
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // evita que se recargue la página
-    button.textContent = "Mensaje enviado ✔";
-    button.disabled = true; // opcional: desactiva el botón
+    e.preventDefault();
+    message.textContent = "Mensaje enviado";
+    button.disabled = true;
   });
 </script>
+
 </body>
 </html>
