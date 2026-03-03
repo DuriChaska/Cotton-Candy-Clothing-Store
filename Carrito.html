@@ -2,45 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cotton Candy Clothing Store - Carrito</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    
 <header>
   <div class="logo">
     <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
     <span>Cotton Candy Clothing Store</span>
   </div>
   <nav>
-   <ul>
-  <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-  <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-  <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-  <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-  <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-</ul>
-
+    <ul>
+      <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
+      <li><button type="button" onclick="window.location.href='shop.html'">Catálogo</button></li>
+      <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
+      <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
+      <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
+    </ul>
   </nav>
   <div class="icons">
     <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
     <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
     <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
-     <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" onclick="window.location.href='carrito.html'" />
+    <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" onclick="window.location.href='carrito.html'" />
   </div>
 </header>
 
 <section class="cart-page">
   <nav class="breadcrumb">
-    <a href="#">Home</a> / 
+    <a href="index.html">Inicio</a> / 
     <span>Carrito</span>
   </nav>
 
-  <h2>Carrito (3 productos)</h2>
+  <h2 id="cart-title">Carrito (0 productos)</h2>
 
-  <table class="cart-table">
+  <div id="cart-empty" style="display:none; text-align:center; padding: 3rem 1rem;">
+    <h3>Tu carrito está vacío 😔</h3>
+    <p>¡Explora nuestro catálogo y encuentra algo que te encante!</p>
+    <button class="add-to-cart" onclick="window.location.href='shop.html'">
+      Ver catálogo
+    </button>
+  </div>
+
+  <table class="cart-table" id="cart-table" style="display:none;">
     <thead>
       <tr>
         <th>Fotografía</th>
@@ -48,58 +54,22 @@
         <th>Precio</th>
         <th>Cantidad</th>
         <th>Subtotal</th>
+        <th></th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><img src="Imagenes/playera con estampado antiguo.png" alt="Playera" /></td>
-        <td>Playera con estampado antiguo</td>
-        <td>$200</td>
-        <td>
-          <button class="qty-btn" data-action="decrease">-</button>
-          <input type="number" value="2" min="1" />
-          <button class="qty-btn" data-action="increase">+</button>
-        </td>
-        <td class="subtotal">$400</td>
-        <td><button class="remove-item">×</button></td>
-      </tr>
-      <tr>
-        <td><img src="Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" alt="Playera" /></td>
-        <td>Playera estampada Travis Scott</td>
-        <td>$399</td>
-        <td>
-          <button class="qty-btn" data-action="decrease">-</button>
-          <input type="number" value="1" min="1" />
-          <button class="qty-btn" data-action="increase">+</button>
-        </td>
-        <td class="subtotal">$399</td>
-        <td><button class="remove-item">×</button></td>
-      </tr>
-      <tr>
-        <td><img src="Imagenes/Playera con estampado de astronauta.png" alt="Playera" /></td>
-        <td>Playera con estampado de astronauta</td>
-        <td>$200</td>
-        <td>
-          <button class="qty-btn" data-action="decrease">-</button>
-          <input type="number" value="2" min="1" />
-          <button class="qty-btn" data-action="increase">+</button>
-        </td>
-        <td class="subtotal">$400</td>
-        <td><button class="remove-item">×</button></td>
-      </tr>
-    </tbody>
+    <tbody id="cart-items"></tbody>
   </table>
 
-  <div class="cart-actions">
-    <input type="text" placeholder="Código" />
+  <div class="cart-actions" id="cart-actions" style="display:none;">
+    <input type="text" placeholder="Código de descuento" id="coupon-code" />
     <button class="apply-coupon">Aplicar Cupón</button>
-    <button class="update-cart">Actualizar Carrito</button>
+    <button class="update-cart" onclick="renderCart()">Actualizar Carrito</button>
   </div>
 
-  <div class="cart-totals">
-    <p>Subtotal: $1199.00</p>
-    <p>Total: $1319.00</p>
-    <button class="checkout-btn">Proceder a Paga</button>
+  <div class="cart-totals" id="cart-totals" style="display:none;">
+    <p>Subtotal: <span id="subtotal">$0.00</span></p>
+    <p><strong>Total: <span id="total">$0.00</span></strong></p>
+    <button class="checkout-btn">Proceder a pagar</button>
   </div>
 </section>
 
@@ -134,6 +104,93 @@
   <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
   </div>
 </footer>
+
+<script>
+// Funciones del carrito (las mismas que usas en producto.js)
+function obtenerCarrito() {
+  return JSON.parse(localStorage.getItem("carrito") || "[]");
+}
+
+function guardarCarrito(carrito) {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Renderiza el carrito completo
+function renderCart() {
+  const carrito = obtenerCarrito();
+  const tbody = document.getElementById("cart-items");
+  const title = document.getElementById("cart-title");
+  const emptyMsg = document.getElementById("cart-empty");
+  const table = document.getElementById("cart-table");
+  const actions = document.getElementById("cart-actions");
+  const totals = document.getElementById("cart-totals");
+
+  tbody.innerHTML = "";
+  let subtotal = 0;
+
+  if (carrito.length === 0) {
+    title.textContent = "Carrito (0 productos)";
+    emptyMsg.style.display = "block";
+    table.style.display = "none";
+    actions.style.display = "none";
+    totals.style.display = "none";
+    return;
+  }
+
+  emptyMsg.style.display = "none";
+  table.style.display = "table";
+  actions.style.display = "flex";
+  totals.style.display = "block";
+
+  carrito.forEach((item, index) => {
+    const row = document.createElement("tr");
+    const itemSubtotal = item.precio * item.cantidad;
+    subtotal += itemSubtotal;
+
+    row.innerHTML = `
+      <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
+      <td>${item.nombre}</td>
+      <td>${item.precioFormatted || `$${item.precio}`}</td>
+      <td>
+        <button class="qty-btn" onclick="cambiarCantidadCarrito(${index}, -1)">−</button>
+        <input type="number" value="${item.cantidad}" min="1" readonly style="width:50px; text-align:center;">
+        <button class="qty-btn" onclick="cambiarCantidadCarrito(${index}, 1)">+</button>
+      </td>
+      <td class="subtotal">$${itemSubtotal.toFixed(2)}</td>
+      <td><button class="remove-item" onclick="eliminarDelCarrito(${index})">×</button></td>
+    `;
+
+    tbody.appendChild(row);
+  });
+
+  title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? 's' : ''})`;
+  document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById("total").textContent = `$${subtotal.toFixed(2)}`; // puedes sumar envío o descuentos aquí después
+}
+
+// Cambiar cantidad desde el carrito
+function cambiarCantidadCarrito(index, delta) {
+  let carrito = obtenerCarrito();
+  let nuevaCant = carrito[index].cantidad + delta;
+  if (nuevaCant < 1) nuevaCant = 1;
+  carrito[index].cantidad = nuevaCant;
+  guardarCarrito(carrito);
+  renderCart();
+}
+
+// Eliminar producto
+function eliminarDelCarrito(index) {
+  let carrito = obtenerCarrito();
+  carrito.splice(index, 1);
+  guardarCarrito(carrito);
+  renderCart();
+}
+
+// Cargar el carrito al abrir la página
+window.onload = function() {
+  renderCart();
+};
+</script>
 
 </body>
 </html>
