@@ -8,82 +8,91 @@
 </head>
 <body>
 
- <header>
-  <div class="logo">
-    <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-    <span>Cotton Candy Clothing Store</span>
-  </div>
-  <nav>
-   <ul>
-  <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-  <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-  <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-  <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-  <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-</ul>
+  <header>
+    <div class="logo">
+      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
+      <span>Cotton Candy Clothing Store</span>
+    </div>
+    <nav>
+      <ul>
+        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
+        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
+        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
+        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
+        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
+      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
+      <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
+      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" onclick="window.location.href='carrito.html'" />
+    </div>
+  </header>
 
-  </nav>
-  <div class="icons">
-    <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
-    <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
-    <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
-    <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
-  </div>
-</header>
+  <main>
+    <div class="shop-search-row">
+      <input
+        id="priceSearch"
+        type="text"
+        placeholder="Buscar por precio: 299 | 250-400"
+        aria-label="Buscar por precio"
+      />
 
+      <select id="categoryFilter" aria-label="Filtrar por categoría">
+        <option value="all">Todas</option>
+        <option value="tops">Tops</option>
+        <option value="blusas">Blusas</option>
+      </select>
+    </div>
 
-    <main>
-      <div class="products-grid">
-        <article class="product-card">
+    <div class="products-grid">
+      <article class="product-card" data-category="blusas">
         <img src="Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" alt="Playera" />
         <div class="product-info">
           <h3>Blusa amarilla cruzada (manga larga)</h3>
-          <p>Blusa cruzada de manga larga con diseño fruncido al frente. Ideal para looks frescos y femeninos, perfecta para 
-            combinar con jeans o faldas.</p>
+          <p>Blusa cruzada de manga larga con diseño fruncido al frente. Ideal para looks frescos y femeninos, perfecta para combinar con jeans o faldas.</p>
         </div>
         <div class="product-price">$399.00 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=blusa-amarilla-cruzada'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-        <article class="product-card">
-          <img src="Imagenes/SUDADERA ESTAMPADA.png" alt="SUDADERA" />
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/SUDADERA ESTAMPADA.png" alt="SUDADERA" />
         <div class="product-info">
           <h3>Top vino manga larga acampanada</h3>
-          <p>Top ajustado en tono vino con mangas acampanadas que aportan un toque elegante y moderno. Ideal para salidas 
-            casuales o nocturnas</p>
+          <p>Top ajustado en tono vino con mangas acampanadas que aportan un toque elegante y moderno. Ideal para salidas casuales o nocturnas</p>
         </div>
         <div class="product-price">$389 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-vino-acampanado'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-        <article class="product-card">
-          <img src="Imagenes/Playera estampada jesus.png" alt="Playera" />
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/Playera estampada jesus.png" alt="Playera" />
         <div class="product-info">
           <h3>Top rojo con tirantes</h3>
-          <p>Top de tirantes con textura acanalada y diseño ajustado. Una prenda básica con estilo, perfecta para outfits 
-            casuales o layered looks.</p>
+          <p>Top de tirantes con textura acanalada y diseño ajustado. Una prenda básica con estilo, perfecta para outfits casuales o layered looks.</p>
         </div>
         <div class="product-price">$299 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rojo-tirantes'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
-    
-        <article class="product-card">
-          <img src="Imagenes/Playera estampada con flores.png" alt="Playera" />
+      </article>
+
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/Playera estampada con flores.png" alt="Playera" />
         <div class="product-info">
           <h3>Top rosa con moño</h3>
-          <p>Top corto en tono rosa pastel con detalle de moño al frente. Suave, delicado y perfecto para un look dulce 
-            y femenino.</p>
+          <p>Top corto en tono rosa pastel con detalle de moño al frente. Suave, delicado y perfecto para un look dulce y femenino.</p>
         </div>
         <div class="product-price">$249 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-mono'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-         <article class="product-card">
-          <img src="Imagenes/Playera de bruja feminista.png" alt="Nuevo diseño" />
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/Playera de bruja feminista.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top rosa strapless</h3>
           <p>Top strapless con acabado liso y ajuste cómodo. Ideal para climas cálidos y combinaciones veraniegas.</p>
@@ -91,20 +100,20 @@
         <div class="product-price">$269 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-strapless'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-        <article class="product-card">
-          <img src="Imagenes/Playera Return of Misfits.png" alt="Nuevo diseño" />
-      <div class="product-info">
-        <h3>Top amarillo con tirantes finos</h3>
-        <p>Top ligero con tirantes delgados y diseño fruncido. Aporta frescura y estilo a cualquier outfit casual.</p>
-      </div>
-      <div class="product-price">$289 MXN</div>
-      <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-amarillo-tirantes'">Ver Detalles</button>
-      <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/Playera Return of Misfits.png" alt="Nuevo diseño" />
+        <div class="product-info">
+          <h3>Top amarillo con tirantes finos</h3>
+          <p>Top ligero con tirantes delgados y diseño fruncido. Aporta frescura y estilo a cualquier outfit casual.</p>
+        </div>
+        <div class="product-price">$289 MXN</div>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-amarillo-tirantes'">Ver Detalles</button>
+        <button class="add-to-cart">AGREGAR AL CARRITO</button>
+      </article>
 
-        <article class="product-card">
+      <article class="product-card" data-category="tops">
         <img src="Imagenes/Playera de manga corta para hombre.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top rosa manga larga</h3>
@@ -113,10 +122,10 @@
         <div class="product-price">$319 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-manga-larga'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-        <article class="product-card">
-       <img src="Imagenes/Playera Estampada Gatos.png" alt="Nuevo diseño" />
+      <article class="product-card" data-category="tops">
+        <img src="Imagenes/Playera Estampada Gatos.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top brillante cuello halter</h3>
           <p>Top con acabado brillante y cuello halter. Ideal para eventos nocturnos o looks más atrevidos.</p>
@@ -124,66 +133,133 @@
         <div class="product-price">$349 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-halter-brillante'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
+      </article>
 
-         <article class="product-card">
-         <img src="Imagenes/playera estampada persona.png" alt="Playera" />
+      <article class="product-card" data-category="blusas">
+        <img src="Imagenes/playera estampada persona.png" alt="Playera" />
         <div class="product-info">
           <h3>Blusa blanca con tirantes y vuelo</h3>
-          <p>Blusa blanca con tirantes delgados y diseño con vuelo que aporta un estilo romántico y fresco. Ideal para outfits
-             casuales o veraniegos, fácil de combinar con jeans o faldas.</p>
+          <p>Blusa blanca con tirantes delgados y diseño con vuelo que aporta un estilo romántico y fresco. Ideal para outfits casuales o veraniegos, fácil de combinar con jeans o faldas.</p>
         </div>
         <div class="product-price">$379 MXN</div>
         <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=blusa-blanca-vuelo'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        </article>
-       
-      </div>
+      </article>
+    </div>
 
-      <div class="pagination">
-        <button disabled>&lt;</button>
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>&gt;</button>
-      </div>
-    </main>
+    <div class="pagination">
+      <button disabled>&lt;</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>&gt;</button>
+    </div>
+  </main>
 
-  </div>
+  <footer>
+    <div class="left">
+      <p><strong>Cotton Candy Clothing Store</strong></p>
+      <p>¿Te gustaría colaborar con nosotros?</p>
+      <button>ÚNETE →</button>
+    </div>
 
- <footer>
-  <div class="left">
-    <p><strong>Cotton Candy Clothing Store</strong></p>
-    <p>¿Te gustaría colaborar con nosotros?</p>
-    <button>ÚNETE →</button>
-  </div>
+    <div class="center">
+      <p><strong>REDES SOCIALES</strong></p>
+      <ul>
+        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
+          <a href="#">Facebook</a></li>
+        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
+          <a href="#">Twitter</a></li>
+        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
+      </ul>
+    </div>
 
-  <div class="center">
-    <p><strong>REDES SOCIALES</strong></p>
-    <ul>
-      <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-        <a href="#">Facebook</a></li>
-      <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-        <a href="#">Twitter</a></li>
-      <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-    </ul>
-  </div>
+    <div class="right">
+      <p><strong>Horario:</strong><br/>
+        Lunes a Viernes 7:00 am - 11:00 pm<br/>
+        Sábado y Domingo 9:00 am - 9:00 pm
+      </p>
+      <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
+    </div>
 
-  <div class="right">
-    <p><strong>Horario:</strong><br/>
-      Lunes a Viernes 7:00 am - 11:00 pm<br/>
-      Sábado y Domingo 9:00 am - 9:00 pm
-    </p>
-    <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
-  </div>
+    <div class="bottom-text">
+      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
+      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
+    </div>
+  </footer>
 
-  <div class="bottom-text">
-    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-  <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-  </div>
-</footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const priceInput = document.getElementById("priceSearch");
+      const categorySelect = document.getElementById("categoryFilter");
+      const cards = Array.from(document.querySelectorAll(".product-card"));
 
+      const getCardPrice = (card) => {
+        const priceEl = card.querySelector(".product-price");
+        if (!priceEl) return NaN;
+        const txt = priceEl.textContent.replace(/,/g, "");
+        const m = txt.match(/(\d+(\.\d+)?)/);
+        return m ? parseFloat(m[1]) : NaN;
+      };
+
+      const parseQuery = (raw) => {
+        const q = (raw || "").trim().toLowerCase().replace(/\s+/g, "");
+        if (!q) return null;
+
+        // rango: 250-400
+        let m = q.match(/^(\d+(\.\d+)?)-(\d+(\.\d+)?)$/);
+        if (m) {
+          const a = parseFloat(m[1]);
+          const b = parseFloat(m[3]);
+          const lo = Math.min(a, b);
+          const hi = Math.max(a, b);
+          return (p) => p >= lo && p <= hi;
+        }
+
+        m = q.match(/^(<=|>=|<|>)(\d+(\.\d+)?)$/);
+        if (m) {
+          const op = m[1];
+          const val = parseFloat(m[2]);
+          return (p) => {
+            if (op === "<") return p < val;
+            if (op === "<=") return p <= val;
+            if (op === ">") return p > val;
+            if (op === ">=") return p >= val;
+            return true;
+          };
+        }
+
+        m = q.match(/^(\d+(\.\d+)?)$/);
+        if (m) {
+          const val = parseFloat(m[1]);
+          return (p) => p === val;
+        }
+
+        return null;
+      };
+
+      const applyFilters = () => {
+        const fn = parseQuery(priceInput.value);
+        const selectedCategory = (categorySelect.value || "all").toLowerCase();
+
+        cards.forEach((card) => {
+          const price = getCardPrice(card);
+          const cardCategory = (card.dataset.category || "").toLowerCase();
+
+          const categoryOk = (selectedCategory === "all") || (cardCategory === selectedCategory);
+          const priceOk = (!fn || Number.isNaN(price)) ? true : fn(price);
+
+          card.style.display = (categoryOk && priceOk) ? "" : "none";
+        });
+      };
+
+      priceInput.addEventListener("input", applyFilters);
+      categorySelect.addEventListener("change", applyFilters);
+
+      applyFilters();
+    });
+  </script>
 
 </body>
 </html>
