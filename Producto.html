@@ -34,6 +34,7 @@
 
 <!-- Contenedor principal -->
 <main class="product-page">
+  <div id="toast-container"></div>
 
   <!-- Espacio para el toast (lo ponemos aquí para que aparezca arriba) -->
   <div id="toast-container"></div>
@@ -140,7 +141,7 @@ function mostrarToast(mensaje, tipo = 'success') {
   }, 2800);
 }
 
-// Reemplaza tu función agregarAlCarrito con esta
+
 function agregarAlCarrito() {
   if (typeof producto === 'undefined' || !producto) {
     mostrarToast("No se pudo agregar el producto", "error");

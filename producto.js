@@ -150,7 +150,7 @@ if (producto) {
 function cambiarCantidad(delta) {
   const input = document.getElementById("cantidad");
   if (!input) return;
-  
+
   let val = parseInt(input.value) || 1;
   val = Math.max(1, val + delta);
   input.value = val;
