@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promociones - Cotton Candy Clothing Store</title>
+
+<style>
+
+body{
+font-family:'Arial',sans-serif;
+background-color:#fdf5f8;
+margin:0;
+padding:0;
+}
+
+/* HEADER */
+header{
+background-color:#ffc2cb;
+padding:20px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+color:#333;
+position:fixed;
+width:100%;
+top:0;
+left:0;
+z-index:1000;
+}
+
+/* CONTENEDOR */
+.container{
+display:flex;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:220px;
+background-color:#f8d4e6;
+padding:20px;
+box-shadow:2px 0 8px rgba(0,0,0,0.1);
+position:fixed;
+top:64px; /* pegado al header */
+left:0;
+bottom:0;
+}
+
+.sidebar ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar ul li{
+margin-bottom:20px;
+}
+
+.sidebar ul li a{
+color:#333;
+font-weight:600;
+text-decoration:none;
+font-size:16px;
+}
+
+.sidebar ul li a:hover{
+color:#b3488f;
+}
+
+/* CONTENIDO */
+.main-content{
+margin-left:250px;
+padding:20px;
+padding-top:100px; /* evita que el contenido quede debajo del header */
+width:100%;
+}
+
+.promociones-box{
+background-color:#f8d4e6;
+padding:20px;
+box-shadow:2px 0 8px rgba(0,0,0,0.1);
+border-radius:5px;
+max-width:400px;
+}
+
+.promociones-box ul{
+list-style-type:none;
+padding-left:20px;
+}
+
+.promociones-box li{
+font-size:18px;
+margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+Cotton Candy Clothing Store - Promociones
+</header>
+
+<div class="container">
+
+<div class="sidebar">
+<ul>
+<li><a href="editarproducto.html">Productos</a></li>
+<li><a href="pedidos.html">Pedidos</a></li>
+<li><a href="promociones.html">Promociones</a></li>
+</ul>
+</div>
+
+<div class="main-content">
+
+<div class="promociones-box">
+<h2>Detalles de las promociones</h2>
+
+<ul>
+<li>Fecha de inicio</li>
+<li>Fecha de finalización</li>
+<li>Estado (Activa / Inactiva / Programada)</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

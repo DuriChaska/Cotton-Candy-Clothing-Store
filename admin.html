@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Cotton Candy Clothing Store</title>
+    <style>
+        /* Fuente global */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ===========================
+             Header
+        =========================== */
+        header {
+            background-color: #ffc2cb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header .logo img {
+            height: 50px; /* Ajusta el tamaño del logo si es necesario */
+        }
+
+        header .logo span {
+            font-weight: bold;
+            font-size: 22px;
+            color: #333;
+        }
+
+        header .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ===========================
+             Sidebar (Menu Lateral)
+        =========================== */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 80px;  /* Asegura que el contenido no se solape con el header */
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f8d4e6;
+            padding: 20px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 80px; /* Espacio debajo del header */
+            left: 0;
+            bottom: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            font-weight: 600;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            color: #b3488f;
+        }
+
+        /* ===========================
+             Main Content (Dashboard)
+        =========================== */
+        .main-content {
+            margin-left: 250px;  /* Deja espacio para el sidebar */
+            padding: 30px;
+        }
+
+        .dashboard-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .info-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .info-box p {
+            font-size: 30px;
+            font-weight: bold;
+            color: #7c6b61;
+        }
+
+        .info-box.purple {
+            background-color: #d5b1f4;
+        }
+
+        .info-box.blue {
+            background-color: #9db6f5;
+        }
+
+        .add-product {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .add-product button {
+            background-color: #f5d35e;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-product button:hover {
+            background-color: #e2c34a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
+            <span>Cotton Candy Clothing Store</span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="editarproducto.html">Productos</a></li>
+                <li><a href="pedidos.html">Pedidos</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-info">
+                <div class="info-box purple">
+                    <h3>Productos</h3>
+                    <p>5</p>
+                </div>
+                <div class="info-box blue">
+                    <h3>Pedidos</h3>
+                    <p>10</p>
+                </div>
+            </div>
+            <div class="add-product">
+                <a href="Interfaz Vendedor.html">
+                    <button>Agregar Producto</button>
+                </a>
+                <a href="editarproducto.html">
+                    <button>Editar Producto</button>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

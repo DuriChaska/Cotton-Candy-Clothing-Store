@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cotton Candy Clothing Store - Interfaz Cliente</title>
+  <title>Cotton Candy Clothing Store - Panel de Vendedor</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -17,15 +17,7 @@
       <span>Cotton Candy Clothing Store</span>
     </div>
     <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promos.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
+
 
     </nav>
     <div class="icons">
@@ -36,36 +28,57 @@
     </div>
   </header>
 
-  <section class="client-interface">
-    <h2>Agregar Dirección</h2>
-    <form class="address-form">
-      <div class="input-group">
-        <input type="text" placeholder="Nombre" />
-        <input type="text" placeholder="Apellidos" />
+  <section class="seller-interface">
+    <div class="product-preview">
+      <img src="Imagenes/Colecciones.png" alt="Producto principal" />
+      <div class="product-thumbnails">
+        <img src="Imagenes/Colecciones.png" alt="Miniatura 1" />
+        <img src="Imagenes/Colecciones.png" alt="Miniatura 2" />
+        <div class="add-thumbnail">+</div>
       </div>
-      <div class="input-group">
-        <select required>
-          <option value="" disabled selected>País</option>
-          <option value="Mexico">México</option>
-        </select>
-      </div>
-      <input type="text" placeholder="Colonia" />
-      <input type="text" placeholder="Calle y número" />
-      <div class="input-group">
-        <input type="text" placeholder="Estado" />
-        <select required>
-          <option value="" disabled selected>Municipio</option>
-          <option value="Aguascalientes">Aguascalientes</option>
+    </div>
 
-        </select>
+    <form class="product-form">
+      <h2>EDITAR PRODUCTO</h2>
+
+      <label for="product-name">Nombre del producto:</label>
+      <input id="product-name" type="text" placeholder="Playera estampada..." />
+
+      <label for="price">Precio:</label>
+      <input id="price" type="number" placeholder="$" />
+
+      <label for="description">Descripción:</label>
+      <textarea id="description" placeholder="Descripción..."></textarea>
+
+      <label>Colores:</label>
+      <div class="color-options">
+        <button class="color-option color-lightblue"></button>
+        <button class="color-option color-white"></button>
+        <button class="color-option color-brown"></button>
+        <button class="color-option color-dark"></button>
+        <button class="color-option color-beige"></button>
+        <button class="color-option color-green"></button>
       </div>
-      <div class="input-group">
-        <input type="text" placeholder="Código Postal" />
-        <input type="tel" placeholder="Teléfono" />
+
+      <div class="quantity-control">
+        <button class="qty-btn" id="decrease">-</button>
+        <input type="number" value="1" min="1" />
+        <button class="qty-btn" id="increase">+</button>
       </div>
-      <textarea placeholder="Descripción de la ubicación..."></textarea>
-      <button type="submit">AGREGAR</button>
+
+      <button class="submit-product">GUARDAR CAMBIOS</button>
+
+      <details>
+        <summary>Agregar Detalles</summary>
+        <textarea placeholder="Detalles adicionales..."></textarea>
+      </details>
+
+      <details>
+        <summary>Agregar Dimensiones</summary>
+        <textarea placeholder="Dimensiones del producto..."></textarea>
+      </details>
     </form>
+    </div>
   </section>
 
   <footer>
