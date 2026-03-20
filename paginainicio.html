@@ -1,241 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Tienda de Ropa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotton Candy Clothing Store</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos exclusivos de la landing page */
+    body {
+      min-height: 100vh;
+      background-image: url("Imagenes/fondo1.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .landing-nav {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px 40px;
+      position: absolute;
+      top: 0; z-index: 10;
+      width: 100%;
+    }
 
-        body {
-            min-height: 100vh;
-            margin: 0;
-            color: #fff;
-            background-image: url("Imagenes/fondo1.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-        }
+    .landing-nav button {
+      background: var(--pink-fuerte);
+      color: white; border: none;
+      padding: 8px 18px; font-size: 25px;
+      border-radius: 4px; cursor: pointer;
+      margin-left: 400px; margin-top: 50px;
+      transition: background .3s;
+    }
+    .landing-nav button:hover { background: var(--pink-medio); }
 
-        main {
-            flex: 1;
-        }
+    .landing-header {
+      text-align: center;
+      padding-top: 100px;
+      width: 70%;
+      background: transparent;
+    }
 
-        nav {
-            display: flex;
-            justify-content: flex-start;
-            padding: 20px 40px;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            z-index: 10;
-        }
+    .landing-header h1 {
+      display: inline-block;
+      color: var(--pink-fuerte);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 48px;
+      margin-top: 100px;
+      margin-bottom: 50px;
+      padding: 15px 30px;
+      border-radius: 8px;
+    }
 
-        nav button {
-            background-color: #b62694;
-            border: none;
-            color: white;
-            padding: 8px 18px;
-            font-size: 25px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-left: 400px;
-            margin-top: 50px;
-        }
+    .landing-hero {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: 40px;
+      width: 70%;
+      flex: 1;
+    }
 
-        header {
-            text-align: center;
-            padding-top: 100px;
-            width: 70%;
-            background-color: transparent;
-        }
+    .hero-content { max-width: 90%; }
 
-        header h1 {
-            display: inline-block;
-            color: #b62694;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 48px;
-            margin-top: 100px;
-            margin-bottom: 50px;
-            padding: 15px 30px;
-            border-radius: 8px;
-        }
+    .hero-content h2 {
+      font-size: 42px; margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+    }
 
-        .hero {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            margin-top: 40px;
-            width: 70%;
-            flex: 1;
-        }
+    .hero-content p {
+      font-size: 20px; margin-bottom: 30px;
+      color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+    }
 
-        .hero-content {
-            max-width: 90%;
-        }
+    .landing-form {
+      display: flex; justify-content: center;
+      gap: 10px; flex-direction: row; align-items: center;
+    }
 
-        .hero-content h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    .landing-form input {
+      padding: 12px; width: 250px;
+      border: none; outline: none;
+      font-size: 16px; border-radius: 4px;
+    }
 
-        .hero-content p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    .landing-form button {
+      padding: 12px 25px; width: 250px;
+      background: var(--pink-fuerte); border: none;
+      color: white; font-size: 16px;
+      border-radius: 4px; cursor: pointer;
+      transition: background .3s;
+    }
+    .landing-form button:hover { background: var(--pink-medio); }
 
-        .form {
-            display: flex;
-            justify-content: center;
-            gap: 10px; /* Espacio reducido entre los elementos */
-            flex-direction: row; /* Alineación en fila */
-            align-items: center;
-        }
+    .panel-btn { margin-top: 20px; }
 
-        .form input {
-            padding: 12px;
-            width: 250px; /* Ajusta el tamaño */
-            border: none;
-            outline: none;
-            font-size: 16px;
-            border-radius: 4px;
-        }
+    .landing-footer {
+      background: var(--pink-medio);
+      color: white; padding: 15px 30px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      font-size: 12px; gap: 20px;
+      flex-wrap: wrap;
+    }
+    .landing-footer .left,
+    .landing-footer .center,
+    .landing-footer .right { flex: 1; }
+    .landing-footer .center { display: flex; justify-content: center; gap: 12px; }
+    .landing-footer .icon { width: 20px; height: 20px; }
+    .landing-footer .bottom-text {
+      width: 100%; text-align: center;
+      font-size: 11px; margin-top: 8px;
+      border-top: 1px solid rgba(255,255,255,.3);
+      padding-top: 6px;
+    }
 
-        .form button {
-            padding: 12px 25px;
-            background-color: #b62694;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 250px; /* Igual que el campo de texto para que se alineen */
-        }
-
-        .form .panel-btn {
-            margin-top: 20px; /* Mayor espacio solo para el botón "Panel de administración" */
-        }
-
-        footer {
-            background-color: #b3488f;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            gap: 20px;
-        }
-
-        footer .left,
-        footer .center,
-        footer .right {
-            flex: 1;
-        }
-
-        footer .center {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        footer .icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        footer .bottom-text {
-            width: 100%;
-            text-align: center;
-            font-size: 11px;
-            margin-top: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            padding-top: 6px;
-        }
-
-        @media (max-width: 768px) {
-            header,
-            .hero {
-                width: 100%;
-            }
-
-            header h1 {
-                font-size: 30px;
-            }
-
-            .hero-content h2 {
-                font-size: 34px;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .landing-header, .landing-hero { width: 100%; }
+      .landing-header h1 { font-size: 30px; }
+      .hero-content h2 { font-size: 34px; }
+    }
+  </style>
 </head>
-
 <body>
-    <nav>
-        <button type="button" onclick="window.location.href='index.html'">Iniciar sesión</button>
-    </nav>
 
-    <header>
-        <h1>Cotton Candy Clothing Store</h1>
-    </header>
+  <nav class="landing-nav">
+    <button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button>
+  </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Ropa que amas, sin límites</h2>
-            <p>Outfits para cada mood. Moda que se adapta a tu estilo.</p>
+  <header class="landing-header">
+    <h1>Cotton Candy Clothing Store</h1>
+  </header>
 
-            <div class="form">
-                <input type="email" placeholder="Ingresa tu email">
-                <button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Comenzar ahora</button>
-            </div>
+  <main>
+    <section class="landing-hero">
+      <div class="hero-content">
+        <h2>Ropa que amas, sin límites</h2>
+        <p>Outfits para cada mood. Moda que se adapta a tu estilo.</p>
 
-            <div class="form panel-btn">
-                <button type="button" onclick="window.location.href='admin.html'">Panel de administración</button>
-            </div>
+        <div class="landing-form">
+          <input type="email" placeholder="Ingresa tu email" />
+          <button type="button" onclick="window.location.href='Interfaz Usuario - Registro.html'">Comenzar ahora</button>
         </div>
+
+        <div class="landing-form panel-btn">
+          <button type="button" onclick="window.location.href='admin.html'">Panel de administración</button>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <div class="left">
-            <p><strong>Cotton Candy Clothing Store</strong></p>
-            <p>www.cottoncandy.com</p>
-        </div>
-
-        <div class="center">
-            <a href="#" aria-label="Facebook">
-                <img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon">
-            </a>
-            <a href="#" aria-label="Twitter">
-                <img src="Imagenes/Iconos/Twitter.png" alt="Twitter" class="icon">
-            </a>
-            <a href="#" aria-label="Instagram">
-                <img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon">
-            </a>
-        </div>
-
-        <div class="right">
-            <p>CottonCandyCS@gmail.com</p>
-            <p>📞 (449) 311 6529</p>
-        </div>
-
-        <div class="bottom-text">
-            Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial. <br>
-            © 2026 Cotton Candy Clothing Store
-        </div>
-    </footer>
+  <footer class="landing-footer">
+    <div class="left">
+      <p><strong>Cotton Candy Clothing Store</strong></p>
+      <p>www.cottoncandy.com</p>
+    </div>
+    <div class="center">
+      <a href="#" aria-label="Facebook"><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" /></a>
+      <a href="#" aria-label="Twitter"><img src="Imagenes/Iconos/Twitter.png" alt="Twitter" class="icon" /></a>
+      <a href="#" aria-label="Instagram"><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /></a>
+    </div>
+    <div class="right">
+      <p>CottonCandyCS@gmail.com</p>
+      <p>📞 (449) 311 6529</p>
+    </div>
+    <div class="bottom-text">
+      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.<br>
+      © 2026 Cotton Candy Clothing Store
+    </div>
+  </footer>
 
 </body>
-
 </html>

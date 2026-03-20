@@ -1,191 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Promociones - Cotton Candy Clothing Store</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      background: #f3f3f3;
-    }
-
-    .promo-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 10px 30px 0;
-    }
-
-    .promo-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: #111;
-      margin: 25px 0 30px 30px;
-    }
-
-    .promo-cards {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      margin-bottom: 45px;
-    }
-
-    .promo-card {
-      width: 285px;
-      min-height: 150px;
-      background: #c7aff7;
-      border-radius: 24px;
-      padding: 20px 18px 18px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .promo-card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #111;
-    }
-
-    .promo-card p {
-      font-size: 18px;
-      line-height: 1.25;
-      color: #111;
-      margin: 0 0 18px 0;
-    }
-
-    .promo-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .promo-code {
-      background: #9a767e;
-      color: #111;
-      border-radius: 20px;
-      padding: 10px 18px;
-      font-size: 16px;
-      letter-spacing: 1px;
-      min-width: 120px;
-      text-align: center;
-    }
-
-    .promo-value {
-      font-size: 38px;
-      font-weight: 400;
-      color: #111;
-      letter-spacing: 4px;
-    }
-
-    .coupon-box {
-      width: 370px;
-      margin: 0 auto 20px;
-      background: #c7aff7;
-      border-radius: 26px;
-      padding: 22px 20px 24px;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    .coupon-percent {
-      font-size: 54px;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 6px;
-      color: #111;
-    }
-
-    .coupon-text {
-      font-size: 24px;
-      margin-bottom: 22px;
-      color: #111;
-    }
-
-    .coupon-form {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .coupon-form input {
-      width: 180px;
-      padding: 13px 18px;
-      border: none;
-      border-radius: 20px;
-      background: #fff;
-      font-size: 11px;
-      text-transform: uppercase;
-      outline: none;
-    }
-
-    .coupon-form button {
-      background: #efd36d;
-      border: none;
-      border-radius: 18px;
-      padding: 12px 18px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      color: #111;
-    }
-
-    @media (max-width: 900px) {
-      .promo-title {
-        font-size: 34px;
-        margin-left: 0;
-        text-align: center;
-      }
-
-      .promo-cards {
-        gap: 18px;
-      }
-
-      .promo-card {
-        width: 100%;
-        max-width: 340px;
-      }
-
-      .coupon-box {
-        width: 100%;
-        max-width: 360px;
-      }
-    }
-  </style>
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promo.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <section class="promo-wrapper">
     <h2 class="promo-title">Promociones</h2>
@@ -193,7 +16,7 @@
     <div class="promo-cards">
       <div class="promo-card">
         <div>
-          <h3>2 x1 en Blusas</h3>
+          <h3>2 x 1 en Blusas</h3>
           <p>Llévate dos piezas al precio de una</p>
         </div>
         <div class="promo-bottom">
@@ -215,12 +38,12 @@
 
       <div class="promo-card">
         <div>
-          <h3>Envio Gratis</h3>
+          <h3>Envío Gratis</h3>
           <p>En compras mayores a $2000</p>
         </div>
         <div class="promo-bottom">
           <span class="promo-code">CUTENVIO1</span>
-          <span class="promo-value" style="font-size:16px; letter-spacing:4px;">ENVIO</span>
+          <span class="promo-value" style="font-size:16px; letter-spacing:4px;">ENVÍO</span>
         </div>
       </div>
     </div>
@@ -235,57 +58,21 @@
     </div>
   </section>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
   <script>
+    const codigos = {
+      "CUTECANDY50": "Cupón aplicado: 50% de descuento.",
+      "CUTECANDY10": "Cupón aplicado: 10% de descuento en tu tercera prenda.",
+      "CUTENVIO1":   "Cupón aplicado: envío gratis."
+    };
+
     function aplicarCodigo() {
       const codigo = document.getElementById("codigoPromo").value.trim().toUpperCase();
-
-      if (codigo === "CUTECANDY50") {
-        alert("Cupón aplicado: 50% de descuento.");
-      } else if (codigo === "CUTECANDY10") {
-        alert("Cupón aplicado: 10% de descuento en tu tercera prenda.");
-      } else if (codigo === "CUTENVIO1") {
-        alert("Cupón aplicado: envío gratis.");
-      } else if (codigo === "") {
-        alert("Ingresa un código.");
-      } else {
-        alert("Código inválido.");
-      }
+      if (!codigo) { alert("Ingresa un código."); return; }
+      alert(codigos[codigo] || "Código inválido.");
     }
   </script>
-
 </body>
 </html>

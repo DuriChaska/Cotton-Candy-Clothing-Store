@@ -1,40 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cotton Candy Clothing Store - Perfil Cliente</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promos.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
-
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <section class="client-interface profile">
     <div class="profile-header">
@@ -46,12 +20,11 @@
     </div>
 
     <div class="profile-sections">
-
       <div class="profile-item">
         <h3>Mis datos</h3>
         <p>
-          Correo: andreamascorro136@gmail.com <br />
-          Teléfono: 449 311 6529 <br />
+          Correo: andreamascorro136@gmail.com<br />
+          Teléfono: 449 311 6529<br />
           Dirección: Aguascalientes, Ags.
         </p>
       </div>
@@ -61,54 +34,17 @@
         <p>Próximamente podrás ver aquí tu historial de compras.</p>
       </div>
 
-      <button class="logout-btn" onclick="cerrarSesion()">
-        Cerrar sesión
-      </button>
-
+      <button class="logout-btn" onclick="cerrarSesion()">Cerrar sesión</button>
     </div>
   </section>
 
+  <div id="footer"></div>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
-
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
   <script>
     function cerrarSesion() {
       window.location.href = "login.html";
     }
   </script>
-
 </body>
-
 </html>

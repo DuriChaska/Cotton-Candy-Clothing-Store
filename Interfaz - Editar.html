@@ -1,32 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cotton Candy Clothing Store - Panel de Vendedor</title>
+  <title>Cotton Candy Clothing Store - Editar Producto</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-
-
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <section class="seller-interface">
     <div class="product-preview">
@@ -52,21 +34,21 @@
 
       <label>Colores:</label>
       <div class="color-options">
-        <button class="color-option color-lightblue"></button>
-        <button class="color-option color-white"></button>
-        <button class="color-option color-brown"></button>
-        <button class="color-option color-dark"></button>
-        <button class="color-option color-beige"></button>
-        <button class="color-option color-green"></button>
+        <button type="button" class="color-option color-lightblue"></button>
+        <button type="button" class="color-option color-white"></button>
+        <button type="button" class="color-option color-brown"></button>
+        <button type="button" class="color-option color-dark"></button>
+        <button type="button" class="color-option color-beige"></button>
+        <button type="button" class="color-option color-green"></button>
       </div>
 
       <div class="quantity-control">
-        <button class="qty-btn" id="decrease">-</button>
+        <button type="button" class="qty-btn" id="decrease">-</button>
         <input type="number" value="1" min="1" />
-        <button class="qty-btn" id="increase">+</button>
+        <button type="button" class="qty-btn" id="increase">+</button>
       </div>
 
-      <button class="submit-product">GUARDAR CAMBIOS</button>
+      <button type="submit" class="submit-product">GUARDAR CAMBIOS</button>
 
       <details>
         <summary>Agregar Detalles</summary>
@@ -78,43 +60,19 @@
         <textarea placeholder="Dimensiones del producto..."></textarea>
       </details>
     </form>
-    </div>
   </section>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
+  <script>
+    const input = document.querySelector('.quantity-control input[type="number"]');
+    document.getElementById("decrease").addEventListener("click", () => {
+      if (input.value > 1) input.value--;
+    });
+    document.getElementById("increase").addEventListener("click", () => {
+      input.value++;
+    });
+  </script>
 </body>
-
 </html>

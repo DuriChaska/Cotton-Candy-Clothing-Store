@@ -1,39 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cotton Candy Clothing Store - Acerca de Nosotros</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promo.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
-
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <section class="about-us">
     <h2>ACERCA DE NOSOTROS</h2>
@@ -47,7 +22,7 @@
       sentir cómoda y segura a quien la usa.
 
       Cada prenda está pensada para resaltar la feminidad desde diferentes estilos: romántico, moderno, casual o
-      atrevido. Queremos que te mires al espejo y digas “esto va conmigo”.
+      atrevido. Queremos que te mires al espejo y digas "esto va conmigo".
     </p>
 
     <div class="about-grid">
@@ -76,7 +51,7 @@
           que cada prenda sea cómoda, duradera y te haga sentir increíble al usarla.</p>
       </div>
       <div class="about-image">
-        <img src="Imagenes/Calidad.png" alt="Calida" />
+        <img src="Imagenes/Calidad.png" alt="Calidad" />
       </div>
     </div>
 
@@ -97,67 +72,30 @@
 
     <h2 class="team-title">MEET OUR TEAM</h2>
     <div class="team-grid">
-
       <div class="team-member">
         <img src="Imagenes/Andy.jpeg" alt="Andy" />
         <h4>Andrea Guadalupe Ruvalcba Mascorro</h4>
         <p>Dueña</p>
       </div>
-
       <div class="team-member">
         <img src="Imagenes/Kim.jpg" alt="Kim" />
         <h4>Kim Du Ri Carrillo Chávez</h4>
         <p>Dueña</p>
       </div>
-
+    </div>
   </section>
 
   <section>
     <div class="contact-details">
       <h2>PONTE EN CONTACTO CON NOSOTROS</h2>
-      <p><strong>Email:</strong><br /><a href="mailto:estampa-tla@gmail.com">CottonCandyCS@gmail.com</a></p>
+      <p><strong>Email:</strong><br /><a href="mailto:CottonCandyCS@gmail.com">CottonCandyCS@gmail.com</a></p>
       <p><strong>Ubicación:</strong><br />Aguascalientes, Ags, México</p>
       <img src="Imagenes/mapita.jpeg" alt="mapa" class="mapa" />
     </div>
-    <!--<button>REGÍSTRATE</button>-->
-  </section>
   </section>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
-
+  <script src="components.js"></script>
 </body>
-
 </html>

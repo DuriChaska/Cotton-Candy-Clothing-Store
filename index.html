@@ -1,54 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cotton Candy Clothing Store - Home</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-       <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promos.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
+  <div id="header"></div>
 
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
-  <section class="hero" style="display: flex; max-width: 1200px; margin: auto;">
-    <div class="left" style="flex: 1; background-color: #f1bbdf; color: #b3488f; padding: 60px 40px;">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="left" style="background-color:#f1bbdf; color:#b3488f;">
       <div class="icon">
-        <img src="Imagenes/Iconos/Icon1.png" alt="Icono" style="width: 40px; height: 40px;" />
+        <img src="Imagenes/Iconos/Icon1.png" alt="Icono" style="width:40px; height:40px;" />
       </div>
       <p>Diseños exclusivos para cada persona</p>
       <h2>Tu estilo,<br>tu estampado,<br>tu esencia.</h2>
       <button type="button" onclick="window.location.href='shop.html'">Ver productos</button>
     </div>
-    <div class="right" style="flex: 2;">
+    <div class="right">
       <img src="Imagenes/flat-lay-composition-different-sized-plates 1.png" alt="Foto"
-        style="width: 100%; height: 100%; object-fit: cover;" />
+        style="width:100%; height:100%; object-fit:cover;" />
     </div>
   </section>
 
+  <!-- CATEGORÍAS -->
   <section class="categories">
     <div class="category-item">
       <img src="Imagenes/Caballero.png" alt="Caballero" />
@@ -68,6 +46,7 @@
     </div>
   </section>
 
+  <!-- PROMO -->
   <section class="promo-section">
     <div class="promo-text">
       30% DE DESCUENTO EN TEMPORADAS PASADAS
@@ -80,6 +59,7 @@
     </div>
   </section>
 
+  <!-- DISEÑOS POPULARES -->
   <section class="popular-designs">
     <h2>DISEÑOS POPULARES</h2>
     <div class="products-grid">
@@ -88,8 +68,7 @@
         <img src="Imagenes/playera con estampado antiguo.png" alt="Playera" />
         <div class="product-info">
           <h3>Playera con estampado antiguo</h3>
-          <p>Playera con diseño vintage único que combina estilo clásico y comodidad. Perfecta para quienes aman la moda
-            retro y desean destacar con un look atemporal.</p>
+          <p>Playera con diseño vintage único que combina estilo clásico y comodidad.</p>
         </div>
         <div class="product-price">$200.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -99,8 +78,7 @@
         <img src="Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" alt="Playera" />
         <div class="product-info">
           <h3>Playera estampada Travis Scott</h3>
-          <p>Playera negra con estampado exclusivo de Travis Scott, ideal para fans del artista y amantes de la cultura
-            urbana. Confeccionada en algodón suave para máxima comodidad.</p>
+          <p>Playera negra con estampado exclusivo, ideal para fans del artista y amantes de la cultura urbana.</p>
         </div>
         <div class="product-price">$399.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -110,8 +88,7 @@
         <img src="Imagenes/SUDADERA ESTAMPADA.png" alt="SUDADERA" />
         <div class="product-info">
           <h3>Sudadera estampada con diseño gráfico</h3>
-          <p>Sudadera con diseño gráfico impactante que mezcla arte y modernidad. Perfecta para mantenerte cómodo y a la
-            moda en cualquier ocasión.</p>
+          <p>Sudadera con diseño gráfico impactante que mezcla arte y modernidad.</p>
         </div>
         <div class="product-price">$859.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -121,8 +98,7 @@
         <img src="Imagenes/Playera con estampado  moderno.png" alt="Playera" />
         <div class="product-info">
           <h3>Playera con estampado moderno</h3>
-          <p>Playera con estampado contemporáneo y colores vibrantes. Un must para quienes buscan un estilo fresco y
-            actual en su guardarropa diario.</p>
+          <p>Playera con estampado contemporáneo y colores vibrantes para un estilo fresco.</p>
         </div>
         <div class="product-price">$168.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -132,8 +108,7 @@
         <img src="Imagenes/Playera estampada con flores.png" alt="Playera" />
         <div class="product-info">
           <h3>Playera estampada color negro con rosas</h3>
-          <p>Playera negra con delicado estampado de rosas, que aporta un toque de elegancia y rebeldía. Ideal para
-            looks casuales con personalidad.</p>
+          <p>Playera negra con delicado estampado de rosas, elegancia y rebeldía en un solo look.</p>
         </div>
         <div class="product-price">$249.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -143,8 +118,7 @@
         <img src="Imagenes/playera estampada persona.png" alt="Playera" />
         <div class="product-info">
           <h3>Playera estampada color negro con cruz</h3>
-          <p>Playera con estampado oscuro de cruz que combina misterio y estilo. Perfecta para quienes prefieren un
-            diseño audaz y simbólico.</p>
+          <p>Playera con estampado oscuro de cruz que combina misterio y estilo audaz.</p>
         </div>
         <div class="product-price">$299.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -155,32 +129,27 @@
         <span class="badge-oferta">OFERTA</span>
         <div class="product-info">
           <h3>Playera con estampado de astronauta</h3>
-          <p>Playera con ilustración de astronauta que inspira aventura y exploración. Diseño moderno y cómodo para
-            destacar en cualquier lugar.</p>
+          <p>Ilustración de astronauta que inspira aventura y exploración.</p>
         </div>
         <div class="product-price">$200.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </div>
 
-
       <div class="product-card">
         <img src="Imagenes/Playera estampada jesus.png" alt="Playera" />
         <span class="badge-oferta">OFERTA</span>
         <div class="product-info">
-          <h3>Playera estampada con imagen gótica de Jesús y cruces</h3>
-          <p>Descripción:
-            Playera negra con un impactante diseño gótico que representa a Jesús rodeado de cruces. Ideal para quienes
-            buscan una prenda con un estilo alternativo y simbólico que refleja fuerza y espiritualidad.</p>
+          <h3>Playera estampada gótica de Jesús y cruces</h3>
+          <p>Diseño gótico alternativo que refleja fuerza y espiritualidad.</p>
         </div>
         <div class="product-price">$299.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </div>
 
-
-
     </div>
   </section>
 
+  <!-- INFO PERSONALIZACIÓN -->
   <section class="info-section">
     <div class="info-text">
       <h3>PERSONALIZACIÓN</h3>
@@ -192,11 +161,12 @@
     </div>
   </section>
 
-  <section class="info-section" style="flex-direction: row-reverse;">
+  <!-- INFO QUIÉNES SOMOS -->
+  <section class="info-section" style="flex-direction:row-reverse;">
     <div class="info-text">
       <h3>¿QUIÉNES SOMOS?</h3>
       <p>En Cotton Candy Clothing Store, nos especializamos en la creación de playeras personalizadas que reflejan tu
-        estilo y personalidad. Desde temáticas geek hasta rockeras, tenemos algo para cada gusto.</p>
+        estilo y personalidad.</p>
       <a href="#">LEER MÁS</a>
     </div>
     <div class="info-image">
@@ -204,6 +174,7 @@
     </div>
   </section>
 
+  <!-- NUEVOS DISEÑOS -->
   <section class="new-designs">
     <h2>NUEVOS DISEÑOS</h2>
     <div class="products-grid">
@@ -221,9 +192,8 @@
       <div class="product-card">
         <img src="Imagenes/Playera de bruja feminista.png" alt="Nuevo diseño" />
         <div class="product-info">
-          <h3>Girls Will Be Girls Shirts - Camisetas de bruja feminista </h3>
-          <p>camisetas divertidas de Halloween con cuello en V, camisetas de moda con estampado de brujas de Halloween
-          </p>
+          <h3>Girls Will Be Girls - Camiseta de bruja feminista</h3>
+          <p>Camisetas divertidas de Halloween con cuello en V y estampado de brujas.</p>
         </div>
         <div class="product-price">$424.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -232,8 +202,8 @@
       <div class="product-card">
         <img src="Imagenes/Playera de manga corta para hombre.png" alt="Nuevo diseño" />
         <div class="product-info">
-          <h3>Camisetas para hombre, playera de manga corta, de poliéster, suave, para hombre</h3>
-          <p>estas camisetas casuales para hombre cuentan con un diseño clásico de cuello redondo y mangas cortas</p>
+          <h3>Camiseta de manga corta de poliéster para hombre</h3>
+          <p>Diseño clásico de cuello redondo y mangas cortas, suave y cómoda.</p>
         </div>
         <div class="product-price">$205.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
@@ -242,60 +212,27 @@
       <div class="product-card">
         <img src="Imagenes/Playera Estampada Gatos.png" alt="Nuevo diseño" />
         <div class="product-info">
-          <h3>Aditivo Playera Estampada Gatos Bad Cattitude para Mujer</h3>
-          <p>Playera cómoda y casual para mujer con estampado cool y original, juvenil fácil de combinar con tus mejores
-            atuendos</p>
+          <h3>Playera Estampada Gatos Bad Cattitude para Mujer</h3>
+          <p>Estampado cool y original, juvenil, fácil de combinar.</p>
         </div>
         <div class="product-price">$195.00</div>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </div>
+
     </div>
   </section>
 
-  <section style="text-align:center; margin: 50px 20px;">
-    <p>Inicia sesión con email</p>
-    <h3>PARA NOTICIAS, COLECCIONES Y MAS</h3>
-    <input type="email" placeholder="ingresa tu dirección de email"
-      style="padding: 10px; width: 250px; margin-top: 10px;" />
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h3>PARA NOTICIAS, COLECCIONES Y MÁS</h3>
+    <p style="margin-bottom:10px; color:#888;">Inicia sesión con email</p>
+    <input type="email" placeholder="Ingresa tu dirección de email" />
     <br />
-    <button style="margin-top: 15px; padding: 10px 25px; font-weight: 700; cursor: pointer;">REGÍSTRATE</button>
+    <button>REGÍSTRATE</button>
   </section>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
-
+  <script src="components.js"></script>
 </body>
-
 </html>

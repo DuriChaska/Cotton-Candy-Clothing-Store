@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cotton Candy Clothing Store - Carrito</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promos.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <section class="cart-page">
     <nav class="breadcrumb">
-      <a href="index.html">Inicio</a> /
-      <span>Carrito</span>
+      <a href="index.html">Inicio</a> / <span>Carrito</span>
     </nav>
 
     <h2 id="cart-title">Carrito (0 productos)</h2>
@@ -45,9 +20,7 @@
     <div id="cart-empty" style="display:none; text-align:center; padding: 3rem 1rem;">
       <h3>Tu carrito está vacío 😔</h3>
       <p>¡Explora nuestro catálogo y encuentra algo que te encante!</p>
-      <button class="add-to-cart" onclick="window.location.href='shop.html'">
-        Ver catálogo
-      </button>
+      <button class="add-to-cart" onclick="window.location.href='shop.html'">Ver catálogo</button>
     </div>
 
     <table class="cart-table" id="cart-table" style="display:none;">
@@ -73,46 +46,14 @@
     <div class="cart-totals" id="cart-totals" style="display:none;">
       <p>Subtotal: <span id="subtotal">$0.00</span></p>
       <p><strong>Total: <span id="total">$0.00</span></strong></p>
-      <button class="checkout-btn">Proceder a pagar</button>
+      <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceder a pagar</button>
     </div>
   </section>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
   <script>
-    // Funciones del carrito (las mismas que usas en producto.js)
     function obtenerCarrito() {
       return JSON.parse(localStorage.getItem("carrito") || "[]");
     }
@@ -121,15 +62,14 @@
       localStorage.setItem("carrito", JSON.stringify(carrito));
     }
 
-    // Renderiza el carrito completo
     function renderCart() {
       const carrito = obtenerCarrito();
-      const tbody = document.getElementById("cart-items");
-      const title = document.getElementById("cart-title");
+      const tbody   = document.getElementById("cart-items");
+      const title   = document.getElementById("cart-title");
       const emptyMsg = document.getElementById("cart-empty");
-      const table = document.getElementById("cart-table");
+      const table   = document.getElementById("cart-table");
       const actions = document.getElementById("cart-actions");
-      const totals = document.getElementById("cart-totals");
+      const totals  = document.getElementById("cart-totals");
 
       tbody.innerHTML = "";
       let subtotal = 0;
@@ -137,67 +77,57 @@
       if (carrito.length === 0) {
         title.textContent = "Carrito (0 productos)";
         emptyMsg.style.display = "block";
-        table.style.display = "none";
-        actions.style.display = "none";
-        totals.style.display = "none";
+        table.style.display    = "none";
+        actions.style.display  = "none";
+        totals.style.display   = "none";
         return;
       }
 
       emptyMsg.style.display = "none";
-      table.style.display = "table";
-      actions.style.display = "flex";
-      totals.style.display = "block";
+      table.style.display    = "table";
+      actions.style.display  = "flex";
+      totals.style.display   = "block";
 
       carrito.forEach((item, index) => {
-        const row = document.createElement("tr");
         const itemSubtotal = item.precio * item.cantidad;
         subtotal += itemSubtotal;
 
+        const row = document.createElement("tr");
         row.innerHTML = `
-      <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
-      <td>${item.nombre}</td>
-      <td>${item.precioFormatted || `$${item.precio}`}</td>
-      <td>
-        <button class="qty-btn" onclick="cambiarCantidadCarrito(${index}, -1)">−</button>
-        <input type="number" value="${item.cantidad}" min="1" readonly style="width:50px; text-align:center;">
-        <button class="qty-btn" onclick="cambiarCantidadCarrito(${index}, 1)">+</button>
-      </td>
-      <td class="subtotal">$${itemSubtotal.toFixed(2)}</td>
-      <td><button class="remove-item" onclick="eliminarDelCarrito(${index})">×</button></td>
-    `;
-
+          <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
+          <td>${item.nombre}</td>
+          <td>${item.precioFormatted || '$' + item.precio}</td>
+          <td>
+            <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">−</button>
+            <input type="number" value="${item.cantidad}" min="1" readonly style="width:50px; text-align:center;">
+            <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+          </td>
+          <td>$${itemSubtotal.toFixed(2)}</td>
+          <td><button class="remove-item" onclick="eliminarItem(${index})">×</button></td>
+        `;
         tbody.appendChild(row);
       });
 
       title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? 's' : ''})`;
       document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-      document.getElementById("total").textContent = `$${subtotal.toFixed(2)}`; // puedes sumar envío o descuentos aquí después
+      document.getElementById("total").textContent    = `$${subtotal.toFixed(2)}`;
     }
 
-    // Cambiar cantidad desde el carrito
-    function cambiarCantidadCarrito(index, delta) {
+    function cambiarCantidad(index, delta) {
       let carrito = obtenerCarrito();
-      let nuevaCant = carrito[index].cantidad + delta;
-      if (nuevaCant < 1) nuevaCant = 1;
-      carrito[index].cantidad = nuevaCant;
+      carrito[index].cantidad = Math.max(1, carrito[index].cantidad + delta);
       guardarCarrito(carrito);
       renderCart();
     }
 
-    // Eliminar producto
-    function eliminarDelCarrito(index) {
+    function eliminarItem(index) {
       let carrito = obtenerCarrito();
       carrito.splice(index, 1);
       guardarCarrito(carrito);
       renderCart();
     }
 
-    // Cargar el carrito al abrir la página
-    window.onload = function () {
-      renderCart();
-    };
+    window.onload = renderCart;
   </script>
-
 </body>
-
 </html>

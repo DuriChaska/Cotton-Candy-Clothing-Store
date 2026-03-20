@@ -1,45 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cotton Candy Clothing Store - Shop</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-        <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-        <li><button type="button" onclick="window.location.href='promos.html'">Promos</button></li>
-        <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-        <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-        <li><button type="button" onclick="window.location.href='comunidad.html'">Comunidad</button></li>
-        <li><button type="button" onclick="window.location.href='login.html'">Iniciar sesión</button></li>
-      </ul>
-    </nav>
-    <div class="icons">
-      <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
-        onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
-    </div>
-  </header>
+  <div id="header"></div>
 
   <main>
     <div id="toast-container"></div>
-    <div class="shop-search-row">
-      <input id="priceSearch" type="text" placeholder="Buscar por precio: 299 | 250-400"
-        aria-label="Buscar por precio" />
 
+    <div class="shop-search-row">
+      <input id="priceSearch" type="text" placeholder="Buscar por precio: 299 | 250-400" aria-label="Buscar por precio" />
       <select id="categoryFilter" aria-label="Filtrar por categoría">
         <option value="all">Todas</option>
         <option value="tops">Tops</option>
@@ -52,12 +27,10 @@
         <img src="Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" alt="Playera" />
         <div class="product-info">
           <h3>Blusa amarilla cruzada (manga larga)</h3>
-          <p>Blusa cruzada de manga larga con diseño fruncido al frente. Ideal para looks frescos y femeninos, perfecta
-            para combinar con jeans o faldas.</p>
+          <p>Blusa cruzada de manga larga con diseño fruncido al frente. Ideal para looks frescos y femeninos.</p>
         </div>
         <div class="product-price">$399.00 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=blusa-amarilla-cruzada'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=blusa-amarilla-cruzada'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -65,12 +38,10 @@
         <img src="Imagenes/SUDADERA ESTAMPADA.png" alt="SUDADERA" />
         <div class="product-info">
           <h3>Top vino manga larga acampanada</h3>
-          <p>Top ajustado en tono vino con mangas acampanadas que aportan un toque elegante y moderno. Ideal para
-            salidas casuales o nocturnas</p>
+          <p>Top ajustado en tono vino con mangas acampanadas. Ideal para salidas casuales o nocturnas.</p>
         </div>
         <div class="product-price">$389 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-vino-acampanado'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-vino-acampanado'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -78,12 +49,10 @@
         <img src="Imagenes/Playera estampada jesus.png" alt="Playera" />
         <div class="product-info">
           <h3>Top rojo con tirantes</h3>
-          <p>Top de tirantes con textura acanalada y diseño ajustado. Una prenda básica con estilo, perfecta para
-            outfits casuales o layered looks.</p>
+          <p>Top de tirantes con textura acanalada y diseño ajustado. Básico con estilo.</p>
         </div>
         <div class="product-price">$299 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-rojo-tirantes'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rojo-tirantes'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -91,12 +60,10 @@
         <img src="Imagenes/Playera estampada con flores.png" alt="Playera" />
         <div class="product-info">
           <h3>Top rosa con moño</h3>
-          <p>Top corto en tono rosa pastel con detalle de moño al frente. Suave, delicado y perfecto para un look dulce
-            y femenino.</p>
+          <p>Top corto en tono rosa pastel con detalle de moño al frente. Suave y femenino.</p>
         </div>
         <div class="product-price">$249 MXN</div>
-        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-mono'">Ver
-          Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-mono'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -104,11 +71,10 @@
         <img src="Imagenes/Playera de bruja feminista.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top rosa strapless</h3>
-          <p>Top strapless con acabado liso y ajuste cómodo. Ideal para climas cálidos y combinaciones veraniegas.</p>
+          <p>Top strapless con acabado liso y ajuste cómodo. Ideal para climas cálidos.</p>
         </div>
         <div class="product-price">$269 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-rosa-strapless'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-strapless'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -116,11 +82,10 @@
         <img src="Imagenes/Playera Return of Misfits.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top amarillo con tirantes finos</h3>
-          <p>Top ligero con tirantes delgados y diseño fruncido. Aporta frescura y estilo a cualquier outfit casual.</p>
+          <p>Top ligero con tirantes delgados y diseño fruncido. Frescura y estilo.</p>
         </div>
         <div class="product-price">$289 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-amarillo-tirantes'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-amarillo-tirantes'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -128,11 +93,10 @@
         <img src="Imagenes/Playera de manga corta para hombre.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top rosa manga larga</h3>
-          <p>Top de manga larga en tono rosa suave, ideal para looks casuales y cómodos sin perder estilo.</p>
+          <p>Top de manga larga en tono rosa suave. Casual y cómodo sin perder estilo.</p>
         </div>
         <div class="product-price">$319 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-rosa-manga-larga'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-rosa-manga-larga'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -140,11 +104,10 @@
         <img src="Imagenes/Playera Estampada Gatos.png" alt="Nuevo diseño" />
         <div class="product-info">
           <h3>Top brillante cuello halter</h3>
-          <p>Top con acabado brillante y cuello halter. Ideal para eventos nocturnos o looks más atrevidos.</p>
+          <p>Top con acabado brillante y cuello halter. Ideal para eventos nocturnos.</p>
         </div>
         <div class="product-price">$349 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=top-halter-brillante'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=top-halter-brillante'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
 
@@ -152,12 +115,10 @@
         <img src="Imagenes/playera estampada persona.png" alt="Playera" />
         <div class="product-info">
           <h3>Blusa blanca con tirantes y vuelo</h3>
-          <p>Blusa blanca con tirantes delgados y diseño con vuelo que aporta un estilo romántico y fresco. Ideal para
-            outfits casuales o veraniegos, fácil de combinar con jeans o faldas.</p>
+          <p>Blusa blanca con tirantes delgados y diseño con vuelo. Romántica y fresca.</p>
         </div>
         <div class="product-price">$379 MXN</div>
-        <button class="ver-detalles" type="button"
-          onclick="window.location.href='producto.html?id=blusa-blanca-vuelo'">Ver Detalles</button>
+        <button class="ver-detalles" type="button" onclick="window.location.href='producto.html?id=blusa-blanca-vuelo'">Ver Detalles</button>
         <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </article>
     </div>
@@ -172,187 +133,82 @@
     </div>
   </main>
 
-  <footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
+  <div id="footer"></div>
 
-    <div class="center">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-          <a href="#">Facebook</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-          <a href="#">Twitter</a>
-        </li>
-        <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-      </ul>
-    </div>
-
-    <div class="right">
-      <p><strong>Horario:</strong><br />
-        Lunes a Viernes 7:00 am - 11:00 pm<br />
-        Sábado y Domingo 9:00 am - 9:00 pm
-      </p>
-      <p><strong>Teléfono:</strong><br />(449) 3116529</p>
-    </div>
-
-    <div class="bottom-text">
-      Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-      <br>Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
   <script>
-
-    // Productos (los mismos que en producto.js)
     const productos = [
-      { id: "blusa-amarilla-cruzada", nombre: "Blusa amarilla cruzada (manga larga)", precio: 399, precioFormatted: "$399 MXN", imagen: "Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" },
-      { id: "top-vino-acampanado", nombre: "Top vino manga larga acampanada", precio: 389, precioFormatted: "$389 MXN", imagen: "Imagenes/SUDADERA ESTAMPADA.png" },
-      { id: "top-rojo-tirantes", nombre: "Top rojo con tirantes", precio: 299, precioFormatted: "$299 MXN", imagen: "Imagenes/Playera estampada jesus.png" },
-      { id: "top-rosa-mono", nombre: "Top rosa con moño", precio: 249, precioFormatted: "$249 MXN", imagen: "Imagenes/Playera estampada con flores.png" },
-      { id: "top-rosa-strapless", nombre: "Top rosa strapless", precio: 269, precioFormatted: "$269 MXN", imagen: "Imagenes/Playera de bruja feminista.png" },
-      { id: "top-amarillo-tirantes", nombre: "Top amarillo con tirantes finos", precio: 289, precioFormatted: "$289 MXN", imagen: "Imagenes/Playera Return of Misfits.png" },
-      { id: "top-rosa-manga-larga", nombre: "Top rosa manga larga", precio: 319, precioFormatted: "$319 MXN", imagen: "Imagenes/Playera de manga corta para hombre.png" },
-      { id: "top-halter-brillante", nombre: "Top brillante cuello halter", precio: 349, precioFormatted: "$349 MXN", imagen: "Imagenes/Playera Estampada Gatos.png" },
-      { id: "blusa-blanca-vuelo", nombre: "Blusa blanca con tirantes y vuelo", precio: 379, precioFormatted: "$379 MXN", imagen: "Imagenes/playera estampada persona.png" }
+      { id: "blusa-amarilla-cruzada",  nombre: "Blusa amarilla cruzada (manga larga)",  precio: 399, precioFormatted: "$399 MXN", imagen: "Imagenes/PLAYERA ESTAMPADA TRAVIS SCOTT.png" },
+      { id: "top-vino-acampanado",     nombre: "Top vino manga larga acampanada",        precio: 389, precioFormatted: "$389 MXN", imagen: "Imagenes/SUDADERA ESTAMPADA.png" },
+      { id: "top-rojo-tirantes",       nombre: "Top rojo con tirantes",                  precio: 299, precioFormatted: "$299 MXN", imagen: "Imagenes/Playera estampada jesus.png" },
+      { id: "top-rosa-mono",           nombre: "Top rosa con moño",                      precio: 249, precioFormatted: "$249 MXN", imagen: "Imagenes/Playera estampada con flores.png" },
+      { id: "top-rosa-strapless",      nombre: "Top rosa strapless",                     precio: 269, precioFormatted: "$269 MXN", imagen: "Imagenes/Playera de bruja feminista.png" },
+      { id: "top-amarillo-tirantes",   nombre: "Top amarillo con tirantes finos",        precio: 289, precioFormatted: "$289 MXN", imagen: "Imagenes/Playera Return of Misfits.png" },
+      { id: "top-rosa-manga-larga",    nombre: "Top rosa manga larga",                   precio: 319, precioFormatted: "$319 MXN", imagen: "Imagenes/Playera de manga corta para hombre.png" },
+      { id: "top-halter-brillante",    nombre: "Top brillante cuello halter",            precio: 349, precioFormatted: "$349 MXN", imagen: "Imagenes/Playera Estampada Gatos.png" },
+      { id: "blusa-blanca-vuelo",      nombre: "Blusa blanca con tirantes y vuelo",      precio: 379, precioFormatted: "$379 MXN", imagen: "Imagenes/playera estampada persona.png" }
     ];
 
-    // Funciones del carrito
-    function obtenerCarrito() {
-      return JSON.parse(localStorage.getItem("carrito") || "[]");
-    }
+    function obtenerCarrito() { return JSON.parse(localStorage.getItem("carrito") || "[]"); }
+    function guardarCarrito(c) { localStorage.setItem("carrito", JSON.stringify(c)); }
 
-    function guardarCarrito(carrito) {
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
-
-    // Función toast (la misma que en producto.html)
     function mostrarToast(mensaje, tipo = 'success') {
       const container = document.getElementById('toast-container');
       if (!container) return;
-
       const toast = document.createElement('div');
       toast.className = `toast ${tipo}`;
       toast.textContent = mensaje;
-
       container.appendChild(toast);
-
       setTimeout(() => toast.classList.add('show'), 100);
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 500);
-      }, 2800);
+      setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 500); }, 2800);
     }
 
-    // Agregar desde el catálogo (cantidad 1)
     function agregarAlCarritoDesdeCatalogo(id) {
       const producto = productos.find(p => p.id === id);
-      if (!producto) {
-        mostrarToast("Producto no encontrado", "error");
-        return;
-      }
-
+      if (!producto) { mostrarToast("Producto no encontrado", "error"); return; }
       let carrito = obtenerCarrito();
-      const existe = carrito.find(item => item.id === id);
-
-      if (existe) {
-        existe.cantidad += 1;
-      } else {
-        carrito.push({
-          id: producto.id,
-          nombre: producto.nombre,
-          precio: producto.precio,
-          precioFormatted: producto.precioFormatted,
-          imagen: producto.imagen,
-          cantidad: 1
-        });
-      }
-
+      const existe = carrito.find(i => i.id === id);
+      if (existe) { existe.cantidad += 1; }
+      else { carrito.push({ ...producto, cantidad: 1 }); }
       guardarCarrito(carrito);
-
-      // Mensaje bonito (igual que en producto)
       mostrarToast(`¡Agregado! 1 × ${producto.nombre}`, "success");
     }
 
-    // Conectar botones "AGREGAR AL CARRITO"
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".product-card .add-to-cart").forEach(btn => {
         btn.addEventListener("click", () => {
           const card = btn.closest(".product-card");
           const onclickStr = card.querySelector(".ver-detalles")?.getAttribute("onclick") || "";
           const idMatch = onclickStr.match(/id=([^']+)/);
-          if (idMatch) {
-            const id = idMatch[1];
-            agregarAlCarritoDesdeCatalogo(id);
-          } else {
-            mostrarToast("No se pudo identificar el producto", "error");
-          }
+          idMatch ? agregarAlCarritoDesdeCatalogo(idMatch[1]) : mostrarToast("No se pudo identificar el producto", "error");
         });
       });
 
-      // Tus filtros de precio y categoría siguen aquí (sin cambios)
-      const priceInput = document.getElementById("priceSearch");
-      const categorySelect = document.getElementById("categoryFilter");
-      const cards = Array.from(document.querySelectorAll(".product-card"));
+      const priceInput      = document.getElementById("priceSearch");
+      const categorySelect  = document.getElementById("categoryFilter");
+      const cards           = Array.from(document.querySelectorAll(".product-card"));
 
-      const getCardPrice = (card) => {
-        const priceEl = card.querySelector(".product-price");
-        if (!priceEl) return NaN;
-        const txt = priceEl.textContent.replace(/[^0-9.]/g, "");
-        return parseFloat(txt) || NaN;
-      };
+      const getCardPrice = c => parseFloat(c.querySelector(".product-price")?.textContent.replace(/[^0-9.]/g, "")) || NaN;
 
-      const parseQuery = (raw) => {
-        const q = (raw || "").trim().toLowerCase().replace(/\s+/g, "");
+      const parseQuery = raw => {
+        const q = (raw || "").trim().replace(/\s+/g, "");
         if (!q) return null;
-
-        let m = q.match(/^(\d+(\.\d+)?)-(\d+(\.\d+)?)$/);
-        if (m) {
-          const a = parseFloat(m[1]);
-          const b = parseFloat(m[3]);
-          const lo = Math.min(a, b);
-          const hi = Math.max(a, b);
-          return (p) => p >= lo && p <= hi;
-        }
-
-        m = q.match(/^(<=|>=|<|>)(\d+(\.\d+)?)$/);
-        if (m) {
-          const op = m[1];
-          const val = parseFloat(m[2]);
-          switch (op) {
-            case "<=": return (p) => p <= val;
-            case ">=": return (p) => p >= val;
-            case "<": return (p) => p < val;
-            case ">": return (p) => p > val;
-          }
-        }
-
-        // Si solo es número → <= ese valor (como pediste)
-        m = q.match(/^(\d+(\.\d+)?)$/);
-        if (m) {
-          const val = parseFloat(m[1]);
-          return (p) => p <= val;
-        }
-
+        let m = q.match(/^(\d+\.?\d*)-(\d+\.?\d*)$/);
+        if (m) { const [a,b] = [parseFloat(m[1]), parseFloat(m[2])]; return p => p >= Math.min(a,b) && p <= Math.max(a,b); }
+        m = q.match(/^(<=|>=|<|>)(\d+\.?\d*)$/);
+        if (m) { const v = parseFloat(m[2]); return { "<=": p=>p<=v, ">=": p=>p>=v, "<": p=>p<v, ">": p=>p>v }[m[1]]; }
+        m = q.match(/^(\d+\.?\d*)$/);
+        if (m) { const v = parseFloat(m[1]); return p => p <= v; }
         return null;
       };
 
       const applyFilters = () => {
-        const fn = parseQuery(priceInput.value);
-        const selectedCategory = (categorySelect.value || "all").toLowerCase();
-
-        cards.forEach((card) => {
-          const price = getCardPrice(card);
-          const cardCategory = (card.dataset.category || "").toLowerCase();
-
-          const categoryOk = selectedCategory === "all" || cardCategory === selectedCategory;
-          const priceOk = !fn || isNaN(price) || fn(price);
-
-          card.style.display = categoryOk && priceOk ? "" : "none";
+        const fn  = parseQuery(priceInput.value);
+        const cat = categorySelect.value.toLowerCase();
+        cards.forEach(c => {
+          const pr = getCardPrice(c);
+          const cv = (c.dataset.category || "").toLowerCase();
+          c.style.display = (cat === "all" || cv === cat) && (!fn || isNaN(pr) || fn(pr)) ? "" : "none";
         });
       };
 
@@ -360,9 +216,6 @@
       categorySelect.addEventListener("change", applyFilters);
       applyFilters();
     });
-
   </script>
-
 </body>
-
 </html>
