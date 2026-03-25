@@ -7,14 +7,14 @@
 const paginaActual = window.location.pathname.split('/').pop();
 
 const navLinks = [
-  { href: 'index.html',                    label: 'Inicio' },
-  { href: 'shop.html',                     label: 'Catálogo' },
-  { href: 'carpeta.html',                  label: 'Carpeta' },
-  { href: 'about.html',                    label: 'Nosotros' },
-  { href: 'contact.html',                  label: 'Contacto' },
-  { href: 'promos.html',                   label: 'Promos' },
-  { href: 'comunidad.html',                label: 'Comunidad' },
-  { href: 'login.html',                    label: 'Iniciar sesión' },
+  { href: 'index.html', label: 'Inicio' },
+  { href: 'shop.html', label: 'Catálogo' },
+  { href: 'carpeta.html', label: 'Carpeta' },
+  { href: 'about.html', label: 'Nosotros' },
+  { href: 'contact.html', label: 'Contacto' },
+  { href: 'promos.html', label: 'Promos' },
+  { href: 'comunidad.html', label: 'Comunidad' },
+  { href: 'login.html', label: 'Iniciar sesión' },
 ];
 
 const navHTML = navLinks.map(link => `
@@ -70,6 +70,10 @@ document.getElementById('footer').innerHTML = `
         <li>
           <img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" />
           <a href="#">Instagram</a>
+        </li>
+        <li>
+          <img src="Imagenes/Iconos/Shopping cart.png" alt="Subastas" class="icon" />
+          <a href="subastas.html">Subastas</a>
         </li>
       </ul>
     </div>
