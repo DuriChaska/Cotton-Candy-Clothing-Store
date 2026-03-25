@@ -8,50 +8,30 @@
 </head>
 <body>
 
-    
-<header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>Shop</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
-    </nav>
-    <div class="icons">
-        <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
-        <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
-        <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
-        <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
-      </div>
-  </header>
+  <div id="header"></div>
+
   <section class="checkout-section">
     <nav class="breadcrumb">
-      <a href="#">Cart</a> / <a href="#">Shipping</a> / <a href="#">Payment</a>
+      <a href="carrito.html">Carrito</a> / <a href="#">Envío</a> / <a href="#">Pago</a>
     </nav>
-  
+
     <div class="checkout-form">
-      <!-- Billing Details -->
+
+      <!-- Datos de facturación -->
       <div class="billing-details">
-        <h2>Billing Details</h2>
+        <h2>Datos de Facturación</h2>
         <div class="input-group">
           <input type="text" placeholder="Primer Nombre *" />
           <input type="text" placeholder="Apellido" />
         </div>
         <select>
           <option>País</option>
-          <!-- Opciones aquí -->
         </select>
         <input type="text" placeholder="Calle *" />
         <div class="input-group">
           <input type="text" placeholder="Ciudad *" />
           <select>
             <option>Estado *</option>
-            <!-- Opciones aquí -->
           </select>
         </div>
         <div class="input-group">
@@ -60,14 +40,14 @@
         </div>
         <input type="email" placeholder="Email" />
         <textarea placeholder="Referencias"></textarea>
-  
+
         <div class="checkout-navigation">
-          <a href="#" class="back-to-cart">← REGRESAR AL CARRITO</a>
+          <a href="carrito.html" class="back-to-cart">← REGRESAR AL CARRITO</a>
           <button class="continue-payment">CONTINUAR A PAGAR →</button>
         </div>
       </div>
-  
-      <!-- Order Summary -->
+
+      <!-- Resumen del pedido -->
       <aside class="payment-summary">
         <h3>Producto</h3>
         <ul class="order-products">
@@ -89,46 +69,24 @@
           <div><strong>Envío</strong><span>$120.00</span></div>
           <div class="total"><strong>Total</strong><span>$1319.00</span></div>
         </div>
-  
-        <!-- Payment section -->
+
         <div class="payment-method">
           <h3>Pagar</h3>
           <label>
             <input type="radio" name="payment" checked />
             <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" class="paypal-logo" />
-
             PayPal
           </label>
           <input type="email" placeholder="Ingrese su correo electrónico o número de celular" />
-          <button type="submit">SIGUIENTE</button>
+          <button type="button">SIGUIENTE</button>
         </div>
       </aside>
+
     </div>
   </section>
-  
-      
-  </form>
 
-  
+  <div id="footer"></div>
 
-<footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
-    <div class="right">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>Instagram</li>
-      </ul>
-    </div>
-    <div class="bottom-text">
-      Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-
+  <script src="components.js"></script>
 </body>
 </html>
