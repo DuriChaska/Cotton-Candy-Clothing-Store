@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cotton Candy Clothing Store - Perfil Cliente</title>
+  <title>Perfil Cliente</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <div id="header"></div>
 
   <section class="client-interface profile">
+
+    <!-- HEADER PERFIL -->
     <div class="profile-header">
       <img src="Imagenes/Andy.jpeg" alt="Foto de perfil" class="profile-pic" />
       <div class="profile-info">
@@ -19,7 +23,9 @@
       </div>
     </div>
 
+    <!-- INFO -->
     <div class="profile-sections">
+
       <div class="profile-item">
         <h3>Mis datos</h3>
         <p>
@@ -34,17 +40,53 @@
         <p>Próximamente podrás ver aquí tu historial de compras.</p>
       </div>
 
-      <button class="logout-btn" onclick="cerrarSesion()">Cerrar sesión</button>
+      <!-- ACCIONES -->
+      <div class="profile-actions">
+
+        <button class="btn-pro"
+          onclick="window.location.href='publicar.html'">
+          ➕ Publicar producto
+        </button>
+
+        <button class="btn-outline"
+          onclick="window.location.href='mis-publicaciones.html'">
+          📦 Ver mis publicaciones
+        </button>
+
+      </div>
+
+      <!-- RESUMEN C2C -->
+      <div class="profile-item">
+        <h3>Resumen de ventas</h3>
+        <p id="totalProductos">Productos publicados: 0</p>
+      </div>
+
+      <button class="logout-btn" onclick="cerrarSesion()">
+        Cerrar sesión
+      </button>
+
     </div>
   </section>
 
   <div id="footer"></div>
 
   <script src="components.js"></script>
+
   <script>
     function cerrarSesion() {
       window.location.href = "login.html";
     }
+
+    // Mostrar cantidad de productos publicados
+    function contarProductos(){
+      let productos = JSON.parse(localStorage.getItem("misProductos")) || [];
+      document.getElementById("totalProductos").innerText =
+        "Productos publicados: " + productos.length;
+    }
+
+    contarProductos();
   </script>
+
 </body>
+
 </html>

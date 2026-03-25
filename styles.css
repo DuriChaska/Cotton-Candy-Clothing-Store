@@ -844,3 +844,72 @@ footer .bottom-text, footer .footer-bottom-text {
   .promo-card  { width: 100%; max-width: 340px; }
   .coupon-box  { width: 100%; max-width: 360px; }
 }
+
+/* Botón principal */
+.btn-pro {
+  background: linear-gradient(135deg, #e75480, #b3488f);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  transition: all .3s;
+  box-shadow: 0 5px 15px rgba(231,84,128,.3);
+}
+
+.btn-pro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(231,84,128,.4);
+}
+
+/* Botón secundario */
+.btn-outline {
+  border: 2px solid var(--pink-medio);
+  color: var(--pink-medio);
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  background: transparent;
+  transition: all .3s;
+}
+
+.btn-outline:hover {
+  background: var(--pink-medio);
+  color: white;
+}
+
+/* Separación botones perfil */
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Botones editar/eliminar más bonitos */
+.btn-editar {
+  background: #f5d35e;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.btn-editar:hover {
+  background: #e2c34a;
+  transform: scale(1.05);
+}
+
+.btn-eliminar {
+  background: #e63946;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.btn-eliminar:hover {
+  background: #c1121f;
+  transform: scale(1.05);
+}
