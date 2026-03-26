@@ -132,6 +132,9 @@
   <script>
     let tiempoRestante = 600;
 
+    // 🔥 Arreglo con ofertas existentes
+    let ofertasRealizadas = [200, 220, 250];
+
     window.onload = function () {
       const nombre = localStorage.getItem("nombreSubasta");
       const precio = localStorage.getItem("precioSubasta");
@@ -191,14 +194,26 @@
       const precioTexto = precioActualElemento.textContent.replace("$", "").replace(" MXN", "").trim();
       const precioActual = parseFloat(precioTexto);
 
+      // Validar si es mayor al precio actual
       if (!valor || valor <= precioActual) {
         alert("Ingresa una oferta mayor al precio actual.");
         return;
       }
 
+      // 🚫 Validar duplicados
+      if (ofertasRealizadas.includes(valor)) {
+        alert("Esa cantidad ya fue ofertada. Ingresa un valor diferente.");
+        return;
+      }
+
+      // Guardar oferta
+      ofertasRealizadas.push(valor);
+
+      // Actualizar precio
       precioActualElemento.textContent = "$" + valor + " MXN";
       mensaje.textContent = "Oferta registrada correctamente";
 
+      // Agregar a la lista
       const nuevaOferta = document.createElement("div");
       nuevaOferta.classList.add("offer-item");
       nuevaOferta.textContent = "Tú: $" + valor;
