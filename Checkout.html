@@ -5,6 +5,244 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cotton Candy Clothing Store - Checkout</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hidden { display: none !important; }
+
+    .checkout-container {
+      display: flex;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-family: sans-serif;
+      align-items: flex-start;
+    }
+
+    .form-column { flex: 2; }
+    .summary-column { flex: 1; position: sticky; top: 20px; }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .continue-btn {
+      background-color: #b34a8e;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .continue-btn:hover { background-color: #96387a; }
+
+    .back-link {
+      text-decoration: none;
+      color: #666;
+      font-size: 14px;
+      line-height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* --- Resumen del pedido --- */
+    .summary-box {
+      background-color: #b34a8e;
+      color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-box h3 {
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+      margin: 0 0 16px;
+      font-size: 16px;
+    }
+    .order-products { list-style: none; padding: 0; margin: 0 0 16px; }
+    .order-products li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+      gap: 8px;
+    }
+    .order-products li .item-name { flex: 1; }
+    .order-products li .item-qty {
+      font-size: 12px;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+    .order-totals div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .order-total-final {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3em;
+      margin-top: 12px;
+      border-top: 1px solid white;
+      padding-top: 10px;
+      font-weight: bold;
+    }
+    .empty-cart-msg {
+      background: #f8d7ea;
+      color: #7a1a50;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    /* --- Métodos de pago --- */
+    .payment-methods { display: flex; flex-direction: column; gap: 12px; }
+
+    .payment-option {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .payment-option.active { border-color: #b34a8e; }
+
+    .payment-option-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      cursor: pointer;
+      background: #fdfdfd;
+    }
+    .payment-option-header input[type="radio"] { accent-color: #b34a8e; }
+    .payment-option-header .method-label {
+      font-weight: bold;
+      font-size: 15px;
+      flex: 1;
+    }
+    .payment-option-header img { height: 32px; object-fit: contain; }
+
+    .payment-option-body {
+      padding: 0 16px 16px;
+      background: #fdfdfd;
+      border-top: 1px solid #eee;
+    }
+    .payment-option-body.hidden { display: none; }
+
+    /* Tarjeta */
+    .card-row { display: flex; gap: 10px; }
+
+    .card-icons { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
+    .card-icons img { height: 24px; }
+
+    /* PayPal */
+    .btn-paypal {
+      background: #003087;
+      color: white;
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    /* OXXO/SPEI */
+    .transfer-info {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.7;
+    }
+    .transfer-info strong { color: #b34a8e; }
+    .transfer-tabs { display: flex; gap: 0; margin-bottom: 12px; }
+    .transfer-tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid #ddd;
+      background: #f0f0f0;
+      color: #666;
+    }
+    .transfer-tab:first-child { border-radius: 6px 0 0 6px; }
+    .transfer-tab:last-child { border-radius: 0 6px 6px 0; }
+    .transfer-tab.active { background: #b34a8e; color: white; border-color: #b34a8e; }
+
+    /* Navegación del checkout */
+    .checkout-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { padding: 20px; max-width: 1200px; margin: auto; font-size: 14px; }
+    .breadcrumb a { color: #b34a8e; text-decoration: none; }
+
+    /* Confirmación */
+    .confirm-box {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .confirm-icon {
+      width: 70px;
+      height: 70px;
+      background: #b34a8e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 36px;
+      color: white;
+    }
+    .confirm-box h2 { color: #b34a8e; margin-bottom: 10px; }
+    .confirm-box p { color: #555; font-size: 15px; }
+    .btn-home {
+      background: #b34a8e;
+      color: white;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+  </style>
 </head>
 <body>
 
@@ -12,73 +250,162 @@
 
   <section class="checkout-section">
     <nav class="breadcrumb">
-      <a href="carrito.html">Carrito</a> / <a href="#">Envío</a> / <a href="#">Pago</a>
+      <a href="carrito.html">Carrito</a> / <span id="step-title" style="font-weight: bold;">Envío</span>
     </nav>
 
-    <div class="checkout-form">
+    <div class="checkout-container">
 
-      <!-- Datos de facturación -->
-      <div class="billing-details">
-        <h2>Datos de Facturación</h2>
-        <div class="input-group">
-          <input type="text" placeholder="Primer Nombre *" />
-          <input type="text" placeholder="Apellido" />
-        </div>
-        <select>
-          <option>País</option>
-        </select>
-        <input type="text" placeholder="Calle *" />
-        <div class="input-group">
-          <input type="text" placeholder="Ciudad *" />
-          <select>
-            <option>Estado *</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <input type="text" placeholder="Código Postal *" />
-          <input type="text" placeholder="Celular *" />
-        </div>
-        <input type="email" placeholder="Email" />
-        <textarea placeholder="Referencias"></textarea>
+      <div class="form-column">
 
-        <div class="checkout-navigation">
-          <a href="carrito.html" class="back-to-cart">← REGRESAR AL CARRITO</a>
-          <button class="continue-payment">CONTINUAR A PAGAR →</button>
+        <!-- ===================== PASO 1: ENVÍO ===================== -->
+        <div id="step-shipping">
+          <h2>Dirección de Envío</h2>
+
+          <div class="input-group">
+            <input type="text" id="fname" placeholder="Primer Nombre *" />
+            <input type="text" id="lname" placeholder="Apellido" />
+          </div>
+          <input type="text" id="country" placeholder="País *" />
+          <input type="text" id="street" placeholder="Calle *" />
+          <div class="input-group">
+            <input type="text" id="city" placeholder="Ciudad *" />
+            <input type="text" id="state" placeholder="Estado *" />
+          </div>
+          <div class="input-group">
+            <input type="text" id="zip" placeholder="Código Postal *" />
+            <input type="tel" id="phone" placeholder="Celular *" />
+          </div>
+          <input type="email" id="email" placeholder="Email" />
+          <textarea id="notes" placeholder="Referencias" rows="3"></textarea>
+
+          <div class="checkout-nav">
+            <a href="carrito.html" class="back-link">← REGRESAR AL CARRITO</a>
+            <button class="continue-btn" onclick="validateAndShowPayment()">CONTINUAR A PAGAR →</button>
+          </div>
         </div>
+
+        <!-- ===================== PASO 2: PAGO ===================== -->
+        <div id="step-payment" class="hidden">
+          <h2>Método de Pago</h2>
+          <p style="font-size:14px; color:#666; margin-bottom:16px;">Selecciona cómo prefieres pagar:</p>
+
+          <div class="payment-methods">
+
+            <!-- PayPal -->
+            <div class="payment-option active" id="opt-paypal">
+              <div class="payment-option-header" onclick="selectMethod('paypal')">
+                <input type="radio" name="pay-method" value="paypal" checked />
+                <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" />
+                <span class="method-label">PayPal</span>
+              </div>
+              <div class="payment-option-body" id="body-paypal">
+                <p style="font-size:13px; color:#555; margin:12px 0 8px;">Serás redirigido a PayPal para completar tu pago de forma segura.</p>
+                <input type="email" placeholder="Correo de PayPal o número de celular" />
+                <button class="btn-paypal" onclick="simulateOrder()">PAGAR CON PAYPAL</button>
+              </div>
+            </div>
+
+            <!-- Tarjeta -->
+            <div class="payment-option" id="opt-card">
+              <div class="payment-option-header" onclick="selectMethod('card')">
+                <input type="radio" name="pay-method" value="card" />
+                <div class="card-icons">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
+                </div>
+                <span class="method-label">Tarjeta de crédito / débito</span>
+              </div>
+              <div class="payment-option-body hidden" id="body-card">
+                <p style="font-size:12px; color:#888; margin:12px 0 8px;">Todos los pagos son seguros y encriptados.</p>
+                <input type="text" placeholder="Número de tarjeta *" maxlength="19" id="card-num" oninput="formatCard(this)" />
+                <input type="text" placeholder="Titular de la tarjeta *" />
+                <div class="card-row">
+                  <input type="text" placeholder="MM/AA *" maxlength="5" oninput="formatExpiry(this)" />
+                  <input type="text" placeholder="CVV *" maxlength="4" />
+                </div>
+                <button class="continue-btn" style="width:100%; float:none; margin-top:4px;" onclick="simulateOrder()">PAGAR AHORA</button>
+              </div>
+            </div>
+
+            <!-- Transferencia / OXXO / SPEI -->
+            <div class="payment-option" id="opt-transfer">
+              <div class="payment-option-header" onclick="selectMethod('transfer')">
+                <input type="radio" name="pay-method" value="transfer" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Oxxo_Logo.svg/320px-Oxxo_Logo.svg.png" alt="OXXO" style="height:22px;" />
+                <span class="method-label">OXXO / SPEI</span>
+              </div>
+              <div class="payment-option-body hidden" id="body-transfer">
+                <div class="transfer-tabs">
+                  <div class="transfer-tab active" id="tab-oxxo" onclick="switchTransfer('oxxo')">OXXO</div>
+                  <div class="transfer-tab" id="tab-spei" onclick="switchTransfer('spei')">SPEI</div>
+                </div>
+                <!-- OXXO -->
+                <div id="info-oxxo" class="transfer-info">
+                  <p>Paga en efectivo en cualquier tienda OXXO con la siguiente referencia:</p>
+                  <p style="font-size:18px; letter-spacing:3px; font-weight:bold; color:#b34a8e; text-align:center; margin:10px 0;">
+                    6394 8521 7043 2210
+                  </p>
+                  <p>📌 <strong>Monto exacto:</strong> <span id="oxxo-total">$0.00</span></p>
+                  <p>⏰ <strong>Vigencia:</strong> 72 horas</p>
+                  <p style="font-size:12px; color:#888; margin-top:8px;">Lleva esta referencia a la caja y pide pagar un servicio OXXO Pay.</p>
+                  <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">CONFIRMAR PEDIDO</button>
+                </div>
+                <!-- SPEI -->
+                <div id="info-spei" class="transfer-info hidden">
+                  <p>Realiza tu transferencia SPEI con los siguientes datos:</p>
+                  <table style="width:100%; font-size:13px; margin-top:8px;">
+                    <tr><td style="padding:4px 0; color:#888;">Banco:</td><td><strong>STP</strong></td></tr>
+                    <tr><td style="padding:4px 0; color:#888;">CLABE:</td><td><strong>646180157041234567</strong></td></tr>
+                    <tr><td style="padding:4px 0; color:#888;">Beneficiario:</td><td><strong>Cotton Candy Store</strong></td></tr>
+                    <tr><td style="padding:4px 0; color:#888;">Concepto:</td><td><strong id="spei-order">CC-00001</strong></td></tr>
+                    <tr><td style="padding:4px 0; color:#888;">Monto:</td><td><strong id="spei-total">$0.00</strong></td></tr>
+                  </table>
+                  <p style="font-size:12px; color:#888; margin-top:10px;">⚠️ El pedido se procesa al confirmar el pago (1-2 horas hábiles).</p>
+                  <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">YA TRANSFERÍ</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="checkout-nav" style="margin-top:20px;">
+            <button class="back-link" onclick="showShipping()">← Volver a dirección de envío</button>
+          </div>
+        </div>
+
+        <!-- ===================== PASO 3: CONFIRMACIÓN ===================== -->
+        <div id="step-confirm" class="hidden">
+          <div class="confirm-box">
+            <div class="confirm-icon">✓</div>
+            <h2>¡Pedido realizado!</h2>
+            <p>Gracias por tu compra. Recibirás un correo de confirmación pronto.</p>
+            <p style="color:#b34a8e; font-weight:bold; margin-top:10px;" id="confirm-order-num"></p>
+            <button class="btn-home" onclick="window.location.href='index.html'">SEGUIR COMPRANDO</button>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Resumen del pedido -->
-      <aside class="payment-summary">
-        <h3>Producto</h3>
-        <ul class="order-products">
-          <li>
-            <span>Playera con estampado antiguo</span>
-            <span>$400.00</span>
-          </li>
-          <li>
-            <span>Playera estampada Travis Scott</span>
-            <span>$399.00</span>
-          </li>
-          <li>
-            <span>Playera con estampado de astronauta</span>
-            <span>$400.00</span>
-          </li>
-        </ul>
-        <div class="order-totals">
-          <div><strong>Subtotal</strong><span>$1199.00</span></div>
-          <div><strong>Envío</strong><span>$120.00</span></div>
-          <div class="total"><strong>Total</strong><span>$1319.00</span></div>
-        </div>
+      <!-- ===================== RESUMEN ===================== -->
+      <aside class="summary-column">
+        <div class="summary-box">
+          <h3>Tu Pedido</h3>
 
-        <div class="payment-method">
-          <h3>Pagar</h3>
-          <label>
-            <input type="radio" name="payment" checked />
-            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" class="paypal-logo" />
-            PayPal
-          </label>
-          <input type="email" placeholder="Ingrese su correo electrónico o número de celular" />
-          <button type="button">SIGUIENTE</button>
+          <div id="cart-empty-msg" class="empty-cart-msg hidden">
+            Tu carrito está vacío. <a href="shop.html" style="color:#7a1a50; font-weight:bold;">Ver catálogo</a>
+          </div>
+
+          <ul class="order-products" id="order-products"></ul>
+
+          <hr style="border:0; border-top:1px solid rgba(255,255,255,0.3); margin-bottom:12px;">
+
+          <div class="order-totals" id="order-totals">
+            <div><strong>Subtotal</strong><span id="summary-subtotal">$0.00</span></div>
+            <div><strong>Envío</strong><span>$120.00</span></div>
+          </div>
+          <div class="order-total-final">
+            <span>Total</span><span id="summary-total">$0.00</span>
+          </div>
         </div>
       </aside>
 
@@ -88,5 +415,155 @@
   <div id="footer"></div>
 
   <script src="components.js"></script>
+  <script>
+    const ENVIO = 120;
+
+    /* ---- Leer carrito ---- */
+    function obtenerCarrito() {
+      return JSON.parse(localStorage.getItem("carrito") || "[]");
+    }
+
+    /* ---- Renderizar resumen lateral ---- */
+    function renderSummary() {
+      const carrito = obtenerCarrito();
+      const ul = document.getElementById("order-products");
+      ul.innerHTML = "";
+
+      if (carrito.length === 0) {
+        document.getElementById("cart-empty-msg").classList.remove("hidden");
+        document.getElementById("order-totals").style.visibility = "hidden";
+        document.querySelector(".order-total-final").style.visibility = "hidden";
+        return;
+      }
+
+      let subtotal = 0;
+      carrito.forEach(item => {
+        const itemSub = item.precio * item.cantidad;
+        subtotal += itemSub;
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span class="item-name">${item.nombre}</span>
+          <span class="item-qty">x${item.cantidad}</span>
+          <span>$${itemSub.toFixed(2)}</span>
+        `;
+        ul.appendChild(li);
+      });
+
+      const total = subtotal + ENVIO;
+      document.getElementById("summary-subtotal").textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById("summary-total").textContent = `$${total.toFixed(2)}`;
+
+      // Actualizar montos en OXXO y SPEI
+      document.getElementById("oxxo-total").textContent = `$${total.toFixed(2)}`;
+      document.getElementById("spei-total").textContent = `$${total.toFixed(2)}`;
+    }
+
+    /* ---- Validar y avanzar a pago ---- */
+    function validateAndShowPayment() {
+      const required = ['fname', 'country', 'street', 'city', 'state', 'zip', 'phone'];
+      let valid = true;
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = "#e05";
+          valid = false;
+        } else {
+          el.style.borderColor = "#ccc";
+        }
+      });
+      if (!valid) {
+        alert("Por favor, completa los campos obligatorios marcados.");
+        return;
+      }
+      const carrito = obtenerCarrito();
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        window.location.href = "shop.html";
+        return;
+      }
+      showPayment();
+    }
+
+    function showPayment() {
+      document.getElementById('step-shipping').classList.add('hidden');
+      document.getElementById('step-payment').classList.remove('hidden');
+      document.getElementById('step-confirm').classList.add('hidden');
+      document.getElementById('step-title').innerText = "Pago";
+      window.scrollTo(0, 0);
+    }
+
+    function showShipping() {
+      document.getElementById('step-payment').classList.add('hidden');
+      document.getElementById('step-shipping').classList.remove('hidden');
+      document.getElementById('step-confirm').classList.add('hidden');
+      document.getElementById('step-title').innerText = "Envío";
+      window.scrollTo(0, 0);
+    }
+
+    /* ---- Seleccionar método de pago ---- */
+    function selectMethod(method) {
+      const methods = ['paypal', 'card', 'transfer'];
+      methods.forEach(m => {
+        const opt = document.getElementById(`opt-${m}`);
+        const body = document.getElementById(`body-${m}`);
+        const radio = opt.querySelector('input[type="radio"]');
+        if (m === method) {
+          opt.classList.add('active');
+          body.classList.remove('hidden');
+          radio.checked = true;
+        } else {
+          opt.classList.remove('active');
+          body.classList.add('hidden');
+          radio.checked = false;
+        }
+      });
+    }
+
+    /* ---- Tabs OXXO / SPEI ---- */
+    function switchTransfer(type) {
+      const tabs = ['oxxo', 'spei'];
+      tabs.forEach(t => {
+        document.getElementById(`tab-${t}`).classList.toggle('active', t === type);
+        document.getElementById(`info-${t}`).classList.toggle('hidden', t !== type);
+      });
+    }
+
+    /* ---- Formateo tarjeta ---- */
+    function formatCard(input) {
+      let v = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = v.replace(/(.{4})/g, '$1 ').trim();
+    }
+    function formatExpiry(input) {
+      let v = input.value.replace(/\D/g, '').substring(0, 4);
+      if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
+      input.value = v;
+    }
+
+    /* ---- Simular orden ---- */
+    function simulateOrder() {
+      const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
+      // Limpiar carrito
+      localStorage.removeItem("carrito");
+      // Mostrar confirmación
+      document.getElementById('step-payment').classList.add('hidden');
+      document.getElementById('step-shipping').classList.add('hidden');
+      document.getElementById('step-confirm').classList.remove('hidden');
+      document.getElementById('step-title').innerText = "Confirmación";
+      document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
+      window.scrollTo(0, 0);
+    }
+
+    /* ---- Número de orden SPEI ---- */
+    function generateOrderRef() {
+      const ref = 'CC-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('spei-order').textContent = ref;
+    }
+
+    window.onload = function() {
+      renderSummary();
+      generateOrderRef();
+    };
+  </script>
+
 </body>
 </html>
