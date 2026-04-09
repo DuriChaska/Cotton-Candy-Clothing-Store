@@ -53,6 +53,7 @@
       font-weight: bold;
       font-size: 14px;
     }
+
     .continue-btn:hover { background-color: #96387a; }
 
     .back-link {
@@ -65,7 +66,6 @@
       cursor: pointer;
     }
 
-    /* --- Resumen del pedido --- */
     .summary-box {
       background-color: #b34a8e;
       color: white;
@@ -73,13 +73,20 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     .summary-box h3 {
       border-bottom: 1px solid rgba(255,255,255,0.3);
       padding-bottom: 10px;
       margin: 0 0 16px;
       font-size: 16px;
     }
-    .order-products { list-style: none; padding: 0; margin: 0 0 16px; }
+
+    .order-products {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+    }
+
     .order-products li {
       display: flex;
       justify-content: space-between;
@@ -88,18 +95,22 @@
       font-size: 14px;
       gap: 8px;
     }
+
     .order-products li .item-name { flex: 1; }
+
     .order-products li .item-qty {
       font-size: 12px;
       opacity: 0.8;
       white-space: nowrap;
     }
+
     .order-totals div {
       display: flex;
       justify-content: space-between;
       margin-bottom: 8px;
       font-size: 14px;
     }
+
     .order-total-final {
       display: flex;
       justify-content: space-between;
@@ -109,6 +120,7 @@
       padding-top: 10px;
       font-weight: bold;
     }
+
     .empty-cart-msg {
       background: #f8d7ea;
       color: #7a1a50;
@@ -119,8 +131,11 @@
       margin-bottom: 16px;
     }
 
-    /* --- Métodos de pago --- */
-    .payment-methods { display: flex; flex-direction: column; gap: 12px; }
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
     .payment-option {
       border: 2px solid #ddd;
@@ -128,6 +143,7 @@
       overflow: hidden;
       transition: border-color 0.2s;
     }
+
     .payment-option.active { border-color: #b34a8e; }
 
     .payment-option-header {
@@ -138,28 +154,42 @@
       cursor: pointer;
       background: #fdfdfd;
     }
+
     .payment-option-header input[type="radio"] { accent-color: #b34a8e; }
+
     .payment-option-header .method-label {
       font-weight: bold;
       font-size: 15px;
       flex: 1;
     }
-    .payment-option-header img { height: 32px; object-fit: contain; }
+
+    .payment-option-header img {
+      height: 32px;
+      object-fit: contain;
+    }
 
     .payment-option-body {
       padding: 0 16px 16px;
       background: #fdfdfd;
       border-top: 1px solid #eee;
     }
+
     .payment-option-body.hidden { display: none; }
 
-    /* Tarjeta */
-    .card-row { display: flex; gap: 10px; }
+    .card-row {
+      display: flex;
+      gap: 10px;
+    }
 
-    .card-icons { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
+    .card-icons {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
     .card-icons img { height: 24px; }
 
-    /* PayPal */
     .btn-paypal {
       background: #003087;
       color: white;
@@ -173,7 +203,6 @@
       font-size: 14px;
     }
 
-    /* OXXO/SPEI */
     .transfer-info {
       background: #f5f5f5;
       border-radius: 8px;
@@ -182,8 +211,15 @@
       color: #333;
       line-height: 1.7;
     }
+
     .transfer-info strong { color: #b34a8e; }
-    .transfer-tabs { display: flex; gap: 0; margin-bottom: 12px; }
+
+    .transfer-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 12px;
+    }
+
     .transfer-tab {
       flex: 1;
       padding: 10px;
@@ -195,11 +231,16 @@
       background: #f0f0f0;
       color: #666;
     }
+
     .transfer-tab:first-child { border-radius: 6px 0 0 6px; }
     .transfer-tab:last-child { border-radius: 0 6px 6px 0; }
-    .transfer-tab.active { background: #b34a8e; color: white; border-color: #b34a8e; }
 
-    /* Navegación del checkout */
+    .transfer-tab.active {
+      background: #b34a8e;
+      color: white;
+      border-color: #b34a8e;
+    }
+
     .checkout-nav {
       display: flex;
       justify-content: space-between;
@@ -208,15 +249,23 @@
       overflow: hidden;
     }
 
-    /* Breadcrumb */
-    .breadcrumb { padding: 20px; max-width: 1200px; margin: auto; font-size: 14px; }
-    .breadcrumb a { color: #b34a8e; text-decoration: none; }
+    .breadcrumb {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      font-size: 14px;
+    }
 
-    /* Confirmación */
+    .breadcrumb a {
+      color: #b34a8e;
+      text-decoration: none;
+    }
+
     .confirm-box {
       text-align: center;
       padding: 40px 20px;
     }
+
     .confirm-icon {
       width: 70px;
       height: 70px;
@@ -229,8 +278,17 @@
       font-size: 36px;
       color: white;
     }
-    .confirm-box h2 { color: #b34a8e; margin-bottom: 10px; }
-    .confirm-box p { color: #555; font-size: 15px; }
+
+    .confirm-box h2 {
+      color: #b34a8e;
+      margin-bottom: 10px;
+    }
+
+    .confirm-box p {
+      color: #555;
+      font-size: 15px;
+    }
+
     .btn-home {
       background: #b34a8e;
       color: white;
@@ -241,6 +299,48 @@
       font-weight: bold;
       margin-top: 20px;
       font-size: 15px;
+    }
+
+    .confirm-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .confirm-actions .btn-home {
+      margin-top: 0;
+    }
+
+    @media (max-width: 900px) {
+      .checkout-container {
+        flex-direction: column;
+      }
+
+      .summary-column {
+        position: static;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .input-group,
+      .card-row,
+      .checkout-nav {
+        flex-direction: column;
+      }
+
+      .continue-btn,
+      .back-link,
+      .btn-home {
+        width: 100%;
+        text-align: center;
+      }
+
+      .continue-btn {
+        float: none;
+      }
     }
   </style>
 </head>
@@ -257,7 +357,7 @@
 
       <div class="form-column">
 
-        <!-- ===================== PASO 1: ENVÍO ===================== -->
+        <!-- PASO 1 -->
         <div id="step-shipping">
           <h2>Dirección de Envío</h2>
 
@@ -265,16 +365,20 @@
             <input type="text" id="fname" placeholder="Primer Nombre *" />
             <input type="text" id="lname" placeholder="Apellido" />
           </div>
+
           <input type="text" id="country" placeholder="País *" />
           <input type="text" id="street" placeholder="Calle *" />
+
           <div class="input-group">
             <input type="text" id="city" placeholder="Ciudad *" />
             <input type="text" id="state" placeholder="Estado *" />
           </div>
+
           <div class="input-group">
             <input type="text" id="zip" placeholder="Código Postal *" />
             <input type="tel" id="phone" placeholder="Celular *" />
           </div>
+
           <input type="email" id="email" placeholder="Email" />
           <textarea id="notes" placeholder="Referencias" rows="3"></textarea>
 
@@ -284,14 +388,13 @@
           </div>
         </div>
 
-        <!-- ===================== PASO 2: PAGO ===================== -->
+        <!-- PASO 2 -->
         <div id="step-payment" class="hidden">
           <h2>Método de Pago</h2>
           <p style="font-size:14px; color:#666; margin-bottom:16px;">Selecciona cómo prefieres pagar:</p>
 
           <div class="payment-methods">
 
-            <!-- PayPal -->
             <div class="payment-option active" id="opt-paypal">
               <div class="payment-option-header" onclick="selectMethod('paypal')">
                 <input type="radio" name="pay-method" value="paypal" checked />
@@ -305,7 +408,6 @@
               </div>
             </div>
 
-            <!-- Tarjeta -->
             <div class="payment-option" id="opt-card">
               <div class="payment-option-header" onclick="selectMethod('card')">
                 <input type="radio" name="pay-method" value="card" />
@@ -327,7 +429,6 @@
               </div>
             </div>
 
-            <!-- Transferencia / OXXO / SPEI -->
             <div class="payment-option" id="opt-transfer">
               <div class="payment-option-header" onclick="selectMethod('transfer')">
                 <input type="radio" name="pay-method" value="transfer" />
@@ -339,18 +440,18 @@
                   <div class="transfer-tab active" id="tab-oxxo" onclick="switchTransfer('oxxo')">OXXO</div>
                   <div class="transfer-tab" id="tab-spei" onclick="switchTransfer('spei')">SPEI</div>
                 </div>
-                <!-- OXXO -->
+
                 <div id="info-oxxo" class="transfer-info">
                   <p>Paga en efectivo en cualquier tienda OXXO con la siguiente referencia:</p>
                   <p style="font-size:18px; letter-spacing:3px; font-weight:bold; color:#b34a8e; text-align:center; margin:10px 0;">
                     6394 8521 7043 2210
                   </p>
-                  <p>📌 <strong>Monto exacto:</strong> <span id="oxxo-total">$0.00</span></p>
-                  <p>⏰ <strong>Vigencia:</strong> 72 horas</p>
+                  <p><strong>Monto exacto:</strong> <span id="oxxo-total">$0.00</span></p>
+                  <p><strong>Vigencia:</strong> 72 horas</p>
                   <p style="font-size:12px; color:#888; margin-top:8px;">Lleva esta referencia a la caja y pide pagar un servicio OXXO Pay.</p>
                   <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">CONFIRMAR PEDIDO</button>
                 </div>
-                <!-- SPEI -->
+
                 <div id="info-spei" class="transfer-info hidden">
                   <p>Realiza tu transferencia SPEI con los siguientes datos:</p>
                   <table style="width:100%; font-size:13px; margin-top:8px;">
@@ -360,7 +461,7 @@
                     <tr><td style="padding:4px 0; color:#888;">Concepto:</td><td><strong id="spei-order">CC-00001</strong></td></tr>
                     <tr><td style="padding:4px 0; color:#888;">Monto:</td><td><strong id="spei-total">$0.00</strong></td></tr>
                   </table>
-                  <p style="font-size:12px; color:#888; margin-top:10px;">⚠️ El pedido se procesa al confirmar el pago (1-2 horas hábiles).</p>
+                  <p style="font-size:12px; color:#888; margin-top:10px;">El pedido se procesa al confirmar el pago.</p>
                   <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">YA TRANSFERÍ</button>
                 </div>
               </div>
@@ -373,20 +474,23 @@
           </div>
         </div>
 
-        <!-- ===================== PASO 3: CONFIRMACIÓN ===================== -->
+        <!-- PASO 3 -->
         <div id="step-confirm" class="hidden">
           <div class="confirm-box">
             <div class="confirm-icon">✓</div>
             <h2>¡Pedido realizado!</h2>
             <p>Gracias por tu compra. Recibirás un correo de confirmación pronto.</p>
             <p style="color:#b34a8e; font-weight:bold; margin-top:10px;" id="confirm-order-num"></p>
-            <button class="btn-home" onclick="window.location.href='index.html'">SEGUIR COMPRANDO</button>
+
+            <div class="confirm-actions">
+              <button class="btn-home" onclick="window.location.href='factura.html'">FACTURA</button>
+              <button class="btn-home" onclick="window.location.href='index.html'">SEGUIR COMPRANDO</button>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- ===================== RESUMEN ===================== -->
       <aside class="summary-column">
         <div class="summary-box">
           <h3>Tu Pedido</h3>
@@ -403,6 +507,7 @@
             <div><strong>Subtotal</strong><span id="summary-subtotal">$0.00</span></div>
             <div><strong>Envío</strong><span>$120.00</span></div>
           </div>
+
           <div class="order-total-final">
             <span>Total</span><span id="summary-total">$0.00</span>
           </div>
@@ -418,12 +523,14 @@
   <script>
     const ENVIO = 120;
 
-    /* ---- Leer carrito ---- */
     function obtenerCarrito() {
       return JSON.parse(localStorage.getItem("carrito") || "[]");
     }
 
-    /* ---- Renderizar resumen lateral ---- */
+    function formatearMoneda(valor) {
+      return `$${Number(valor).toFixed(2)}`;
+    }
+
     function renderSummary() {
       const carrito = obtenerCarrito();
       const ul = document.getElementById("order-products");
@@ -437,31 +544,32 @@
       }
 
       let subtotal = 0;
+
       carrito.forEach(item => {
-        const itemSub = item.precio * item.cantidad;
+        const itemSub = Number(item.precio) * Number(item.cantidad);
         subtotal += itemSub;
+
         const li = document.createElement("li");
         li.innerHTML = `
           <span class="item-name">${item.nombre}</span>
           <span class="item-qty">x${item.cantidad}</span>
-          <span>$${itemSub.toFixed(2)}</span>
+          <span>${formatearMoneda(itemSub)}</span>
         `;
         ul.appendChild(li);
       });
 
       const total = subtotal + ENVIO;
-      document.getElementById("summary-subtotal").textContent = `$${subtotal.toFixed(2)}`;
-      document.getElementById("summary-total").textContent = `$${total.toFixed(2)}`;
 
-      // Actualizar montos en OXXO y SPEI
-      document.getElementById("oxxo-total").textContent = `$${total.toFixed(2)}`;
-      document.getElementById("spei-total").textContent = `$${total.toFixed(2)}`;
+      document.getElementById("summary-subtotal").textContent = formatearMoneda(subtotal);
+      document.getElementById("summary-total").textContent = formatearMoneda(total);
+      document.getElementById("oxxo-total").textContent = formatearMoneda(total);
+      document.getElementById("spei-total").textContent = formatearMoneda(total);
     }
 
-    /* ---- Validar y avanzar a pago ---- */
     function validateAndShowPayment() {
       const required = ['fname', 'country', 'street', 'city', 'state', 'zip', 'phone'];
       let valid = true;
+
       required.forEach(id => {
         const el = document.getElementById(id);
         if (!el.value.trim()) {
@@ -471,16 +579,19 @@
           el.style.borderColor = "#ccc";
         }
       });
+
       if (!valid) {
         alert("Por favor, completa los campos obligatorios marcados.");
         return;
       }
+
       const carrito = obtenerCarrito();
       if (carrito.length === 0) {
         alert("Tu carrito está vacío.");
         window.location.href = "shop.html";
         return;
       }
+
       showPayment();
     }
 
@@ -500,13 +611,14 @@
       window.scrollTo(0, 0);
     }
 
-    /* ---- Seleccionar método de pago ---- */
     function selectMethod(method) {
       const methods = ['paypal', 'card', 'transfer'];
+
       methods.forEach(m => {
         const opt = document.getElementById(`opt-${m}`);
         const body = document.getElementById(`body-${m}`);
         const radio = opt.querySelector('input[type="radio"]');
+
         if (m === method) {
           opt.classList.add('active');
           body.classList.remove('hidden');
@@ -519,44 +631,65 @@
       });
     }
 
-    /* ---- Tabs OXXO / SPEI ---- */
     function switchTransfer(type) {
       const tabs = ['oxxo', 'spei'];
+
       tabs.forEach(t => {
         document.getElementById(`tab-${t}`).classList.toggle('active', t === type);
         document.getElementById(`info-${t}`).classList.toggle('hidden', t !== type);
       });
     }
 
-    /* ---- Formateo tarjeta ---- */
     function formatCard(input) {
       let v = input.value.replace(/\D/g, '').substring(0, 16);
       input.value = v.replace(/(.{4})/g, '$1 ').trim();
     }
+
     function formatExpiry(input) {
       let v = input.value.replace(/\D/g, '').substring(0, 4);
-      if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
+      if (v.length >= 2) {
+        v = v.substring(0, 2) + '/' + v.substring(2);
+      }
       input.value = v;
     }
 
-    /* ---- Simular orden ---- */
+    function generateOrderRef() {
+      const ref = 'CC-' + Math.floor(10000 + Math.random() * 90000);
+      document.getElementById('spei-order').textContent = ref;
+    }
+
     function simulateOrder() {
       const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-      // Limpiar carrito
+      const facturaNum = 'FAC-' + Math.floor(10000 + Math.random() * 90000);
+      const carrito = obtenerCarrito();
+
+      let subtotal = 0;
+      carrito.forEach(item => {
+        subtotal += Number(item.precio) * Number(item.cantidad);
+      });
+
+      const total = subtotal + ENVIO;
+
+      const compraRealizada = {
+        pedido: orderNum,
+        factura: facturaNum,
+        fecha: new Date().toLocaleDateString('es-MX'),
+        cliente: document.getElementById("fname").value.trim() || "Cliente General",
+        productos: carrito,
+        subtotal: subtotal,
+        envio: ENVIO,
+        total: total
+      };
+
+      localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
       localStorage.removeItem("carrito");
-      // Mostrar confirmación
+
       document.getElementById('step-payment').classList.add('hidden');
       document.getElementById('step-shipping').classList.add('hidden');
       document.getElementById('step-confirm').classList.remove('hidden');
       document.getElementById('step-title').innerText = "Confirmación";
       document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
       window.scrollTo(0, 0);
-    }
-
-    /* ---- Número de orden SPEI ---- */
-    function generateOrderRef() {
-      const ref = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-      document.getElementById('spei-order').textContent = ref;
     }
 
     window.onload = function() {
