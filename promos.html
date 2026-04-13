@@ -63,15 +63,40 @@
   <script src="components.js"></script>
   <script>
     const codigos = {
-      "CUTECANDY50": "Cupón aplicado: 50% de descuento.",
-      "CUTECANDY10": "Cupón aplicado: 10% de descuento en tu tercera prenda.",
-      "CUTENVIO1":   "Cupón aplicado: envío gratis."
+      "CUTECANDY50": {
+        codigo: "CUTECANDY50",
+        tipo: "porcentaje",
+        valor: 50
+      },
+      "CUTECANDY10": {
+        codigo: "CUTECANDY10",
+        tipo: "tercera_prenda",
+        valor: 10
+      },
+      "CUTENVIO1": {
+        codigo: "CUTENVIO1",
+        tipo: "envio_gratis",
+        valor: 0
+      }
     };
 
     function aplicarCodigo() {
       const codigo = document.getElementById("codigoPromo").value.trim().toUpperCase();
-      if (!codigo) { alert("Ingresa un código."); return; }
-      alert(codigos[codigo] || "Código inválido.");
+
+      if (!codigo) {
+        alert("Ingresa un código.");
+        return;
+      }
+
+      const cupon = codigos[codigo];
+
+      if (!cupon) {
+        alert("Código inválido.");
+        return;
+      }
+
+      localStorage.setItem("cuponAplicado", JSON.stringify(cupon));
+      alert("Cupón aplicado correctamente.");
     }
   </script>
 </body>

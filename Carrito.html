@@ -39,12 +39,14 @@
 
     <div class="cart-actions" id="cart-actions" style="display:none;">
       <input type="text" placeholder="Código de descuento" id="coupon-code" />
-      <button class="apply-coupon">Aplicar Cupón</button>
+      <button class="apply-coupon" onclick="aplicarCuponDesdeCarrito()">Aplicar Cupón</button>
       <button class="update-cart" onclick="renderCart()">Actualizar Carrito</button>
     </div>
 
     <div class="cart-totals" id="cart-totals" style="display:none;">
       <p>Subtotal: <span id="subtotal">$0.00</span></p>
+      <p id="discount-line" style="display:none;">Descuento: <span id="discount">-$0.00</span></p>
+      <p id="coupon-line" style="display:none;"><span id="coupon-message"></span></p>
       <p><strong>Total: <span id="total">$0.00</span></strong></p>
       <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceder a pagar</button>
     </div>
@@ -54,6 +56,24 @@
 
   <script src="components.js"></script>
   <script>
+    const codigosDisponibles = {
+      "CUTECANDY50": {
+        codigo: "CUTECANDY50",
+        tipo: "porcentaje",
+        valor: 50
+      },
+      "CUTECANDY10": {
+        codigo: "CUTECANDY10",
+        tipo: "tercera_prenda",
+        valor: 10
+      },
+      "CUTENVIO1": {
+        codigo: "CUTENVIO1",
+        tipo: "envio_gratis",
+        valor: 0
+      }
+    };
+
     function obtenerCarrito() {
       return JSON.parse(localStorage.getItem("carrito") || "[]");
     }
@@ -62,14 +82,102 @@
       localStorage.setItem("carrito", JSON.stringify(carrito));
     }
 
+    function obtenerCupon() {
+      return JSON.parse(localStorage.getItem("cuponAplicado") || "null");
+    }
+
+    function guardarCupon(cupon) {
+      localStorage.setItem("cuponAplicado", JSON.stringify(cupon));
+    }
+
+    function formatearMoneda(valor) {
+      return `$${Number(valor).toFixed(2)}`;
+    }
+
+    function obtenerCantidadTotal(carrito) {
+      return carrito.reduce((total, item) => total + Number(item.cantidad), 0);
+    }
+
+    function obtenerItemsUnitarios(carrito) {
+      const items = [];
+      carrito.forEach(item => {
+        for (let i = 0; i < Number(item.cantidad); i++) {
+          items.push({
+            nombre: item.nombre,
+            precio: Number(item.precio)
+          });
+        }
+      });
+      return items;
+    }
+
+    function calcularDescuento(carrito, subtotal, cupon) {
+      if (!cupon) {
+        return { descuento: 0, descripcion: "" };
+      }
+
+      let descuento = 0;
+      let descripcion = "";
+
+      switch (cupon.tipo) {
+        case "porcentaje":
+          descuento = subtotal * (Number(cupon.valor) / 100);
+          descripcion = `${cupon.codigo} aplicado (${cupon.valor}% de descuento)`;
+          break;
+
+        case "tercera_prenda":
+          const cantidadTotal = obtenerCantidadTotal(carrito);
+          if (cantidadTotal >= 3) {
+            const itemsUnitarios = obtenerItemsUnitarios(carrito);
+            const terceraPrenda = itemsUnitarios[2];
+            if (terceraPrenda) {
+              descuento = terceraPrenda.precio * (Number(cupon.valor) / 100);
+              descripcion = `${cupon.codigo} aplicado (${cupon.valor}% en la tercera prenda)`;
+            }
+          } else {
+            descripcion = `${cupon.codigo} requiere al menos 3 prendas`;
+          }
+          break;
+
+        case "envio_gratis":
+          descripcion = `${cupon.codigo} aplicado (envío gratis al pagar)`;
+          break;
+      }
+
+      return { descuento, descripcion };
+    }
+
+    function aplicarCuponDesdeCarrito() {
+      const input = document.getElementById("coupon-code");
+      const codigo = input.value.trim().toUpperCase();
+
+      if (!codigo) {
+        alert("Ingresa un código de descuento.");
+        return;
+      }
+
+      const cupon = codigosDisponibles[codigo];
+
+      if (!cupon) {
+        alert("Código inválido.");
+        return;
+      }
+
+      guardarCupon(cupon);
+      renderCart();
+      alert("Cupón aplicado correctamente.");
+    }
+
     function renderCart() {
       const carrito = obtenerCarrito();
-      const tbody   = document.getElementById("cart-items");
-      const title   = document.getElementById("cart-title");
+      const cupon = obtenerCupon();
+
+      const tbody = document.getElementById("cart-items");
+      const title = document.getElementById("cart-title");
       const emptyMsg = document.getElementById("cart-empty");
-      const table   = document.getElementById("cart-table");
+      const table = document.getElementById("cart-table");
       const actions = document.getElementById("cart-actions");
-      const totals  = document.getElementById("cart-totals");
+      const totals = document.getElementById("cart-totals");
 
       tbody.innerHTML = "";
       let subtotal = 0;
@@ -77,45 +185,66 @@
       if (carrito.length === 0) {
         title.textContent = "Carrito (0 productos)";
         emptyMsg.style.display = "block";
-        table.style.display    = "none";
-        actions.style.display  = "none";
-        totals.style.display   = "none";
+        table.style.display = "none";
+        actions.style.display = "none";
+        totals.style.display = "none";
         return;
       }
 
       emptyMsg.style.display = "none";
-      table.style.display    = "table";
-      actions.style.display  = "flex";
-      totals.style.display   = "block";
+      table.style.display = "table";
+      actions.style.display = "flex";
+      totals.style.display = "block";
 
       carrito.forEach((item, index) => {
-        const itemSubtotal = item.precio * item.cantidad;
+        const itemSubtotal = Number(item.precio) * Number(item.cantidad);
         subtotal += itemSubtotal;
 
         const row = document.createElement("tr");
         row.innerHTML = `
           <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
           <td>${item.nombre}</td>
-          <td>${item.precioFormatted || '$' + item.precio}</td>
+          <td>${item.precioFormatted || formatearMoneda(item.precio)}</td>
           <td>
             <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">−</button>
             <input type="number" value="${item.cantidad}" min="1" readonly style="width:50px; text-align:center;">
             <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
           </td>
-          <td>$${itemSubtotal.toFixed(2)}</td>
+          <td>${formatearMoneda(itemSubtotal)}</td>
           <td><button class="remove-item" onclick="eliminarItem(${index})">×</button></td>
         `;
         tbody.appendChild(row);
       });
 
-      title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? 's' : ''})`;
-      document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-      document.getElementById("total").textContent    = `$${subtotal.toFixed(2)}`;
+      const resultado = calcularDescuento(carrito, subtotal, cupon);
+      const total = Math.max(0, subtotal - resultado.descuento);
+
+      title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? "s" : ""})`;
+      document.getElementById("subtotal").textContent = formatearMoneda(subtotal);
+      document.getElementById("total").textContent = formatearMoneda(total);
+
+      const discountLine = document.getElementById("discount-line");
+      const couponLine = document.getElementById("coupon-line");
+
+      if (resultado.descuento > 0) {
+        discountLine.style.display = "block";
+        document.getElementById("discount").textContent = `-${formatearMoneda(resultado.descuento)}`;
+      } else {
+        discountLine.style.display = "none";
+      }
+
+      if (cupon) {
+        couponLine.style.display = "block";
+        document.getElementById("coupon-message").textContent = resultado.descripcion;
+        document.getElementById("coupon-code").value = cupon.codigo;
+      } else {
+        couponLine.style.display = "none";
+      }
     }
 
     function cambiarCantidad(index, delta) {
       let carrito = obtenerCarrito();
-      carrito[index].cantidad = Math.max(1, carrito[index].cantidad + delta);
+      carrito[index].cantidad = Math.max(1, Number(carrito[index].cantidad) + delta);
       guardarCarrito(carrito);
       renderCart();
     }

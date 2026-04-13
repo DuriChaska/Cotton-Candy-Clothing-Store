@@ -357,7 +357,6 @@
 
       <div class="form-column">
 
-        <!-- PASO 1 -->
         <div id="step-shipping">
           <h2>Dirección de Envío</h2>
 
@@ -388,7 +387,6 @@
           </div>
         </div>
 
-        <!-- PASO 2 -->
         <div id="step-payment" class="hidden">
           <h2>Método de Pago</h2>
           <p style="font-size:14px; color:#666; margin-bottom:16px;">Selecciona cómo prefieres pagar:</p>
@@ -474,7 +472,6 @@
           </div>
         </div>
 
-        <!-- PASO 3 -->
         <div id="step-confirm" class="hidden">
           <div class="confirm-box">
             <div class="confirm-icon">✓</div>
@@ -505,7 +502,9 @@
 
           <div class="order-totals" id="order-totals">
             <div><strong>Subtotal</strong><span id="summary-subtotal">$0.00</span></div>
-            <div><strong>Envío</strong><span>$120.00</span></div>
+            <div id="summary-discount-row" class="hidden"><strong>Descuento</strong><span id="summary-discount">-$0.00</span></div>
+            <div><strong>Envío</strong><span id="summary-shipping">$120.00</span></div>
+            <div id="summary-coupon-row" class="hidden"><strong>Cupón</strong><span id="summary-coupon">-</span></div>
           </div>
 
           <div class="order-total-final">
@@ -527,27 +526,120 @@
       return JSON.parse(localStorage.getItem("carrito") || "[]");
     }
 
+    function obtenerCupon() {
+      return JSON.parse(localStorage.getItem("cuponAplicado") || "null");
+    }
+
     function formatearMoneda(valor) {
       return `$${Number(valor).toFixed(2)}`;
     }
 
-    function renderSummary() {
+    function obtenerCantidadTotal(carrito) {
+      return carrito.reduce((total, item) => total + Number(item.cantidad), 0);
+    }
+
+    function obtenerItemsUnitarios(carrito) {
+      const items = [];
+
+      carrito.forEach(item => {
+        for (let i = 0; i < Number(item.cantidad); i++) {
+          items.push({
+            nombre: item.nombre,
+            precio: Number(item.precio)
+          });
+        }
+      });
+
+      return items;
+    }
+
+    function calcularDescuento(carrito, subtotal, cupon) {
+      let descuento = 0;
+      let envio = ENVIO;
+      let descripcion = "";
+
+      if (!cupon) {
+        return { descuento, envio, descripcion };
+      }
+
+      switch (cupon.tipo) {
+        case "porcentaje":
+          descuento = subtotal * (Number(cupon.valor) / 100);
+          descripcion = `${cupon.codigo} (${cupon.valor}% de descuento)`;
+          break;
+
+        case "tercera_prenda":
+          const cantidadTotal = obtenerCantidadTotal(carrito);
+
+          if (cantidadTotal >= 3) {
+            const itemsUnitarios = obtenerItemsUnitarios(carrito);
+            const terceraPrenda = itemsUnitarios[2];
+
+            if (terceraPrenda) {
+              descuento = terceraPrenda.precio * (Number(cupon.valor) / 100);
+              descripcion = `${cupon.codigo} (${cupon.valor}% en la tercera prenda)`;
+            }
+          } else {
+            descripcion = `${cupon.codigo} requiere al menos 3 prendas`;
+          }
+          break;
+
+        case "envio_gratis":
+          if (subtotal >= 2000) {
+            envio = 0;
+            descripcion = `${cupon.codigo} (envío gratis aplicado)`;
+          } else {
+            envio = ENVIO;
+            descripcion = `${cupon.codigo} requiere compra mínima de $2000.00`;
+          }
+          break;
+      }
+
+      return { descuento, envio, descripcion };
+    }
+
+    function obtenerResumenCompra() {
       const carrito = obtenerCarrito();
+      const cupon = obtenerCupon();
+
+      let subtotal = 0;
+
+      carrito.forEach(item => {
+        subtotal += Number(item.precio) * Number(item.cantidad);
+      });
+
+      const resultado = calcularDescuento(carrito, subtotal, cupon);
+      const total = Math.max(0, subtotal - resultado.descuento + resultado.envio);
+
+      return {
+        carrito,
+        cupon,
+        subtotal,
+        descuento: resultado.descuento,
+        envio: resultado.envio,
+        descripcionCupon: resultado.descripcion,
+        total
+      };
+    }
+
+    function renderSummary() {
+      const resumen = obtenerResumenCompra();
       const ul = document.getElementById("order-products");
       ul.innerHTML = "";
 
-      if (carrito.length === 0) {
+      if (resumen.carrito.length === 0) {
         document.getElementById("cart-empty-msg").classList.remove("hidden");
         document.getElementById("order-totals").style.visibility = "hidden";
         document.querySelector(".order-total-final").style.visibility = "hidden";
         return;
       }
 
-      let subtotal = 0;
+      document.getElementById("cart-empty-msg").classList.add("hidden");
+      document.getElementById("order-totals").style.visibility = "visible";
+      document.querySelector(".order-total-final").style.visibility = "visible";
 
-      carrito.forEach(item => {
+      resumen.carrito.forEach(item => {
         const itemSub = Number(item.precio) * Number(item.cantidad);
-        subtotal += itemSub;
 
         const li = document.createElement("li");
         li.innerHTML = `
@@ -558,12 +650,30 @@
         ul.appendChild(li);
       });
 
-      const total = subtotal + ENVIO;
+      document.getElementById("summary-subtotal").textContent = formatearMoneda(resumen.subtotal);
+      document.getElementById("summary-total").textContent = formatearMoneda(resumen.total);
+      document.getElementById("summary-shipping").textContent = formatearMoneda(resumen.envio);
+      document.getElementById("oxxo-total").textContent = formatearMoneda(resumen.total);
+      document.getElementById("spei-total").textContent = formatearMoneda(resumen.total);
 
-      document.getElementById("summary-subtotal").textContent = formatearMoneda(subtotal);
-      document.getElementById("summary-total").textContent = formatearMoneda(total);
-      document.getElementById("oxxo-total").textContent = formatearMoneda(total);
-      document.getElementById("spei-total").textContent = formatearMoneda(total);
+      const discountRow = document.getElementById("summary-discount-row");
+      const couponRow = document.getElementById("summary-coupon-row");
+
+      if (resumen.descuento > 0) {
+        discountRow.classList.remove("hidden");
+        document.getElementById("summary-discount").textContent = `-${formatearMoneda(resumen.descuento)}`;
+      } else {
+        discountRow.classList.add("hidden");
+        document.getElementById("summary-discount").textContent = "-$0.00";
+      }
+
+      if (resumen.cupon) {
+        couponRow.classList.remove("hidden");
+        document.getElementById("summary-coupon").textContent = resumen.descripcionCupon || resumen.cupon.codigo;
+      } else {
+        couponRow.classList.add("hidden");
+        document.getElementById("summary-coupon").textContent = "-";
+      }
     }
 
     function validateAndShowPayment() {
@@ -596,6 +706,7 @@
     }
 
     function showPayment() {
+      renderSummary();
       document.getElementById('step-shipping').classList.add('hidden');
       document.getElementById('step-payment').classList.remove('hidden');
       document.getElementById('step-confirm').classList.add('hidden');
@@ -659,30 +770,27 @@
     }
 
     function simulateOrder() {
+      const resumen = obtenerResumenCompra();
       const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
       const facturaNum = 'FAC-' + Math.floor(10000 + Math.random() * 90000);
-      const carrito = obtenerCarrito();
-
-      let subtotal = 0;
-      carrito.forEach(item => {
-        subtotal += Number(item.precio) * Number(item.cantidad);
-      });
-
-      const total = subtotal + ENVIO;
 
       const compraRealizada = {
         pedido: orderNum,
         factura: facturaNum,
         fecha: new Date().toLocaleDateString('es-MX'),
         cliente: document.getElementById("fname").value.trim() || "Cliente General",
-        productos: carrito,
-        subtotal: subtotal,
-        envio: ENVIO,
-        total: total
+        productos: resumen.carrito,
+        subtotal: resumen.subtotal,
+        descuento: resumen.descuento,
+        cupon: resumen.cupon ? resumen.cupon.codigo : null,
+        descripcionCupon: resumen.descripcionCupon,
+        envio: resumen.envio,
+        total: resumen.total
       };
 
       localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
       localStorage.removeItem("carrito");
+      localStorage.removeItem("cuponAplicado");
 
       document.getElementById('step-payment').classList.add('hidden');
       document.getElementById('step-shipping').classList.add('hidden');

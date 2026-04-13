@@ -161,6 +161,10 @@
       padding: 20px 0;
     }
 
+    .hidden {
+      display: none !important;
+    }
+
     @media (max-width: 480px) {
       .invoice-header h1 {
         font-size: 21px;
@@ -216,6 +220,16 @@
             <span id="subtotal-factura">$0.00</span>
           </div>
 
+          <div class="invoice-row hidden" id="cupon-row">
+            <span><strong>Cupón</strong></span>
+            <span id="cupon-factura">-</span>
+          </div>
+
+          <div class="invoice-row hidden" id="descuento-row">
+            <span><strong>Descuento</strong></span>
+            <span id="descuento-factura">-$0.00</span>
+          </div>
+
           <div class="invoice-row">
             <span><strong>Envío</strong></span>
             <span id="envio-factura">$0.00</span>
@@ -267,6 +281,23 @@
       document.getElementById("subtotal-factura").textContent = formatearMoneda(compra.subtotal || 0);
       document.getElementById("envio-factura").textContent = formatearMoneda(compra.envio || 0);
       document.getElementById("total-factura").textContent = formatearMoneda(compra.total || 0);
+
+      const cuponRow = document.getElementById("cupon-row");
+      const descuentoRow = document.getElementById("descuento-row");
+
+      if (compra.cupon) {
+        cuponRow.classList.remove("hidden");
+        document.getElementById("cupon-factura").textContent = compra.descripcionCupon || compra.cupon;
+      } else {
+        cuponRow.classList.add("hidden");
+      }
+
+      if (Number(compra.descuento || 0) > 0) {
+        descuentoRow.classList.remove("hidden");
+        document.getElementById("descuento-factura").textContent = `-${formatearMoneda(compra.descuento)}`;
+      } else {
+        descuentoRow.classList.add("hidden");
+      }
 
       const contenedorProductos = document.getElementById("productos-factura");
       contenedorProductos.innerHTML = "";
