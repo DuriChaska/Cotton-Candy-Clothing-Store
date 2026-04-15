@@ -42,8 +42,11 @@ document.getElementById('header').innerHTML = `
     <div class="icons">
       <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon"
         onclick="window.location.href='Interfaz Cliente - Perfil.html'" />
-      <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon"
-        onclick="window.location.href='carrito.html'" />
+      
+      <div class="cart-icon-wrapper" style="position: relative; display: inline-block; cursor: pointer;" onclick="window.location.href='carrito.html'">
+        <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
+        <span id="cart-badge" class="cart-badge">0</span>
+      </div>
     </div>
   </header>
 `;
@@ -90,3 +93,54 @@ document.getElementById('footer').innerHTML = `
     </div>
   </footer>
 `;
+
+// ── LÓGICA DEL BADGE DEL CARRITO ──
+
+/**
+ * Calcula el total de prendas en el carrito y actualiza el número en el header.
+ */
+function actualizarBadgeCarrito() {
+  const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
+  
+  // Suma las cantidades de todos los productos (no solo cuántos modelos hay)
+  const totalPrendas = carrito.reduce((acc, item) => acc + (Number(item.cantidad) || 0), 0);
+  
+  const badge = document.getElementById("cart-badge");
+  
+  if (badge) {
+    badge.textContent = totalPrendas;
+    
+    // Si no hay nada, lo ocultamos para que se vea más limpio
+    if (totalPrendas > 0) {
+      badge.style.display = "flex";
+    } else {
+      badge.style.display = "none";
+    }
+  }
+}
+
+// Ejecutar al cargar el script para que el número aparezca de inmediato
+document.addEventListener("DOMContentLoaded", actualizarBadgeCarrito);
+
+// CSS inyectado dinámicamente para el Badge (puedes moverlo a styles.css si prefieres)
+const style = document.createElement('style');
+style.innerHTML = `
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    pointer-events: none;
+  }
+`;
+document.head.appendChild(style);
