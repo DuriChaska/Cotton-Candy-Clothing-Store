@@ -276,33 +276,55 @@
     };
 
     function abrirCompras() {
-      const compras = JSON.parse(localStorage.getItem("misCompras")) || [];
-      const lista   = document.getElementById("listaCompras");
+  const compras = JSON.parse(localStorage.getItem("misCompras")) || [];
+  const lista = document.getElementById("listaCompras");
 
-      if (compras.length === 0) {
-        lista.innerHTML = `<p style="text-align:center;color:#9a7d8a;padding:20px 0">
-          Aún no tienes compras 🛒</p>`;
-      } else {
-        lista.innerHTML = compras.map(c => {
-          const [cls, label] = badgeMap[c.estado] || ["badge-proceso", c.estado];
-          return `
-            <div class="compra-item">
-              <div class="compra-img">${c.emoji}</div>
-              <div class="compra-info">
-                <div class="compra-nombre">${c.nombre}</div>
-                <div class="compra-meta">Talla ${c.talla} · ${c.color}</div>
-                <div class="compra-meta">${formatFecha(c.fecha)}</div>
-                <span class="badge ${cls}">${label}</span>
-              </div>
-              <div class="compra-precio">$${c.precio}</div>
-            </div>
-          `;
-        }).join("");
-      }
+  if (compras.length === 0) {
+    lista.innerHTML = `<p style="text-align:center;color:#9a7d8a;padding:20px 0">Aún no tienes compras 🛒</p>`;
+  } else {
+    lista.innerHTML = compras.map((c, index) => {
+      const [cls, label] = badgeMap[c.estado] || ["badge-proceso", c.estado];
+      return `
+        <div class="compra-item" style="cursor:pointer;" onclick="verTicketDetalle(${index})">
+          <div class="compra-img">${c.emoji}</div>
+          <div class="compra-info">
+            <div class="compra-nombre">${c.nombre}</div>
+            <div class="compra-meta">ID: ${c.id} · ${formatFecha(c.fecha)}</div>
+            <span class="badge ${cls}">${label}</span>
+          </div>
+          <div style="text-align:right">
+            <div class="compra-precio">$${c.precio}</div>
+            <small style="color:#b34a8e; font-size:10px;">Ver ticket</small>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
 
-      document.getElementById("modalCompras").classList.add("open");
-    }
+  document.getElementById("modalCompras").classList.add("open");
+}
 
+// Función para abrir la página de factura con los datos de esa compra específica
+function verTicketDetalle(index) {
+  const compras = JSON.parse(localStorage.getItem("misCompras"));
+  const compraSeleccionada = compras[index];
+  
+  // Si la compra tiene el detalle guardado, lo cargamos en 'ultimaCompra' 
+  // para que factura.html lo lea
+  if (compraSeleccionada.detalleCompleto) {
+    localStorage.setItem("ultimaCompra", JSON.stringify(compraSeleccionada.detalleCompleto));
+  } else {
+    // Para las compras de "base" que no tienen detalle completo
+    localStorage.setItem("ultimaCompra", JSON.stringify({
+      pedido: compraSeleccionada.id,
+      cliente: "Andrea Guadalupe",
+      total: compraSeleccionada.precio,
+      productos: [{nombre: compraSeleccionada.nombre, precio: compraSeleccionada.precio, cantidad: 1}]
+    }));
+  }
+  
+  window.location.href = 'factura.html';
+}
     function cerrarCompras() {
       document.getElementById("modalCompras").classList.remove("open");
     }

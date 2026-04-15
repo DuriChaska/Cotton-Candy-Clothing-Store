@@ -174,8 +174,6 @@
       border-top: 1px solid #eee;
     }
 
-    .payment-option-body.hidden { display: none; }
-
     .card-row {
       display: flex;
       gap: 10px;
@@ -309,38 +307,15 @@
       margin-top: 20px;
     }
 
-    .confirm-actions .btn-home {
-      margin-top: 0;
-    }
-
     @media (max-width: 900px) {
-      .checkout-container {
-        flex-direction: column;
-      }
-
-      .summary-column {
-        position: static;
-        width: 100%;
-      }
+      .checkout-container { flex-direction: column; }
+      .summary-column { position: static; width: 100%; }
     }
 
     @media (max-width: 600px) {
-      .input-group,
-      .card-row,
-      .checkout-nav {
-        flex-direction: column;
-      }
-
-      .continue-btn,
-      .back-link,
-      .btn-home {
-        width: 100%;
-        text-align: center;
-      }
-
-      .continue-btn {
-        float: none;
-      }
+      .input-group, .card-row, .checkout-nav { flex-direction: column; }
+      .continue-btn, .back-link, .btn-home { width: 100%; text-align: center; }
+      .continue-btn { float: none; }
     }
   </style>
 </head>
@@ -357,26 +332,25 @@
 
       <div class="form-column">
 
-        <!-- PASO 1 -->
         <div id="step-shipping">
           <h2>Dirección de Envío</h2>
 
           <div class="input-group">
-            <input type="text" id="fname" placeholder="Primer Nombre *" />
+            <input type="text" id="fname" placeholder="Primer Nombre" />
             <input type="text" id="lname" placeholder="Apellido" />
           </div>
 
-          <input type="text" id="country" placeholder="País *" />
-          <input type="text" id="street" placeholder="Calle *" />
+          <input type="text" id="country" placeholder="País" />
+          <input type="text" id="street" placeholder="Calle" />
 
           <div class="input-group">
-            <input type="text" id="city" placeholder="Ciudad *" />
-            <input type="text" id="state" placeholder="Estado *" />
+            <input type="text" id="city" placeholder="Ciudad" />
+            <input type="text" id="state" placeholder="Estado" />
           </div>
 
           <div class="input-group">
-            <input type="text" id="zip" placeholder="Código Postal *" />
-            <input type="tel" id="phone" placeholder="Celular *" />
+            <input type="text" id="zip" placeholder="Código Postal" />
+            <input type="tel" id="phone" placeholder="Celular" />
           </div>
 
           <input type="email" id="email" placeholder="Email" />
@@ -388,7 +362,6 @@
           </div>
         </div>
 
-        <!-- PASO 2 -->
         <div id="step-payment" class="hidden">
           <h2>Método de Pago</h2>
           <p style="font-size:14px; color:#666; margin-bottom:16px;">Selecciona cómo prefieres pagar:</p>
@@ -402,8 +375,8 @@
                 <span class="method-label">PayPal</span>
               </div>
               <div class="payment-option-body" id="body-paypal">
-                <p style="font-size:13px; color:#555; margin:12px 0 8px;">Serás redirigido a PayPal para completar tu pago de forma segura.</p>
-                <input type="email" placeholder="Correo de PayPal o número de celular" />
+                <p style="font-size:13px; color:#555; margin:12px 0 8px;">Serás redirigido a PayPal de forma segura.</p>
+                <input type="email" placeholder="Correo de PayPal" />
                 <button class="btn-paypal" onclick="simulateOrder()">PAGAR CON PAYPAL</button>
               </div>
             </div>
@@ -412,18 +385,17 @@
               <div class="payment-option-header" onclick="selectMethod('card')">
                 <input type="radio" name="pay-method" value="card" />
                 <div class="card-icons">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+                  <img src="Imagenes/visa-logo-png_seeklogo-149692.png" alt="Visa" />
                   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
                 </div>
                 <span class="method-label">Tarjeta de crédito / débito</span>
               </div>
               <div class="payment-option-body hidden" id="body-card">
-                <p style="font-size:12px; color:#888; margin:12px 0 8px;">Todos los pagos son seguros y encriptados.</p>
-                <input type="text" placeholder="Número de tarjeta *" maxlength="19" id="card-num" oninput="formatCard(this)" />
-                <input type="text" placeholder="Titular de la tarjeta *" />
+                <input type="text" placeholder="Número de tarjeta" maxlength="19" oninput="formatCard(this)" />
+                <input type="text" placeholder="Titular de la tarjeta" />
                 <div class="card-row">
-                  <input type="text" placeholder="MM/AA *" maxlength="5" oninput="formatExpiry(this)" />
-                  <input type="text" placeholder="CVV *" maxlength="4" />
+                  <input type="text" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)" />
+                  <input type="text" placeholder="CVV" maxlength="4" />
                 </div>
                 <button class="continue-btn" style="width:100%; float:none; margin-top:4px;" onclick="simulateOrder()">PAGAR AHORA</button>
               </div>
@@ -432,7 +404,7 @@
             <div class="payment-option" id="opt-transfer">
               <div class="payment-option-header" onclick="selectMethod('transfer')">
                 <input type="radio" name="pay-method" value="transfer" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Oxxo_Logo.svg/320px-Oxxo_Logo.svg.png" alt="OXXO" style="height:22px;" />
+                <img src="Imagenes/oxxo-logo-png_seeklogo-104888.png" alt="OXXO" style="height:22px;" />
                 <span class="method-label">OXXO / SPEI</span>
               </div>
               <div class="payment-option-body hidden" id="body-transfer">
@@ -440,51 +412,50 @@
                   <div class="transfer-tab active" id="tab-oxxo" onclick="switchTransfer('oxxo')">OXXO</div>
                   <div class="transfer-tab" id="tab-spei" onclick="switchTransfer('spei')">SPEI</div>
                 </div>
-
                 <div id="info-oxxo" class="transfer-info">
-                  <p>Paga en efectivo en cualquier tienda OXXO con la siguiente referencia:</p>
-                  <p style="font-size:18px; letter-spacing:3px; font-weight:bold; color:#b34a8e; text-align:center; margin:10px 0;">
-                    6394 8521 7043 2210
-                  </p>
-                  <p><strong>Monto exacto:</strong> <span id="oxxo-total">$0.00</span></p>
-                  <p><strong>Vigencia:</strong> 72 horas</p>
-                  <p style="font-size:12px; color:#888; margin-top:8px;">Lleva esta referencia a la caja y pide pagar un servicio OXXO Pay.</p>
+                  <p style="font-size:18px; letter-spacing:3px; font-weight:bold; color:#b34a8e; text-align:center;">6394 8521 7043 2210</p>
+                  <p><strong>Monto:</strong> <span class="oxxo-total-val">$0.00</span></p>
                   <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">CONFIRMAR PEDIDO</button>
                 </div>
-
                 <div id="info-spei" class="transfer-info hidden">
-                  <p>Realiza tu transferencia SPEI con los siguientes datos:</p>
-                  <table style="width:100%; font-size:13px; margin-top:8px;">
-                    <tr><td style="padding:4px 0; color:#888;">Banco:</td><td><strong>STP</strong></td></tr>
-                    <tr><td style="padding:4px 0; color:#888;">CLABE:</td><td><strong>646180157041234567</strong></td></tr>
-                    <tr><td style="padding:4px 0; color:#888;">Beneficiario:</td><td><strong>Cotton Candy Store</strong></td></tr>
-                    <tr><td style="padding:4px 0; color:#888;">Concepto:</td><td><strong id="spei-order">CC-00001</strong></td></tr>
-                    <tr><td style="padding:4px 0; color:#888;">Monto:</td><td><strong id="spei-total">$0.00</strong></td></tr>
-                  </table>
-                  <p style="font-size:12px; color:#888; margin-top:10px;">El pedido se procesa al confirmar el pago.</p>
+                  <p>CLABE: <strong>646180157041234567</strong></p>
+                  <p>Banco: <strong>STP</strong></p>
                   <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">YA TRANSFERÍ</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-option" id="opt-points">
+              <div class="payment-option-header" onclick="selectMethod('points')">
+                <input type="radio" name="pay-method" value="points" />
+                <span style="font-size: 20px; margin-right: 8px;">✨</span>
+                <span class="method-label">Puntos Cotton Candy</span>
+              </div>
+              <div class="payment-option-body hidden" id="body-points">
+                <div class="transfer-info">
+                  <p>Tienes disponibles: <strong>500 puntos</strong></p>
+                  <p style="font-size: 12px; color: #666;">1 punto = $1.00 MXN. Se descontarán de tu cuenta al confirmar.</p>
+                  <button class="continue-btn" style="float:none; width:100%; margin-top:12px;" onclick="simulateOrder()">PAGAR CON PUNTOS</button>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <div class="checkout-nav" style="margin-top:20px;">
+          <div class="checkout-nav">
             <button class="back-link" onclick="showShipping()">← Volver a dirección de envío</button>
           </div>
         </div>
 
-        <!-- PASO 3 -->
         <div id="step-confirm" class="hidden">
           <div class="confirm-box">
             <div class="confirm-icon">✓</div>
             <h2>¡Pedido realizado!</h2>
             <p>Gracias por tu compra. Recibirás un correo de confirmación pronto.</p>
             <p style="color:#b34a8e; font-weight:bold; margin-top:10px;" id="confirm-order-num"></p>
-
             <div class="confirm-actions">
-              <button class="btn-home" onclick="window.location.href='factura.html'">FACTURA</button>
-              <button class="btn-home" onclick="window.location.href='index.html'">SEGUIR COMPRANDO</button>
+              <button class="btn-home" onclick="window.location.href='factura.html'">VER FACTURA</button>
+              <button class="btn-home" onclick="window.location.href='index.html'">VOLVER AL INICIO</button>
             </div>
           </div>
         </div>
@@ -494,20 +465,13 @@
       <aside class="summary-column">
         <div class="summary-box">
           <h3>Tu Pedido</h3>
-
-          <div id="cart-empty-msg" class="empty-cart-msg hidden">
-            Tu carrito está vacío. <a href="shop.html" style="color:#7a1a50; font-weight:bold;">Ver catálogo</a>
-          </div>
-
+          <div id="cart-empty-msg" class="empty-cart-msg hidden">Tu carrito está vacío.</div>
           <ul class="order-products" id="order-products"></ul>
-
           <hr style="border:0; border-top:1px solid rgba(255,255,255,0.3); margin-bottom:12px;">
-
           <div class="order-totals" id="order-totals">
             <div><strong>Subtotal</strong><span id="summary-subtotal">$0.00</span></div>
             <div><strong>Envío</strong><span>$120.00</span></div>
           </div>
-
           <div class="order-total-final">
             <span>Total</span><span id="summary-total">$0.00</span>
           </div>
@@ -517,9 +481,6 @@
     </div>
   </section>
 
-  <div id="footer"></div>
-
-  <script src="components.js"></script>
   <script>
     const ENVIO = 120;
 
@@ -535,70 +496,37 @@
       const carrito = obtenerCarrito();
       const ul = document.getElementById("order-products");
       ul.innerHTML = "";
-
       if (carrito.length === 0) {
         document.getElementById("cart-empty-msg").classList.remove("hidden");
-        document.getElementById("order-totals").style.visibility = "hidden";
-        document.querySelector(".order-total-final").style.visibility = "hidden";
         return;
       }
-
       let subtotal = 0;
-
       carrito.forEach(item => {
         const itemSub = Number(item.precio) * Number(item.cantidad);
         subtotal += itemSub;
-
         const li = document.createElement("li");
-        li.innerHTML = `
-          <span class="item-name">${item.nombre}</span>
-          <span class="item-qty">x${item.cantidad}</span>
-          <span>${formatearMoneda(itemSub)}</span>
-        `;
+        li.innerHTML = `<span class="item-name">${item.nombre}</span><span class="item-qty">x${item.cantidad}</span><span>${formatearMoneda(itemSub)}</span>`;
         ul.appendChild(li);
       });
-
       const total = subtotal + ENVIO;
-
       document.getElementById("summary-subtotal").textContent = formatearMoneda(subtotal);
       document.getElementById("summary-total").textContent = formatearMoneda(total);
-      document.getElementById("oxxo-total").textContent = formatearMoneda(total);
-      document.getElementById("spei-total").textContent = formatearMoneda(total);
+      document.querySelectorAll(".oxxo-total-val").forEach(el => el.textContent = formatearMoneda(total));
     }
 
+    // SIN VALIDACIONES: Pasa directo al pago
     function validateAndShowPayment() {
-      const required = ['fname', 'country', 'street', 'city', 'state', 'zip', 'phone'];
-      let valid = true;
-
-      required.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el.value.trim()) {
-          el.style.borderColor = "#e05";
-          valid = false;
-        } else {
-          el.style.borderColor = "#ccc";
-        }
-      });
-
-      if (!valid) {
-        alert("Por favor, completa los campos obligatorios marcados.");
-        return;
-      }
-
       const carrito = obtenerCarrito();
       if (carrito.length === 0) {
         alert("Tu carrito está vacío.");
-        window.location.href = "shop.html";
         return;
       }
-
       showPayment();
     }
 
     function showPayment() {
       document.getElementById('step-shipping').classList.add('hidden');
       document.getElementById('step-payment').classList.remove('hidden');
-      document.getElementById('step-confirm').classList.add('hidden');
       document.getElementById('step-title').innerText = "Pago";
       window.scrollTo(0, 0);
     }
@@ -606,19 +534,16 @@
     function showShipping() {
       document.getElementById('step-payment').classList.add('hidden');
       document.getElementById('step-shipping').classList.remove('hidden');
-      document.getElementById('step-confirm').classList.add('hidden');
       document.getElementById('step-title').innerText = "Envío";
       window.scrollTo(0, 0);
     }
 
     function selectMethod(method) {
-      const methods = ['paypal', 'card', 'transfer'];
-
+      const methods = ['paypal', 'card', 'transfer', 'points'];
       methods.forEach(m => {
         const opt = document.getElementById(`opt-${m}`);
         const body = document.getElementById(`body-${m}`);
         const radio = opt.querySelector('input[type="radio"]');
-
         if (m === method) {
           opt.classList.add('active');
           body.classList.remove('hidden');
@@ -632,9 +557,7 @@
     }
 
     function switchTransfer(type) {
-      const tabs = ['oxxo', 'spei'];
-
-      tabs.forEach(t => {
+      ['oxxo', 'spei'].forEach(t => {
         document.getElementById(`tab-${t}`).classList.toggle('active', t === type);
         document.getElementById(`info-${t}`).classList.toggle('hidden', t !== type);
       });
@@ -647,56 +570,60 @@
 
     function formatExpiry(input) {
       let v = input.value.replace(/\D/g, '').substring(0, 4);
-      if (v.length >= 2) {
-        v = v.substring(0, 2) + '/' + v.substring(2);
-      }
+      if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
       input.value = v;
     }
 
-    function generateOrderRef() {
-      const ref = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-      document.getElementById('spei-order').textContent = ref;
-    }
-
     function simulateOrder() {
-      const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-      const facturaNum = 'FAC-' + Math.floor(10000 + Math.random() * 90000);
-      const carrito = obtenerCarrito();
+  const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
+  const facturaNum = 'FAC-' + Math.floor(1000 + Math.random() * 9000);
+  const carrito = obtenerCarrito();
+  const hoy = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  
+  let subtotal = 0;
+  carrito.forEach(i => subtotal += (Number(i.precio) * Number(i.cantidad)));
+  
+  const totalFinal = subtotal + ENVIO;
+  const metodoSeleccionado = document.querySelector('input[name="pay-method"]:checked').value;
 
-      let subtotal = 0;
-      carrito.forEach(item => {
-        subtotal += Number(item.precio) * Number(item.cantidad);
-      });
+  const compraRealizada = {
+    pedido: orderNum,
+    factura: facturaNum,
+    cliente: document.getElementById("fname").value || "Andrea Guadalupe",
+    fecha: hoy,
+    productos: carrito,
+    subtotal: subtotal,
+    envio: ENVIO,
+    total: totalFinal,
+    metodo: metodoSeleccionado
+  };
 
-      const total = subtotal + ENVIO;
+  // 1. Guardar para la página de factura inmediata
+  localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
 
-      const compraRealizada = {
-        pedido: orderNum,
-        factura: facturaNum,
-        fecha: new Date().toLocaleDateString('es-MX'),
-        cliente: document.getElementById("fname").value.trim() || "Cliente General",
-        productos: carrito,
-        subtotal: subtotal,
-        envio: ENVIO,
-        total: total
-      };
+  // 2. AGREGAR AL HISTORIAL DEL PERFIL
+  const historial = JSON.parse(localStorage.getItem("misCompras") || "[]");
+  historial.unshift({ // Agregar al inicio de la lista
+    id: orderNum,
+    nombre: carrito.length > 1 ? `${carrito[0].nombre} y más...` : carrito[0].nombre,
+    talla: carrito[0].talla || "N/A",
+    color: "Varios",
+    precio: totalFinal,
+    fecha: hoy,
+    estado: "proceso",
+    emoji: "🛍️",
+    detalleCompleto: compraRealizada // Guardamos todo para el ticket
+  });
+  localStorage.setItem("misCompras", JSON.stringify(historial));
 
-      localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
-      localStorage.removeItem("carrito");
-
-      document.getElementById('step-payment').classList.add('hidden');
-      document.getElementById('step-shipping').classList.add('hidden');
-      document.getElementById('step-confirm').classList.remove('hidden');
-      document.getElementById('step-title').innerText = "Confirmación";
-      document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
-      window.scrollTo(0, 0);
-    }
-
-    window.onload = function() {
-      renderSummary();
-      generateOrderRef();
-    };
+  // Limpiar carrito y mostrar confirmación
+  localStorage.removeItem("carrito");
+  document.getElementById('step-payment').classList.add('hidden');
+  document.getElementById('step-confirm').classList.remove('hidden');
+  document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
+  window.scrollTo(0, 0);
+}
+    window.onload = renderSummary;
   </script>
-
 </body>
 </html>
