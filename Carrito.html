@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cotton Candy Clothing Store - Carrito</title>
+  <style>
+    .badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #ff4d4d; /* Rojo */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  </style>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -111,21 +129,25 @@
       title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? 's' : ''})`;
       document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
       document.getElementById("total").textContent    = `$${subtotal.toFixed(2)}`;
+
+      actualizarBadgeCarrito();
     }
 
     function cambiarCantidad(index, delta) {
-      let carrito = obtenerCarrito();
-      carrito[index].cantidad = Math.max(1, carrito[index].cantidad + delta);
-      guardarCarrito(carrito);
-      renderCart();
-    }
+  let carrito = obtenerCarrito();
+  carrito[index].cantidad = Math.max(1, carrito[index].cantidad + delta);
+  guardarCarrito(carrito);
+  renderCart();
+  actualizarBadgeCarrito(); // <--- Llamar aquí
+}
 
-    function eliminarItem(index) {
-      let carrito = obtenerCarrito();
-      carrito.splice(index, 1);
-      guardarCarrito(carrito);
-      renderCart();
-    }
+function eliminarItem(index) {
+  let carrito = obtenerCarrito();
+  carrito.splice(index, 1);
+  guardarCarrito(carrito);
+  renderCart();
+  actualizarBadgeCarrito(); // <--- Llamar aquí
+}
 
     window.onload = renderCart;
   </script>
