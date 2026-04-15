@@ -95,27 +95,27 @@
       </div>
 
       <div class="subasta-card">
-        <img src="Imagenes/playera1.png" alt="Playera aesthetic" class="subasta-img" />
+        <img src="Imagenes/playerasthetic.jpg" alt="Playera aesthetic" class="subasta-img" />
         <div class="subasta-title">Playera aesthetic</div>
         <div class="subasta-price">Precio actual: <strong>$180 MXN</strong></div>
         <div class="subasta-time">Cierra en: 15 min</div>
-        <button class="subasta-button" onclick="irASubasta('Playera aesthetic', 180, 'Imagenes/playera1.png', 900)">Entrar a subasta</button>
+        <button class="subasta-button" onclick="irASubasta('Playera aesthetic', 180, 'Imagenes/playerasthetic.jpg', 900)">Entrar a subasta</button>
       </div>
 
       <div class="subasta-card">
-        <img src="Imagenes/falda1.png" alt="Falda rosa pastel" class="subasta-img" />
+        <img src="Imagenes/faldarosa.jpg" alt="Falda rosa pastel" class="subasta-img" />
         <div class="subasta-title">Falda rosa pastel</div>
         <div class="subasta-price">Precio actual: <strong>$210 MXN</strong></div>
         <div class="subasta-time">Cierra en: 8 min</div>
-        <button class="subasta-button" onclick="irASubasta('Falda rosa pastel', 210, 'Imagenes/falda1.png', 480)">Entrar a subasta</button>
+        <button class="subasta-button" onclick="irASubasta('Falda rosa pastel', 210, 'Imagenes/faldarosa.jpg', 480)">Entrar a subasta</button>
       </div>
 
       <div class="subasta-card">
-        <img src="Imagenes/bolsa1.png" alt="Bolsa cute edition" class="subasta-img" />
+        <img src="Imagenes/bolsa1.jpg" alt="Bolsa cute edition" class="subasta-img" />
         <div class="subasta-title">Bolsa cute edition</div>
         <div class="subasta-price">Precio actual: <strong>$300 MXN</strong></div>
         <div class="subasta-time">Cierra en: 20 min</div>
-        <button class="subasta-button" onclick="irASubasta('Bolsa cute edition', 300, 'Imagenes/bolsa1.png', 1200)">Entrar a subasta</button>
+        <button class="subasta-button" onclick="irASubasta('Bolsa cute edition', 300, 'Imagenes/bolsa1.jpg', 1200)">Entrar a subasta</button>
       </div>
     </div>
   </div>
@@ -125,11 +125,13 @@
   <script src="components.js"></script>
   <script>
     function irASubasta(nombre, precio, imagen, tiempo) {
+      // Guardamos la información seleccionada en localStorage
       localStorage.setItem("nombreSubasta", nombre);
       localStorage.setItem("precioSubasta", precio);
       localStorage.setItem("imagenSubasta", imagen);
       localStorage.setItem("tiempoSubasta", tiempo);
 
+      // Redirigimos a la página de la subasta
       window.location.href = "subasta.html";
     }
   </script>
