@@ -102,7 +102,7 @@ document.getElementById('footer').innerHTML = `
 function actualizarBadgeCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
   
-  // Suma las cantidades de todos los productos (no solo cuántos modelos hay)
+  // Suma las cantidades de todos los productos
   const totalPrendas = carrito.reduce((acc, item) => acc + (Number(item.cantidad) || 0), 0);
   
   const badge = document.getElementById("cart-badge");
@@ -119,10 +119,22 @@ function actualizarBadgeCarrito() {
   }
 }
 
-// Ejecutar al cargar el script para que el número aparezca de inmediato
+// ── ESCUCHADORES DE EVENTOS (REAL-TIME) ──
+
+// 1. Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", actualizarBadgeCarrito);
 
-// CSS inyectado dinámicamente para el Badge (puedes moverlo a styles.css si prefieres)
+// 2. Escuchar cambios manuales desde el mismo documento (sin recargar)
+window.addEventListener('actualizarCarrito', actualizarBadgeCarrito);
+
+// 3. Escuchar cambios desde otras pestañas/ventanas
+window.addEventListener('storage', (event) => {
+  if (event.key === 'carrito') {
+    actualizarBadgeCarrito();
+  }
+});
+
+// CSS inyectado dinámicamente para el Badge
 const style = document.createElement('style');
 style.innerHTML = `
   .cart-badge {
@@ -141,6 +153,7 @@ style.innerHTML = `
     justify-content: center;
     border: 2px solid white;
     pointer-events: none;
+    z-index: 10;
   }
 `;
 document.head.appendChild(style);

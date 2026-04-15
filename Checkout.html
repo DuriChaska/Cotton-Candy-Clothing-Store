@@ -587,62 +587,73 @@
     }
 
     function renderSummary() {
-      const resumen = obtenerResumenCompra();
-      const ul = document.getElementById("order-products");
-      ul.innerHTML = "";
+  const resumen = obtenerResumenCompra();
+  const ul = document.getElementById("order-products");
+  ul.innerHTML = "";
 
-      if (resumen.carrito.length === 0) {
-      if (carrito.length === 0) {
-        document.getElementById("cart-empty-msg").classList.remove("hidden");
-        return;
-      }
+  // Usamos el objeto resumen de Rama-Andy que ya trae todo calculado
+  if (!resumen || resumen.carrito.length === 0) {
+    document.getElementById("cart-empty-msg").classList.remove("hidden");
+    document.getElementById("order-totals").style.visibility = "hidden";
+    document.querySelector(".order-total-final").style.visibility = "hidden";
+    return;
+  }
 
-      document.getElementById("cart-empty-msg").classList.add("hidden");
-      document.getElementById("order-totals").style.visibility = "visible";
-      document.querySelector(".order-total-final").style.visibility = "visible";
+  // Mostramos los contenedores de totales
+  document.getElementById("cart-empty-msg").classList.add("hidden");
+  document.getElementById("order-totals").style.visibility = "visible";
+  document.querySelector(".order-total-final").style.visibility = "visible";
 
-      resumen.carrito.forEach(item => {
-        const itemSub = Number(item.precio) * Number(item.cantidad);
+  // Dibujamos los productos
+  resumen.carrito.forEach(item => {
+    const itemSub = Number(item.precio) * Number(item.cantidad);
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span class="item-name">${item.nombre}</span>
+      <span class="item-qty">x${item.cantidad}</span>
+      <span>${formatearMoneda(itemSub)}</span>
+    `;
+    ul.appendChild(li);
+  });
 
-      let subtotal = 0;
-      carrito.forEach(item => {
-        const itemSub = Number(item.precio) * Number(item.cantidad);
-        subtotal += itemSub;
-        const li = document.createElement("li");
-        li.innerHTML = `<span class="item-name">${item.nombre}</span><span class="item-qty">x${item.cantidad}</span><span>${formatearMoneda(itemSub)}</span>`;
-        ul.appendChild(li);
-      });
+  // Actualizamos los valores numéricos en la interfaz
+  document.getElementById("summary-subtotal").textContent = formatearMoneda(resumen.subtotal);
+  document.getElementById("summary-total").textContent = formatearMoneda(resumen.total);
+  
+  // Verificamos si existe el ID de envío (evita errores si no existe en el HTML)
+  const shippingEl = document.getElementById("summary-shipping");
+  if (shippingEl) shippingEl.textContent = formatearMoneda(resumen.envio);
 
-      document.getElementById("summary-subtotal").textContent = formatearMoneda(resumen.subtotal);
-      document.getElementById("summary-total").textContent = formatearMoneda(resumen.total);
-      document.getElementById("summary-shipping").textContent = formatearMoneda(resumen.envio);
-      document.getElementById("oxxo-total").textContent = formatearMoneda(resumen.total);
-      document.getElementById("spei-total").textContent = formatearMoneda(resumen.total);
+  // Actualizamos los totales para OXXO/SPEI (Usando la lógica de ambas ramas)
+  const totalStr = formatearMoneda(resumen.total);
+  if (document.getElementById("oxxo-total")) document.getElementById("oxxo-total").textContent = totalStr;
+  if (document.getElementById("spei-total")) document.getElementById("spei-total").textContent = totalStr;
+  
+  // Lógica de Kim: por si usas clases en lugar de IDs únicos
+  document.querySelectorAll(".oxxo-total-val").forEach(el => el.textContent = totalStr);
 
-      const discountRow = document.getElementById("summary-discount-row");
-      const couponRow = document.getElementById("summary-coupon-row");
+  // --- Lógica de Descuentos y Cupones (Rama-Andy) ---
+  const discountRow = document.getElementById("summary-discount-row");
+  const couponRow = document.getElementById("summary-coupon-row");
 
-      if (resumen.descuento > 0) {
-        discountRow.classList.remove("hidden");
-        document.getElementById("summary-discount").textContent = `-${formatearMoneda(resumen.descuento)}`;
-      } else {
-        discountRow.classList.add("hidden");
-        document.getElementById("summary-discount").textContent = "-$0.00";
-      }
-
-      if (resumen.cupon) {
-        couponRow.classList.remove("hidden");
-        document.getElementById("summary-coupon").textContent = resumen.descripcionCupon || resumen.cupon.codigo;
-      } else {
-        couponRow.classList.add("hidden");
-        document.getElementById("summary-coupon").textContent = "-";
-      }
-      const total = subtotal + ENVIO;
-      document.getElementById("summary-subtotal").textContent = formatearMoneda(subtotal);
-      document.getElementById("summary-total").textContent = formatearMoneda(total);
-      document.querySelectorAll(".oxxo-total-val").forEach(el => el.textContent = formatearMoneda(total));
+  if (discountRow) {
+    if (resumen.descuento > 0) {
+      discountRow.classList.remove("hidden");
+      document.getElementById("summary-discount").textContent = `-${formatearMoneda(resumen.descuento)}`;
+    } else {
+      discountRow.classList.add("hidden");
     }
+  }
 
+  if (couponRow) {
+    if (resumen.cupon) {
+      couponRow.classList.remove("hidden");
+      document.getElementById("summary-coupon").textContent = resumen.descripcionCupon || resumen.cupon.codigo;
+    } else {
+      couponRow.classList.add("hidden");
+    }
+  }
+}
     // SIN VALIDACIONES: Pasa directo al pago
     function validateAndShowPayment() {
       const carrito = obtenerCarrito();
@@ -705,89 +716,80 @@
     }
 
     function simulateOrder() {
-      const resumen = obtenerResumenCompra();
-      const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-      const facturaNum = 'FAC-' + Math.floor(10000 + Math.random() * 90000);
-
-      const compraRealizada = {
-        pedido: orderNum,
-        factura: facturaNum,
-        fecha: new Date().toLocaleDateString('es-MX'),
-        cliente: document.getElementById("fname").value.trim() || "Cliente General",
-        productos: resumen.carrito,
-        subtotal: resumen.subtotal,
-        descuento: resumen.descuento,
-        cupon: resumen.cupon ? resumen.cupon.codigo : null,
-        descripcionCupon: resumen.descripcionCupon,
-        envio: resumen.envio,
-        total: resumen.total
-      };
-
-      localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
-      localStorage.removeItem("carrito");
-      localStorage.removeItem("cuponAplicado");
-
-      document.getElementById('step-payment').classList.add('hidden');
-      document.getElementById('step-shipping').classList.add('hidden');
-      document.getElementById('step-confirm').classList.remove('hidden');
-      document.getElementById('step-title').innerText = "Confirmación";
-      document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
-      window.scrollTo(0, 0);
-    }
-
-    window.onload = function() {
-      renderSummary();
-      generateOrderRef();
-    };
+  // 1. Obtener datos base (Combinando lógica de Andy para cupones)
+  const resumen = obtenerResumenCompra(); 
   const orderNum = 'CC-' + Math.floor(10000 + Math.random() * 90000);
-  const facturaNum = 'FAC-' + Math.floor(1000 + Math.random() * 9000);
-  const carrito = obtenerCarrito();
-  const hoy = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const facturaNum = 'FAC-' + Math.floor(10000 + Math.random() * 90000);
+  const hoy = new Date().toISOString().split('T')[0]; // Formato estándar YYYY-MM-DD
   
-  let subtotal = 0;
-  carrito.forEach(i => subtotal += (Number(i.precio) * Number(i.cantidad)));
-  
-  const totalFinal = subtotal + ENVIO;
-  const metodoSeleccionado = document.querySelector('input[name="pay-method"]:checked').value;
+  // Capturar método de pago (Lógica de Kim)
+  const metodoInput = document.querySelector('input[name="pay-method"]:checked');
+  const metodoSeleccionado = metodoInput ? metodoInput.value : "No especificado";
 
+  // 2. Crear objeto de la compra (Completo con descuentos de Andy)
   const compraRealizada = {
     pedido: orderNum,
     factura: facturaNum,
-    cliente: document.getElementById("fname").value || "Andrea Guadalupe",
     fecha: hoy,
-    productos: carrito,
-    subtotal: subtotal,
-    envio: ENVIO,
-    total: totalFinal,
+    cliente: document.getElementById("fname").value.trim() || "Andrea Guadalupe",
+    productos: resumen.carrito,
+    subtotal: resumen.subtotal,
+    descuento: resumen.descuento,
+    cupon: resumen.cupon ? resumen.cupon.codigo : null,
+    descripcionCupon: resumen.descripcionCupon,
+    envio: resumen.envio,
+    total: resumen.total,
     metodo: metodoSeleccionado
   };
 
-  // 1. Guardar para la página de factura inmediata
+  // 3. Guardar para la factura inmediata
   localStorage.setItem("ultimaCompra", JSON.stringify(compraRealizada));
 
-  // 2. AGREGAR AL HISTORIAL DEL PERFIL
+  // 4. AGREGAR AL HISTORIAL DEL PERFIL (Lógica de Kim - Vital para el Perfil)
   const historial = JSON.parse(localStorage.getItem("misCompras") || "[]");
-  historial.unshift({ // Agregar al inicio de la lista
+  historial.unshift({ 
     id: orderNum,
-    nombre: carrito.length > 1 ? `${carrito[0].nombre} y más...` : carrito[0].nombre,
-    talla: carrito[0].talla || "N/A",
-    color: "Varios",
-    precio: totalFinal,
+    nombre: resumen.carrito.length > 1 ? `${resumen.carrito[0].nombre} y más...` : resumen.carrito[0].nombre,
+    talla: resumen.carrito[0].talla || "M",
+    color: resumen.carrito[0].color || "Varios",
+    precio: resumen.total,
     fecha: hoy,
     estado: "proceso",
     emoji: "🛍️",
-    detalleCompleto: compraRealizada // Guardamos todo para el ticket
+    detalleCompleto: compraRealizada // Esto permite ver el ticket después
   });
   localStorage.setItem("misCompras", JSON.stringify(historial));
 
-  // Limpiar carrito y mostrar confirmación
+  // 5. Limpiar datos temporales
   localStorage.removeItem("carrito");
-  document.getElementById('step-payment').classList.add('hidden');
-  document.getElementById('step-confirm').classList.remove('hidden');
+  localStorage.removeItem("cuponAplicado");
+
+  // 6. Interfaz de Confirmación (Combinado)
+  const stepPayment = document.getElementById('step-payment');
+  const stepShipping = document.getElementById('step-shipping');
+  const stepConfirm = document.getElementById('step-confirm');
+  const stepTitle = document.getElementById('step-title');
+
+  if (stepPayment) stepPayment.classList.add('hidden');
+  if (stepShipping) stepShipping.classList.add('hidden');
+  if (stepConfirm) stepConfirm.classList.remove('hidden');
+  if (stepTitle) stepTitle.innerText = "Confirmación";
+  
   document.getElementById('confirm-order-num').textContent = `Número de pedido: ${orderNum}`;
+  
   window.scrollTo(0, 0);
+  
+  // Actualizar el badge del carrito si la función existe
+  if (typeof actualizarBadgeCarrito === 'function') {
+    actualizarBadgeCarrito();
+  }
 }
-    window.onload = renderSummary;
+
+// Inicialización al cargar la página
+window.onload = function() {
+  if (typeof renderSummary === 'function') renderSummary();
+  if (typeof generateOrderRef === 'function') generateOrderRef();
+};
   </script>
 </body>
 </html>

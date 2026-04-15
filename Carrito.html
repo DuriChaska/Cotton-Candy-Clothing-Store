@@ -74,210 +74,172 @@
 
   <script src="components.js"></script>
   <script>
-    const codigosDisponibles = {
-      "CUTECANDY50": {
-        codigo: "CUTECANDY50",
-        tipo: "porcentaje",
-        valor: 50
-      },
-      "CUTECANDY10": {
-        codigo: "CUTECANDY10",
-        tipo: "tercera_prenda",
-        valor: 10
-      },
-      "CUTENVIO1": {
-        codigo: "CUTENVIO1",
-        tipo: "envio_gratis",
-        valor: 0
-      }
-    };
+  // 1. Configuración de Cupones
+  const codigosDisponibles = {
+    "CUTECANDY50": { codigo: "CUTECANDY50", tipo: "porcentaje", valor: 50 },
+    "CUTECANDY10": { codigo: "CUTECANDY10", tipo: "tercera_prenda", valor: 10 },
+    "CUTENVIO1":   { codigo: "CUTENVIO1",   tipo: "envio_gratis",   valor: 0 }
+  };
 
-    function obtenerCarrito() {
-      return JSON.parse(localStorage.getItem("carrito") || "[]");
-    }
+  // 2. Funciones de Utilidad (Storage)
+  function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem("carrito") || "[]");
+  }
 
-    function guardarCarrito(carrito) {
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
+  function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
 
-    function obtenerCupon() {
-      return JSON.parse(localStorage.getItem("cuponAplicado") || "null");
-    }
+  function obtenerCupon() {
+    return JSON.parse(localStorage.getItem("cuponAplicado") || "null");
+  }
 
-    function guardarCupon(cupon) {
-      localStorage.setItem("cuponAplicado", JSON.stringify(cupon));
-    }
+  function guardarCupon(cupon) {
+    localStorage.setItem("cuponAplicado", JSON.stringify(cupon));
+  }
 
-    function formatearMoneda(valor) {
-      return `$${Number(valor).toFixed(2)}`;
-    }
+  function formatearMoneda(valor) {
+    return `$${Number(valor).toFixed(2)}`;
+  }
 
-    function obtenerCantidadTotal(carrito) {
-      return carrito.reduce((total, item) => total + Number(item.cantidad), 0);
-    }
+  // 3. Lógica de Cálculos
+  function calcularDescuento(carrito, subtotal, cupon) {
+    if (!cupon) return { descuento: 0, descripcion: "" };
 
-    function obtenerItemsUnitarios(carrito) {
-      const items = [];
-      carrito.forEach(item => {
-        for (let i = 0; i < Number(item.cantidad); i++) {
-          items.push({
-            nombre: item.nombre,
-            precio: Number(item.precio)
+    let descuento = 0;
+    let descripcion = "";
+    const cantidadTotal = carrito.reduce((t, i) => t + Number(i.cantidad), 0);
+
+    switch (cupon.tipo) {
+      case "porcentaje":
+        descuento = subtotal * (Number(cupon.valor) / 100);
+        descripcion = `${cupon.codigo} aplicado (${cupon.valor}% de descuento)`;
+        break;
+
+      case "tercera_prenda":
+        if (cantidadTotal >= 3) {
+          // Obtenemos todos los precios individuales para encontrar el de la tercera prenda
+          const precios = [];
+          carrito.forEach(item => {
+            for (let i = 0; i < item.cantidad; i++) precios.push(Number(item.precio));
           });
+          precios.sort((a, b) => b - a); // Opcional: ordenar de mayor a menor
+          const terceraPrendaPrecio = precios[2]; 
+          descuento = terceraPrendaPrecio * (Number(cupon.valor) / 100);
+          descripcion = `${cupon.codigo} aplicado (${cupon.valor}% en la 3ra prenda)`;
+        } else {
+          descripcion = `${cupon.codigo} requiere al menos 3 prendas`;
         }
-      });
-      return items;
+        break;
+
+      case "envio_gratis":
+        descripcion = `${cupon.codigo} aplicado (envío gratis al pagar)`;
+        break;
+    }
+    return { descuento, descripcion };
+  }
+
+  // 4. Funciones de Interfaz (Render)
+  function aplicarCuponDesdeCarrito() {
+    const input = document.getElementById("coupon-code");
+    const codigo = input.value.trim().toUpperCase();
+    if (!codigo) { alert("Ingresa un código."); return; }
+
+    const cupon = codigosDisponibles[codigo];
+    if (!cupon) { alert("Código inválido."); return; }
+
+    guardarCupon(cupon);
+    renderCart();
+    alert("Cupón aplicado correctamente.");
+  }
+
+  function renderCart() {
+    const carrito = obtenerCarrito();
+    const cupon = obtenerCupon();
+    const tbody = document.getElementById("cart-items");
+    const title = document.getElementById("cart-title");
+    const emptyMsg = document.getElementById("cart-empty");
+    const table = document.getElementById("cart-table");
+    const actions = document.getElementById("cart-actions");
+    const totals = document.getElementById("cart-totals");
+
+    tbody.innerHTML = "";
+    let subtotal = 0;
+
+    if (carrito.length === 0) {
+      title.textContent = "Carrito (0 productos)";
+      emptyMsg.style.display = "block";
+      table.style.display = "none";
+      actions.style.display = "none";
+      totals.style.display = "none";
+      if (typeof actualizarBadgeCarrito === 'function') actualizarBadgeCarrito();
+      return;
     }
 
-    function calcularDescuento(carrito, subtotal, cupon) {
-      if (!cupon) {
-        return { descuento: 0, descripcion: "" };
-      }
+    emptyMsg.style.display = "none";
+    table.style.display = "table";
+    actions.style.display = "flex";
+    totals.style.display = "block";
 
-      let descuento = 0;
-      let descripcion = "";
+    carrito.forEach((item, index) => {
+      const itemSubtotal = Number(item.precio) * Number(item.cantidad);
+      subtotal += itemSubtotal;
 
-      switch (cupon.tipo) {
-        case "porcentaje":
-          descuento = subtotal * (Number(cupon.valor) / 100);
-          descripcion = `${cupon.codigo} aplicado (${cupon.valor}% de descuento)`;
-          break;
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
+        <td>${item.nombre}</td>
+        <td>${formatearMoneda(item.precio)}</td>
+        <td>
+          <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">−</button>
+          <input type="number" value="${item.cantidad}" readonly style="width:40px; text-align:center; border:none;">
+          <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+        </td>
+        <td>${formatearMoneda(itemSubtotal)}</td>
+        <td><button class="remove-item" onclick="eliminarItem(${index})">×</button></td>
+      `;
+      tbody.appendChild(row);
+    });
 
-        case "tercera_prenda":
-          const cantidadTotal = obtenerCantidadTotal(carrito);
-          if (cantidadTotal >= 3) {
-            const itemsUnitarios = obtenerItemsUnitarios(carrito);
-            const terceraPrenda = itemsUnitarios[2];
-            if (terceraPrenda) {
-              descuento = terceraPrenda.precio * (Number(cupon.valor) / 100);
-              descripcion = `${cupon.codigo} aplicado (${cupon.valor}% en la tercera prenda)`;
-            }
-          } else {
-            descripcion = `${cupon.codigo} requiere al menos 3 prendas`;
-          }
-          break;
+    const resultado = calcularDescuento(carrito, subtotal, cupon);
+    const total = Math.max(0, subtotal - resultado.descuento);
 
-        case "envio_gratis":
-          descripcion = `${cupon.codigo} aplicado (envío gratis al pagar)`;
-          break;
-      }
+    title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? "s" : ""})`;
+    document.getElementById("subtotal").textContent = formatearMoneda(subtotal);
+    document.getElementById("total").textContent = formatearMoneda(total);
 
-      return { descuento, descripcion };
+    // Manejo visual de líneas de descuento
+    const discLine = document.getElementById("discount-line");
+    const coupLine = document.getElementById("coupon-line");
+
+    if (resultado.descuento > 0) {
+      discLine.style.display = "block";
+      document.getElementById("discount").textContent = `-${formatearMoneda(resultado.descuento)}`;
+    } else {
+      discLine.style.display = "none";
     }
 
-    function aplicarCuponDesdeCarrito() {
-      const input = document.getElementById("coupon-code");
-      const codigo = input.value.trim().toUpperCase();
-
-      if (!codigo) {
-        alert("Ingresa un código de descuento.");
-        return;
-      }
-
-      const cupon = codigosDisponibles[codigo];
-
-      if (!cupon) {
-        alert("Código inválido.");
-        return;
-      }
-
-      guardarCupon(cupon);
-      renderCart();
-      alert("Cupón aplicado correctamente.");
+    if (cupon) {
+      coupLine.style.display = "block";
+      document.getElementById("coupon-message").textContent = resultado.descripcion;
+    } else {
+      coupLine.style.display = "none";
     }
 
-    function renderCart() {
-      const carrito = obtenerCarrito();
-      const cupon = obtenerCupon();
+    // Actualizar el globo del carrito en el header
+    if (typeof actualizarBadgeCarrito === 'function') actualizarBadgeCarrito();
+  }
 
-      const tbody = document.getElementById("cart-items");
-      const title = document.getElementById("cart-title");
-      const emptyMsg = document.getElementById("cart-empty");
-      const table = document.getElementById("cart-table");
-      const actions = document.getElementById("cart-actions");
-      const totals = document.getElementById("cart-totals");
-
-      tbody.innerHTML = "";
-      let subtotal = 0;
-
-      if (carrito.length === 0) {
-        title.textContent = "Carrito (0 productos)";
-        emptyMsg.style.display = "block";
-        table.style.display = "none";
-        actions.style.display = "none";
-        totals.style.display = "none";
-        return;
-      }
-
-      emptyMsg.style.display = "none";
-      table.style.display = "table";
-      actions.style.display = "flex";
-      totals.style.display = "block";
-
-      carrito.forEach((item, index) => {
-        const itemSubtotal = Number(item.precio) * Number(item.cantidad);
-        subtotal += itemSubtotal;
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td><img src="${item.imagen}" alt="${item.nombre}" style="width:80px; border-radius:6px;"></td>
-          <td>${item.nombre}</td>
-          <td>${item.precioFormatted || formatearMoneda(item.precio)}</td>
-          <td>
-            <button class="qty-btn" onclick="cambiarCantidad(${index}, -1)">−</button>
-            <input type="number" value="${item.cantidad}" min="1" readonly style="width:50px; text-align:center;">
-            <button class="qty-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
-          </td>
-          <td>${formatearMoneda(itemSubtotal)}</td>
-          <td><button class="remove-item" onclick="eliminarItem(${index})">×</button></td>
-        `;
-        tbody.appendChild(row);
-      });
-
-      const resultado = calcularDescuento(carrito, subtotal, cupon);
-      const total = Math.max(0, subtotal - resultado.descuento);
-
-      title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? "s" : ""})`;
-      document.getElementById("subtotal").textContent = formatearMoneda(subtotal);
-      document.getElementById("total").textContent = formatearMoneda(total);
-
-      const discountLine = document.getElementById("discount-line");
-      const couponLine = document.getElementById("coupon-line");
-
-      if (resultado.descuento > 0) {
-        discountLine.style.display = "block";
-        document.getElementById("discount").textContent = `-${formatearMoneda(resultado.descuento)}`;
-      } else {
-        discountLine.style.display = "none";
-      }
-
-      if (cupon) {
-        couponLine.style.display = "block";
-        document.getElementById("coupon-message").textContent = resultado.descripcion;
-        document.getElementById("coupon-code").value = cupon.codigo;
-      } else {
-        couponLine.style.display = "none";
-      }
-    }
-
-    function cambiarCantidad(index, delta) {
-      let carrito = obtenerCarrito();
-      carrito[index].cantidad = Math.max(1, Number(carrito[index].cantidad) + delta);
-      guardarCarrito(carrito);
-      renderCart();
-      title.textContent = `Carrito (${carrito.length} producto${carrito.length !== 1 ? 's' : ''})`;
-      document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
-      document.getElementById("total").textContent    = `$${subtotal.toFixed(2)}`;
-
-      actualizarBadgeCarrito();
-    }
-
-    function cambiarCantidad(index, delta) {
+  // 5. Acciones del Usuario
+  function cambiarCantidad(index, delta) {
   let carrito = obtenerCarrito();
-  carrito[index].cantidad = Math.max(1, carrito[index].cantidad + delta);
+  carrito[index].cantidad = Math.max(1, Number(carrito[index].cantidad) + delta);
   guardarCarrito(carrito);
   renderCart();
-  actualizarBadgeCarrito(); // <--- Llamar aquí
+
+  // ESTO DISPARA EL CAMBIO EN EL LOGO AL INSTANTE:
+  window.dispatchEvent(new Event('actualizarCarrito')); 
+
 }
 
 function eliminarItem(index) {
@@ -285,10 +247,12 @@ function eliminarItem(index) {
   carrito.splice(index, 1);
   guardarCarrito(carrito);
   renderCart();
-  actualizarBadgeCarrito(); // <--- Llamar aquí
+
+  // ESTO DISPARA EL CAMBIO EN EL LOGO AL INSTANTE:
+  window.dispatchEvent(new Event('actualizarCarrito'));
 }
 
-    window.onload = renderCart;
-  </script>
+  window.onload = renderCart;
+</script>
 </body>
 </html>
