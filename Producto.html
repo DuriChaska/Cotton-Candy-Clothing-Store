@@ -2,173 +2,104 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Estampa-TLA - Producto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotton Candy Clothing Store - Detalle del Producto</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-    <span>Cotton Candy Clothing Store</span>
-  </div>
-  <nav>
-   <ul>
-  <li><button type="button" onclick="window.location.href='index.html'">Inicio</button></li>
-  <li><button type="button" onclick="window.location.href='shop.html'">Catalago</button></li>
-  <li><button type="button" onclick="window.location.href='about.html'">Nosotros</button></li>
-  <li><button type="button" onclick="window.location.href='contact.html'">Contacto</button></li>
-  <li><button type="button" onclick="window.location.href='Interfaz Usuario - Registro .html'">Iniciar sesión</button></li>
-</ul>
+  <div id="header"></div>
 
-  </nav>
-  <div class="icons">
-    <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
-    <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
-    <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
-    <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
-  </div>
-</header>
+  <main class="product-page">
+    <div id="toast-container"></div>
 
-<section class="product-page">
-  <nav class="breadcrumb">
-    <a href="#">Home</a> / <a href="#">Shop</a> / Sudadera Estampada
-  </nav>
-
-  <div class="product-main">
-    <div class="product-image">
-      <img src="Imagenes/Colecciones.png" alt="Sudadera Estampada" />
-      <div class="product-thumbnails">
-        <img src="Imagenes/Colecciones.png" alt="Thumb 1" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 2" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 3" />
-        <img src="Imagenes/Colecciones.png" alt="Thumb 4" />
+    <section class="producto-detalle">
+      <div class="product-image">
+        <img id="imagen-producto" src="" alt="Producto" />
       </div>
-    </div>
+      <div class="product-details">
+        <h1 id="nombre-producto"></h1>
+        <div class="price" id="precio-producto"></div>
+        <p id="descripcion-producto"></p>
 
-    <div class="product-details">
-      <h1>Sudadera Estampada</h1>
-      <div class="price">
-        $859 <span class="old-price">$1229</span>
-      </div>
-
-      <div class="color-options">
-        <span>Color:</span>
-        <button class="color-black selected"></button>
-        <button class="color-grey"></button>
-        <button class="color-white"></button>
-        <button class="color-red"></button>
-        <button class="color-green"></button>
-      </div>
-
-      <div class="quantity-control">
-        <button class="qty-btn">-</button>
-        <input type="number" value="1" min="1" />
-        <button class="qty-btn">+</button>
-      </div>
-
-      <div class="actions">
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-        <button class="buy-now">COMPRAR AHORA</button>
-      </div>
-
-      <details>
-        <summary>Detalles</summary>
-        <p>Detalles del producto...</p>
-      </details>
-
-      <details>
-        <summary>Dimensiones</summary>
-        <p>Dimensiones del producto...</p>
-      </details>
-      <div class="actions">
-        <button class="regresar" type="button" onclick="window.location.href='shop.html'">Regresar</button>
-      </div>
-
-    </div>
-  </div>
-
-  <section class="related-products">
-    <h2>ARTÍCULOS SIMILARES</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <img src="Imagenes/Playera Return of Misfits.png" alt="Kingmonster Playera Return of Misfits" />
-        <div class="product-info">
-          <h3>Kingmonster Playera Return of Misfits</h3>
-          <p>Estampado al frente de alta durabilidad y ligero al tacto.</p>
+        <div class="quantity-control">
+          <label for="cantidad">Cantidad:</label>
+          <button class="qty-btn" type="button" onclick="cambiarCantidad(-1)">−</button>
+          <input type="number" id="cantidad" value="1" min="1" />
+          <button class="qty-btn" type="button" onclick="cambiarCantidad(1)">+</button>
         </div>
-        <div class="product-price">$298.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera de bruja feminista.png" alt="Girls Will Be Girls Shirts" />
-        <div class="product-info">
-          <h3>Girls Will Be Girls Shirts - Camisetas de bruja feminista</h3>
-          <p>Camisetas divertidas de Halloween con cuello en V, camisetas de moda con estampado de brujas de Halloween.</p>
+
+        <div class="actions">
+          <button class="add-to-cart" type="button" onclick="agregarAlCarrito()">AGREGAR AL CARRITO</button>
+          <button class="buy-now" type="button" onclick="comprarAhora()">COMPRAR AHORA</button>
         </div>
-        <div class="product-price">$424.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera de manga corta para hombre.png" alt="Camisetas para hombre, playera de manga corta" />
-        <div class="product-info">
-          <h3>Camisetas para hombre, playera de manga corta, de poliéster, suave</h3>
-          <p>Estas camisetas casuales cuentan con un diseño clásico de cuello redondo y mangas cortas.</p>
+        <div class="actions">
+          <button class="regresar" type="button" onclick="window.location.href='shop.html'">← Regresar al catálogo</button>
         </div>
-        <div class="product-price">$205.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
       </div>
-  
-      <div class="product-card">
-        <img src="Imagenes/Playera Estampada Gatos.png" alt="Aditivo Playera Estampada Gatos Bad Cattitude" />
-        <div class="product-info">
-          <h3>Aditivo Playera Estampada Gatos Bad Cattitude para Mujer</h3>
-          <p>Playera cómoda y casual para mujer con estampado cool y original, fácil de combinar con tus mejores atuendos.</p>
-        </div>
-        <div class="product-price">$195.00</div>
-        <button class="add-to-cart">AGREGAR AL CARRITO</button>
-      </div>
-    </div>
-  </section>
-  
-<footer>
-  <div class="left">
-    <p><strong>Cotton Candy Clothing Store</strong></p>
-    <p>¿Te gustaría colaborar con nosotros?</p>
-    <button>ÚNETE →</button>
-  </div>
+    </section>
 
-  <div class="center">
-    <p><strong>REDES SOCIALES</strong></p>
-    <ul>
-      <li><img src="Imagenes/Iconos/Facebook.png" alt="Facebook" class="icon" />
-        <a href="#">Facebook</a></li>
-      <li><img src="Imagenes/Iconos/Twitter.png" alt="Twitterr" class="icon" />
-        <a href="#">Twitter</a></li>
-      <li><img src="Imagenes/Iconos/Instagram.png" alt="Instagram" class="icon" /><a href="#">Instagram</a></li>
-    </ul>
-  </div>
+    <section class="similares">
+      <h2>Artículos similares</h2>
+      <div id="articulos-similares" class="grid"></div>
+    </section>
+  </main>
 
-  <div class="right">
-    <p><strong>Horario:</strong><br/>
-      Lunes a Viernes 7:00 am - 11:00 pm<br/>
-      Sábado y Domingo 9:00 am - 9:00 pm
-    </p>
-    <p><strong>Teléfono:</strong><br/>(449) 3116529</p>
-  </div>
+  <div id="footer"></div>
 
-  <div class="ai-note">
-    Algunas imágenes de modelos utilizadas en este sitio fueron generadas con inteligencia artificial.
-  </div>
+  <script src="components.js"></script>
+  <script src="producto.js"></script>
+  <script>
+    function mostrarToast(mensaje, tipo = 'success') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast ${tipo}`;
+      toast.textContent = mensaje;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 100);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 500);
+      }, 2800);
+    }
 
-  <div class="bottom-text">
-    Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-  </div>
-</footer>
+    function obtenerCarrito() { return JSON.parse(localStorage.getItem("carrito") || "[]"); }
+    function guardarCarrito(c) { localStorage.setItem("carrito", JSON.stringify(c)); }
 
+    function cambiarCantidad(delta) {
+      const input = document.getElementById("cantidad");
+      if (!input) return;
+      input.value = Math.max(1, (parseInt(input.value) || 1) + delta);
+    }
 
+    function agregarAlCarrito() {
+      if (typeof producto === 'undefined' || !producto) {
+        mostrarToast("No se pudo agregar el producto", "error");
+        return;
+      }
+      const cantidad = parseInt(document.getElementById("cantidad")?.value) || 1;
+      let carrito = obtenerCarrito();
+      const existe = carrito.find(i => i.id === producto.id);
+      if (existe) { existe.cantidad += cantidad; }
+      else {
+        carrito.push({
+          id: producto.id,
+          nombre: producto.nombre,
+          precio: producto.precio,
+          precioFormatted: producto.precioFormatted || producto.precio,
+          imagen: producto.imagen,
+          cantidad
+        });
+      }
+      guardarCarrito(carrito);
+      mostrarToast(`¡Agregado! ${cantidad} × ${producto.nombre}`, "success");
+    }
+
+    function comprarAhora() {
+      agregarAlCarrito();
+      window.location.href = "carrito.html";
+    }
+  </script>
 </body>
 </html>

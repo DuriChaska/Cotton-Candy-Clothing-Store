@@ -8,79 +8,41 @@
 </head>
 <body>
 
-    
-<header>
-    <div class="logo">
-      <img src="Imagenes/Logo estampa-tla 1.png" alt="Estampa-TLA" />
-      <span>Cotton Candy Clothing Store</span>
-    </div>
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>Shop</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
-    </nav>
-    <div class="icons">
-        <img src="Imagenes/Iconos/Search.png" alt="Buscar" class="icon" />
-        <img src="Imagenes/Iconos/Avatar.png" alt="Perfil" class="icon" />
-        <img src="Imagenes/Iconos/Heart.png" alt="Favoritos" class="icon" />
-        <img src="Imagenes/Iconos/Shopping cart.png" alt="Carrito" class="icon" />
+  <div id="header"></div>
+
+  <section class="client-interface">
+    <h2>Agregar Dirección</h2>
+    <form class="address-form">
+      <div class="input-group">
+        <input type="text" placeholder="Nombre" />
+        <input type="text" placeholder="Apellidos" />
       </div>
-  </header>
+      <div class="input-group">
+        <select required>
+          <option value="" disabled selected>País</option>
+          <option value="Mexico">México</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Colonia" />
+      <input type="text" placeholder="Calle y número" />
+      <div class="input-group">
+        <input type="text" placeholder="Estado" />
+        <select required>
+          <option value="" disabled selected>Municipio</option>
+          <option value="Aguascalientes">Aguascalientes</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Código Postal" />
+        <input type="tel" placeholder="Teléfono" />
+      </div>
+      <textarea placeholder="Descripción de la ubicación..."></textarea>
+      <button type="submit">AGREGAR</button>
+    </form>
+  </section>
 
-<section class="client-interface">
-  <h2>Agregar Dirección</h2>
-  <form class="address-form">
-    <div class="input-group">
-      <input type="text" placeholder="Nombre" required />
-      <input type="text" placeholder="Apellidos" required />
-    </div>
-    <div class="input-group">
-      <select required>
-        <option value="" disabled selected>País</option>
-        <option value="Mexico">México</option>
-        <!-- Agrega más países si quieres -->
-      </select>
-    </div>
-    <input type="text" placeholder="Colonia" required />
-    <input type="text" placeholder="Calle y número" required />
-    <div class="input-group">
-      <input type="text" placeholder="Estado" required />
-      <select required>
-        <option value="" disabled selected>Municipio</option>
-        <option value="Aguascalientes">Aguascalientes</option>
-        <!-- Más municipios -->
-      </select>
-    </div>
-    <div class="input-group">
-      <input type="text" placeholder="Código Postal" required />
-      <input type="tel" placeholder="Teléfono" required />
-    </div>
-    <textarea placeholder="Descripción de la ubicación..."></textarea>
-    <button type="submit">AGREGAR</button>
-  </form>
-</section>
+  <div id="footer"></div>
 
-<footer>
-    <div class="left">
-      <p><strong>Cotton Candy Clothing Store</strong></p>
-      <p>¿Te gustaría colaborar con nosotros?</p>
-      <button>ÚNETE →</button>
-    </div>
-    <div class="right">
-      <p><strong>REDES SOCIALES</strong></p>
-      <ul>
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>Instagram</li>
-      </ul>
-    </div>
-    <div class="bottom-text">
-      Copyright © 2026 Cotton Candy Clothing Store | All Rights Reserved | Terms and Conditions | Privacy Policy
-    </div>
-  </footer>
-  
+  <script src="components.js"></script>
 </body>
 </html>
